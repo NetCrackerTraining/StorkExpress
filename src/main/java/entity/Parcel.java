@@ -1,10 +1,14 @@
 package entity;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  * Created by Андрей on 11.11.2016.
  */
+@Entity
+@Table(name = "parcels")
 public class Parcel extends AbstractEntity{
     @Column(name = "orderId")
     private long orderId;

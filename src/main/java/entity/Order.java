@@ -1,12 +1,16 @@
 package entity;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Date;
 import java.util.List;
 
 /**
  * Created by Андрей on 11.11.2016.
  */
+@Entity
+@Table(name = "orders")
 public class Order extends AbstractEntity {
     @Column(name = "userId", nullable = false)
     private long userId;
