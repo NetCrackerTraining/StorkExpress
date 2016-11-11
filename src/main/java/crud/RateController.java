@@ -21,7 +21,7 @@ public class RateController {
 
     public Rate getCurrentRate()
     {
-        
+
         return null;
     }
 }
