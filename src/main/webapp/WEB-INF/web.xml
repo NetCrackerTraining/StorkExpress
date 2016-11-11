@@ -5,6 +5,6 @@
          version="3.1">
     <display-name>testAppServ</display-name>
     <welcome-file-list>
-        <welcome-file>jsp/testSignUp.jsp</welcome-file>
+        <welcome-file>jsp/main.jsp</welcome-file>
     </welcome-file-list>
 </web-app>
