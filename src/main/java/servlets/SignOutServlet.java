@@ -1,0 +1,31 @@
+package servlets;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+/**
+ * Created by Влад on 09.11.2016.
+ */
+
+@WebServlet("/SignOut")
+public class SignOutServlet extends BaseHttpServlet {
+    protected void process(HttpServletRequest request, HttpServletResponse response)
+    {
+        response.setStatus(200);
+
+        PrintWriter pw = null;
+        try {
+            pw = response.getWriter();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        request.getSession().setAttribute("user", null);
+
+        pw.println("Вышли");
+        pw.println(request.getSession().getAttribute("user"));
+    }
+}
