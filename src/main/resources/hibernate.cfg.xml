@@ -17,6 +17,8 @@
         <property name="show_sql">true</property>
         <!-- NOTE that after automapping with IDEA property username and password will delete -->
         <mapping class="entity.User"/>
+        <mapping class="entity.Country"/>
+        <mapping class="entity.Rate"/>
         <!-- DB schema will be updated if needed -->
 
     </session-factory>
