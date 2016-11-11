@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class CountryController {
 
-    private List<Country> getAllCountries(){
+    public List<Country> getAllCountries(){
 
         List<Country> cap = null;
         cap.add(new Country("Belarus","Беларусь", 112));
