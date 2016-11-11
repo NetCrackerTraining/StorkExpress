@@ -3,5 +3,5 @@ out/
 .idea/
 *.swp
 nbproject/
-target/
-classes/
+/target/*
+/classes/*
