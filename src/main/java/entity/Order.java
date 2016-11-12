@@ -1,8 +1,6 @@
 package entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
@@ -18,8 +16,9 @@ public class Order extends AbstractEntity {
     private Date date;
     @Column(name = "totalCost")
     private double totalCost;
-    @Column(name = "parcels")
+    @Transient
     private List<Parcel> parcels;
+
 
     public Order() {
     }
