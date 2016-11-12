@@ -32,8 +32,23 @@ public class OrderController {
     public List<Order> getUserOrders(long UserId){
         return null;
     }
+
     public boolean deleteOrder(long OrderId){
-        return false;
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
+        session.beginTransaction();
+        Order order = (Order) session.load(Order.class, OrderId);
+        try {
+            if(null != order) {
+                session.delete(order);
+            }
+            else return false;
+        }catch (HibernateException e){
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }
+
+        session.getTransaction().commit();
+        return true;
     }
     public boolean updateOrder(Order order){
         return false;
