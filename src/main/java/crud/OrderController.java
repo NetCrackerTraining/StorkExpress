@@ -1,6 +1,9 @@
 package crud;
 
 import entity.Order;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import utils.HibernateSessionFactory;
 
 import java.util.List;
 
@@ -9,7 +12,19 @@ import java.util.List;
  */
 public class OrderController {
     public List<Order> getAllOrders(){
-        return null;
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
+        session.beginTransaction();
+        List<Order> orders = null;
+        try {
+
+            orders = (List<Order>)session.createQuery("from Order").list();
+
+        } catch (HibernateException e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }
+        session.getTransaction().commit();
+        return orders;
     }
     public boolean addOrder(Order order){
         return false;

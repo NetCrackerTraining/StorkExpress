@@ -1,6 +1,9 @@
 package crud;
 
 import entity.Rate;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import utils.HibernateSessionFactory;
 
 import java.util.Date;
 import java.util.List;
@@ -10,8 +13,19 @@ import java.util.List;
  */
 public class RateController {
     public List<Rate> getAllRates(){
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
+        session.beginTransaction();
+        List<Rate> rates = null;
+        try {
 
-        return null;
+            rates = (List<Rate>)session.createQuery("from Rate").list();
+
+        } catch (HibernateException e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }
+        session.getTransaction().commit();
+        return rates;
     }
 
     public List<Rate> getRatesBetweenDates(Date fromDate, Date toDate){
