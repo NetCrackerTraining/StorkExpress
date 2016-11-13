@@ -1,8 +1,10 @@
 package crud;
 
 import entity.Order;
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 import utils.HibernateSessionFactory;
 
 import java.util.List;
@@ -15,10 +17,9 @@ public class OrderController {
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
         List<Order> orders = null;
+        Criteria criteria = session.createCriteria(Order.class);
         try {
-
-            orders = (List<Order>)session.createQuery("from Order").list();
-
+            orders = criteria.list();
         } catch (HibernateException e) {
             e.printStackTrace();
             session.getTransaction().rollback();
@@ -36,7 +37,9 @@ public class OrderController {
     public boolean deleteOrder(long OrderId){
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
-        Order order = (Order) session.load(Order.class, OrderId);
+        Criteria criteria = session.createCriteria(Order.class);
+        criteria.add(Restrictions.eq("ID", OrderId));
+        Order order = (Order) criteria.list().get(0);
         try {
             if(null != order) {
                 session.delete(order);
@@ -46,7 +49,6 @@ public class OrderController {
             e.printStackTrace();
             session.getTransaction().rollback();
         }
-
         session.getTransaction().commit();
         return true;
     }

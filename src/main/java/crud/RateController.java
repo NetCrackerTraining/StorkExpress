@@ -1,6 +1,7 @@
 package crud;
 
 import entity.Rate;
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import utils.HibernateSessionFactory;
@@ -16,10 +17,9 @@ public class RateController {
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
         List<Rate> rates = null;
+        Criteria criteria = session.createCriteria(Rate.class);
         try {
-
-            rates = (List<Rate>)session.createQuery("from Rate").list();
-
+            rates = criteria.list();
         } catch (HibernateException e) {
             e.printStackTrace();
             session.getTransaction().rollback();
