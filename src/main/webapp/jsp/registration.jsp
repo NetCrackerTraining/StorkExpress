@@ -99,7 +99,7 @@
                         <button type="submit" class="btn btn-primary">
                             Sign up
                         </button>
-                        <a href="${pageContext.request.contextPath}" style="margin-left: 20px"
+                        <a href="${pageContext.request.contextPath}#signup" style="margin-left: 20px"
                         >Already have an account?</a>
                     </div>
                 </div>

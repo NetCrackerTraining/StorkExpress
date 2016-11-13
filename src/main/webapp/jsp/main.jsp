@@ -27,6 +27,17 @@
     <script src="${pageContext.request.contextPath}/js/web/assets/jquery/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap/js/bootstrap.min.js"></script>
 
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            var target = document.location.hash.replace("#", "");
+            if (target.length) {
+                if(target=="signup"){
+                    $('#myModal').modal('show');
+                }
+            }
+        });
+    </script>
+
 </head>
 <body>
 <section class="mbr-section mbr-section-hero mbr-section-full mbr-parallax-background" id="header1-2"
