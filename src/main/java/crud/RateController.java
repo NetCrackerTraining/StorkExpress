@@ -4,6 +4,7 @@ import entity.Rate;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 import utils.HibernateSessionFactory;
 
 import java.util.Date;
@@ -29,13 +30,25 @@ public class RateController {
     }
 
     public List<Rate> getRatesBetweenDates(Date fromDate, Date toDate){
-
-        return null;
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(Rate.class);
+        criteria.add(Restrictions.between("startDate", fromDate, toDate));
+        List<Rate> rates=criteria.list();
+        session.getTransaction().commit();
+        if (rates.size() == 0)
+            return null;
+        return rates;
     }
 
     public Rate getCurrentRate()
     {
-
-        return null;
+        Date currentDate = new Date();
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(Rate.class);
+        criteria.add(Restrictions.gt("endDate", currentDate));
+        Rate rate= (Rate) criteria.list();
+        return rate;
     }
 }
