@@ -46,11 +46,13 @@
                         service.<br>
                     </p>
                     <div class="mbr-section-btn">
-                        <a class="btn btn-lg btn-white" href="${pageContext.request.contextPath}/SignIn">LOGIN IN!</a>
+                        <a class="btn btn-lg btn-white" data-toggle="modal" data-target="#myModal"
+                           >LOGIN IN!</a>
 
-                        <button type="button" class="btn btn-lg btn-white btn-white-outline"
-                                data-toggle="modal" data-target="#myModal">SIGN UP
-                        </button>
+                        <a class="btn btn-lg btn-white btn-white-outline"
+                                href="${pageContext.request.contextPath}/jsp/registration.jsp"
+                                >SIGN UP
+                        </a>
                     </div>
 
                 </div>
@@ -66,7 +68,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Modal Header</h4>
+                    <h4 class="modal-title">Sign up to Stork Express</h4>
                 </div>
                 <div class="modal-body">
                     <div class="container-fluid bd-example-row">
