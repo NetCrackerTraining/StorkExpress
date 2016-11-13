@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <title>Main</title>
@@ -31,7 +32,7 @@
         jQuery(document).ready(function($) {
             var target = document.location.hash.replace("#", "");
             if (target.length) {
-                if(target=="signup"){
+                if(target=="SignIn"){
                     $('#myModal').modal('show');
                 }
             }
@@ -71,7 +72,7 @@
         </div>
     </div>
 </section>
-<form role="form" method="POST" action="/SignUp">
+<form role="form" method="POST" action="${pageContext.request.contextPath}/SignIn">
     <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
@@ -83,6 +84,10 @@
                 </div>
                 <div class="modal-body">
                     <div class="container-fluid bd-example-row">
+
+                        <c:out value="${sessionScope.SignInError}"/>
+                        <c:remove var="SignInError" scope="session"/>
+
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <label for="username">Username</label>
@@ -92,7 +97,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="password">Password</label>
-                                <input type="password" class="form-control" name="" id="password"
+                                <input type="password" class="form-control" name="password" id="password"
                                        required
                                        placeholder="Password">
                             </div>
