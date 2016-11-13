@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>Registration</title>
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/logo.png" type="image/x-icon">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&amp;subset=latin">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
@@ -40,23 +41,23 @@
 
                     <div class="form-group col-md-6">
                         <label for="username">Username</label>
-                        <input type="text" class="form-control" name="username" id="username" placeholder="Username">
+                        <input type="text" class="form-control" name="username" id="username" required placeholder="Username">
                     </div>
 
 
                     <div class="form-group col-md-6">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" name="" id="email" placeholder="Email">
+                        <input type="email" class="form-control" name="" id="email" required placeholder="Email" >
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" name="" id="password" placeholder="Password">
+                        <input type="password" class="form-control" name="" id="password" required placeholder="Password">
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="confirm_password">Confirm Password</label>
-                        <input type="password" class="form-control" name="" id="confirm_password" placeholder="Confirm Password">
+                        <input type="password" class="form-control" name="" id="confirm_password" required placeholder="Confirm Password">
                     </div>
 
 
