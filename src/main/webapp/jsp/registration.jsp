@@ -41,23 +41,26 @@
 
                     <div class="form-group col-md-6">
                         <label for="username">Username</label>
-                        <input type="text" class="form-control" name="username" id="username" required placeholder="Username">
+                        <input type="text" class="form-control" name="username" id="username" required
+                               placeholder="Username">
                     </div>
 
 
                     <div class="form-group col-md-6">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" name="" id="email" required placeholder="Email" >
+                        <input type="email" class="form-control" name="" id="email" required placeholder="Email">
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" name="" id="password" required placeholder="Password">
+                        <input type="password" class="form-control" name="" id="password" required
+                               placeholder="Password">
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="confirm_password">Confirm Password</label>
-                        <input type="password" class="form-control" name="" id="confirm_password" required placeholder="Confirm Password">
+                        <input type="password" class="form-control" name="" id="confirm_password" required
+                               placeholder="Confirm Password">
                     </div>
 
 
@@ -78,7 +81,8 @@
 
                     <div class="form-group col-md-6">
                         <label for="phone_number">Phone number</label>
-                        <input type="text" class="form-control" name="phone_number" id="phone_number" placeholder="Phone number">
+                        <input type="tel" class="form-control" name="phone_number" id="phone_number"
+                               placeholder="Phone number">
                     </div>
 
                     <div class="form-group col-md-6">
@@ -93,9 +97,9 @@
                 <div class="form-group">
                     <div class="col-md-12">
                         <button type="submit" class="btn btn-primary">
-                            Register
+                            Sign up
                         </button>
-                        <a href="${pageContext.request.contextPath}">Already have an account?</a>
+                        <a href="${pageContext.request.contextPath}" style="margin-left: 20px">Already have an account?</a>
                     </div>
                 </div>
 
@@ -104,5 +108,6 @@
 
     </div>
 </div>
+
 </body>
 </html>
