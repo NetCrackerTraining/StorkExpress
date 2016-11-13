@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mobirise/css/mbr-additional.css"
           type="text/css">
 
+    <script src="${pageContext.request.contextPath}/js/web/assets/jquery/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap/js/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -39,17 +41,60 @@
                 <div class="mbr-section col-md-10">
 
                     <h1 class="mbr-section-title display-1">Stork Express</h1>
-                    <p class="mbr-section-lead lead">Your package is in good hands. <br>Fast and accurate delivery
-                        service.<br></p>
-                    <div class="mbr-section-btn"><a class="btn btn-lg btn-white" href="${pageContext.request.contextPath}/SignIn">LOGIN
-                        IN!</a> <a class="btn btn-lg btn-white btn-white-outline" href="${pageContext.request.contextPath}/SignUp">SIGN
-                        UP</a></div>
+                    <p class="mbr-section-lead lead">Your package is in good hands.
+                        <br>Fast and accurate delivery
+                        service.<br>
+                    </p>
+                    <div class="mbr-section-btn">
+                        <a class="btn btn-lg btn-white" href="${pageContext.request.contextPath}/SignIn">LOGIN IN!</a>
+
+                        <button type="button" class="btn btn-lg btn-white btn-white-outline"
+                                data-toggle="modal" data-target="#myModal">SIGN UP
+                        </button>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
-
-
 </section>
+<form role="form" method="POST" action="/SignUp">
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid bd-example-row">
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="username">Username</label>
+                                <input type="text" class="form-control" name="username" id="username"
+                                       required
+                                       placeholder="Username">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" name="" id="password"
+                                       required
+                                       placeholder="Password">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+
+                    <button type="submit" class="btn btn-primary" style="margin-bottom: 0px">Sign up</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" style="margin-right: 15px">Close</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
 </body>
 </html>
