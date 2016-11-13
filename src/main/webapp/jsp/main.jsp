@@ -58,7 +58,7 @@
                     </p>
                     <div class="mbr-section-btn">
                         <a class="btn btn-lg btn-white" data-toggle="modal" data-target="#myModal"
-                           >LOGIN IN!</a>
+                           >LOG IN!</a>
 
                         <a class="btn btn-lg btn-white btn-white-outline"
                                 href="${pageContext.request.contextPath}/jsp/registration.jsp"
@@ -79,7 +79,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Sign up to Stork Express</h4>
+                    <h4 class="modal-title">Sign in to Stork Express</h4>
                 </div>
                 <div class="modal-body">
                     <div class="container-fluid bd-example-row">
@@ -101,7 +101,7 @@
                 </div>
                 <div class="modal-footer">
 
-                    <button type="submit" class="btn btn-primary" style="margin-bottom: 0px">Sign up</button>
+                    <button type="submit" class="btn btn-primary" style="margin-bottom: 0px">Sign in</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal" style="margin-right: 15px">Close</button>
 
                 </div>
