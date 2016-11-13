@@ -1,19 +1,55 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Alexandr
-  Date: 11.11.2016
-  Time: 22:11
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Main</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/logo.png" type="image/x-icon">
+    <meta name="description" content="">
+
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&amp;subset=latin">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/et-line-font-plugin/style.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/css/bootstrap-material-design-font/css/material.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/tether/tether.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/socicon/css/socicon.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/animate.css/animate.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/theme/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mobirise/css/mbr-additional.css"
+          type="text/css">
+
+
 </head>
 <body>
-    <h1>It`s Main</h1>
-    <a href="SignUp">SignUp</a>
-    <a href="SignIn">SignIn</a>
+<section class="mbr-section mbr-section-hero mbr-section-full mbr-parallax-background" id="header1-2"
+         style="background-image: url(${pageContext.request.contextPath}/images/photo-1454165804606-c3d57bc86b40-2000x1334-34.jpg);">
 
+    <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(0, 0, 0);"></div>
+
+    <div class="mbr-table-cell">
+
+        <div class="container">
+            <div class="row">
+                <div class="mbr-section col-md-10">
+
+                    <h1 class="mbr-section-title display-1">Stork Express</h1>
+                    <p class="mbr-section-lead lead">Your package is in good hands. <br>Fast and accurate delivery
+                        service.<br></p>
+                    <div class="mbr-section-btn"><a class="btn btn-lg btn-white" href="${pageContext.request.contextPath}/SignIn">LOGIN
+                        IN!</a> <a class="btn btn-lg btn-white btn-white-outline" href="${pageContext.request.contextPath}/SignUp">SIGN
+                        UP</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
 </body>
 </html>
