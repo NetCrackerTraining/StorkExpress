@@ -52,7 +52,7 @@ public class SignUpServlet extends BaseHttpServlet {
             }
             else{
                 request.getSession().setAttribute("user", newUser);
-                response.sendRedirect(request.getContextPath()+"/jsp/newOrder.jsp");
+                response.sendRedirect(request.getContextPath()+"/NewOrder");
             }
         }
         else{
