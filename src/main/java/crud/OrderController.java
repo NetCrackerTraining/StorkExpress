@@ -9,9 +9,7 @@ import utils.HibernateSessionFactory;
 
 import java.util.List;
 
-/**
- * Created by Влад on 12.11.2016.
- */
+
 public class OrderController {
     public List<Order> getAllOrders(){
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
@@ -28,10 +26,29 @@ public class OrderController {
         return orders;
     }
     public boolean addOrder(Order order){
-        return false;
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
+        session.beginTransaction();
+        try {
+            session.save(order);
+        }catch (HibernateException e){
+            e.printStackTrace();
+            session.getTransaction().rollback();
+            return false;
+        }
+        session.getTransaction().commit();
+        return true;
     }
+
     public List<Order> getUserOrders(long UserId){
-        return null;
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(Order.class);
+        criteria.add(Restrictions.eq("ID", UserId));
+        List<Order> orders = criteria.list();
+        session.getTransaction().commit();
+        if (orders.size() == 0)
+            return null;
+        return orders;
     }
 
     public boolean deleteOrder(long OrderId){
