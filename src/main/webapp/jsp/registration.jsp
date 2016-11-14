@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <title>Registration</title>
@@ -32,7 +33,11 @@
     <div class="row">
 
         <div class="col-md-8 col-md-offset-2">
-            <form role="form" method="POST" action="#" style="margin-top: 4rem">
+            <form role="form" method="POST" action="${pageContext.request.contextPath}/SignUp" style="margin-top: 4rem">
+
+                <c:out value="${sessionScope.SignUpError}"/>
+                <c:remove var="SignInError" scope="session"/>
+
 
                 <legend class="text-center">Registration</legend>
 
@@ -48,12 +53,12 @@
 
                     <div class="form-group col-md-6">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" name="" id="email" required placeholder="Email">
+                        <input type="email" class="form-control" name="email" id="email" required placeholder="Email">
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" name="" id="password" required
+                        <input type="password" class="form-control" name="password" id="password" required
                                placeholder="Password">
                     </div>
 
@@ -71,17 +76,17 @@
 
                     <div class="form-group col-md-6">
                         <label for="first_name">First name</label>
-                        <input type="text" class="form-control" name="" id="first_name" placeholder="First Name">
+                        <input type="text" class="form-control" name="firstName" id="first_name" placeholder="First Name">
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="last_name">Last name</label>
-                        <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Last Name">
+                        <input type="text" class="form-control" name="lastName" id="last_name" placeholder="Last Name">
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="phone_number">Phone number</label>
-                        <input type="tel" class="form-control" name="phone_number" id="phone_number"
+                        <input type="tel" class="form-control" name="phoneNumber" id="phone_number"
                                placeholder="Phone number">
                     </div>
 
@@ -99,7 +104,7 @@
                         <button type="submit" class="btn btn-primary">
                             Sign up
                         </button>
-                        <a href="${pageContext.request.contextPath}#signup" style="margin-left: 20px"
+                        <a href="${pageContext.request.contextPath}#SignIn" style="margin-left: 20px"
                         >Already have an account?</a>
                     </div>
                 </div>

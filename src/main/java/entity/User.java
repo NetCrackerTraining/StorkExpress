@@ -26,6 +26,8 @@ public class User extends AbstractEntity {
     private String password;
     @Column(name = "role", nullable = false)
     private int role;
+    @Column(name = "address", length = 100)
+    private String address;
 
     public User() {
         this.setRole(1);
@@ -36,6 +38,14 @@ public class User extends AbstractEntity {
         this.username = username;
         this.email = email;
         this.setRole(1);
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getFirstName() {

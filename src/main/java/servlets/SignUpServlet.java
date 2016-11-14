@@ -21,11 +21,19 @@ public class SignUpServlet extends BaseHttpServlet {
         if (username.equals("") || password.equals("") || email.equals(""))
             return null;
         User user = new User(username, password, email);
+        user.setFirstName(request.getParameter("firstName"));
+        user.setLastName(request.getParameter("lastName"));
+        user.setPhoneNumber(request.getParameter("phoneNumber"));
+        user.setAddress(request.getParameter("address"));
         return user;
     }
 
-    protected void process(HttpServletRequest request, HttpServletResponse response)
-    {
+    private void sendError(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        request.getSession().setAttribute("SignUpError", "Error, choose another username");
+        response.sendRedirect(request.getContextPath()+"/jsp/registration.jsp");
+    }
+
+    protected void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setStatus(200);
 
         PrintWriter pw = null;
@@ -40,16 +48,15 @@ public class SignUpServlet extends BaseHttpServlet {
             UserController userController = new UserController();
             newUser = userController.addUser(newUser);
             if (newUser == null){
-                pw.println("No from BL");
+                sendError(request, response);
             }
             else{
                 request.getSession().setAttribute("user", newUser);
-                pw.println("Ok");
-                pw.println(request.getSession().getAttribute("user"));
+                response.sendRedirect(request.getContextPath()+"jsp/newOrder.jsp");
             }
         }
         else{
-            pw.println("No");
+            sendError(request, response);
         }
     }
 }

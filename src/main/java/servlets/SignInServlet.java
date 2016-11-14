@@ -17,7 +17,7 @@ import java.io.PrintWriter;
 
 @WebServlet("/SignIn")
 public class SignInServlet extends BaseHttpServlet {
-    protected void process(HttpServletRequest request, HttpServletResponse response) {
+    protected void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setStatus(200);
         UserController userController = new UserController();
         User user = userController.checkUser(request.getParameter("username"), request.getParameter("password"));
@@ -31,16 +31,10 @@ public class SignInServlet extends BaseHttpServlet {
 
         if (user != null) {
             request.getSession().setAttribute("user", user);
-            pw.println("Ok, redirect to newOrder.jsp");
+            response.sendRedirect(request.getContextPath()+"jsp/newOrder.jsp");
         } else {
-            try {
-                request.getSession().setAttribute("SignInError", "Wrong username or password");
-                response.sendRedirect(request.getContextPath() + "#SignIn");
-            } catch (IOException e) {
-                e.printStackTrace();
-
-
-            }
+            request.getSession().setAttribute("SignInError", "Wrong username or password");
+            response.sendRedirect(request.getContextPath() + "#SignIn");
         }
     }
 }
