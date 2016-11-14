@@ -12,6 +12,10 @@ import javax.persistence.Table;
 public class Parcel extends AbstractEntity{
     @Column(name = "orderId")
     private long orderId;
+    @Column(name = "firstName", length = 30)
+    private String firstName;
+    @Column(name = "lastName", length = 30)
+    private String lastName;
     @Column(name = "rateId")
     private int rateId;
     @Column(name = "description", length = 30)
@@ -30,7 +34,9 @@ public class Parcel extends AbstractEntity{
     private double cost;
 
 
-    public Parcel(double weight, int toCountryId, int fromCountryId, boolean express) {
+    public Parcel(String firstName, String lastName,double weight, int toCountryId, int fromCountryId, boolean express) {
+        this.firstName=firstName;
+        this.lastName=lastName;
         this.weight = weight;
         this.toCountryId = toCountryId;
         this.fromCountryId = fromCountryId;
@@ -39,6 +45,22 @@ public class Parcel extends AbstractEntity{
 
     public Parcel() {
 
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 
     public void setOrderId(long orderId) {
