@@ -36,7 +36,7 @@
             <form role="form" method="POST" action="${pageContext.request.contextPath}/SignUp" style="margin-top: 4rem">
 
                 <c:out value="${sessionScope.SignUpError}"/>
-                <c:remove var="SignInError" scope="session"/>
+                <c:remove var="SignUpError" scope="session"/>
 
 
                 <legend class="text-center">Registration</legend>
