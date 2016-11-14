@@ -35,9 +35,10 @@
         <div class="col-md-8 col-md-offset-2">
             <form role="form" method="POST" action="${pageContext.request.contextPath}/SignUp" style="margin-top: 4rem">
 
+                <div class="form-group col-md-12" style="color: #ff0000">
                 <c:out value="${sessionScope.SignUpError}"/>
                 <c:remove var="SignUpError" scope="session"/>
-
+                </div>
 
                 <legend class="text-center">Registration</legend>
 

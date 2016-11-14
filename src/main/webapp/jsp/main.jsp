@@ -85,8 +85,7 @@
                 <div class="modal-body">
                     <div class="container-fluid bd-example-row">
 
-                        <c:out value="${sessionScope.SignInError}"/>
-                        <c:remove var="SignInError" scope="session"/>
+
 
                         <div class="row">
                             <div class="form-group col-md-6">
@@ -95,7 +94,7 @@
                                        required
                                        placeholder="Username">
                             </div>
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-6" >
                                 <label for="password">Password</label>
                                 <input type="password" class="form-control" name="password" id="password"
                                        required
@@ -105,7 +104,10 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-
+                    <div class="form-group col-md-6" style="color: #ff0000">
+                        <c:out value="${sessionScope.SignInError}"/>
+                        <c:remove var="SignInError" scope="session"/>
+                    </div>
                     <button type="submit" class="btn btn-primary" style="margin-bottom: 0px">Sign in</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal" style="margin-right: 15px">Close</button>
 
