@@ -125,7 +125,7 @@
         </div>
         <div class="col-md-8">
             <legend>Your order</legend>
-            <table class="table table-bordered">
+            <table class="table table-bordered" style="margin-top: 40px">
                 <thead>
                 <tr>
                     <th>
@@ -310,6 +310,11 @@
                 </tr>
                 </tbody>
             </table>
+            <form role="form" method="POST" action="${pageContext.request.contextPath}">
+                <button type="submit" class="btn btn-primary" style="float: right; margin-top: 24px;">
+                    Confirm
+                </button>
+            </form>
         </div>
     </div>
 </div>
