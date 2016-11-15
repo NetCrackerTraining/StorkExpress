@@ -33,7 +33,13 @@
     <div class="row">
 
         <div class="col-md-8 col-md-offset-2">
-            <form role="form" method="POST" action="${pageContext.request.contextPath}/SignUp" style="margin-top: 4rem">
+            <form role="form" method="POST" action="${pageContext.request.contextPath}/SignUp" style="margin-top: 4rem"
+                  onsubmit="
+                        if(document.getElementById('password').value !== document.getElementById('confirm_password').value)
+                        {
+                        alert('password and confirm password do not match');
+                        return false;
+                        }">
 
                 <div class="form-group col-md-12" style="color: #ff0000">
                 <c:out value="${sessionScope.SignUpError}"/>
