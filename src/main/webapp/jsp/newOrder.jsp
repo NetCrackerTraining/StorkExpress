@@ -120,7 +120,7 @@
                             Add
                         </button>
                     </div>
-
+                </div>
             </fieldset>
         </div>
         <div class="col-md-8">

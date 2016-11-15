@@ -19,6 +19,7 @@ public class Rate extends AbstractEntity {
     @Column(name = "allowance", nullable = false)
     private int allowance;
 
+    public Rate(){};
 
     public Rate(Date startDate, Date endDate, int allowance) {
         this.startDate = startDate;

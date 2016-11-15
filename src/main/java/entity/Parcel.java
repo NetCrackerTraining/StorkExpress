@@ -17,7 +17,7 @@ public class Parcel extends AbstractEntity{
     @Column(name = "lastName", length = 30)
     private String lastName;
     @Column(name = "rateId")
-    private int rateId;
+    private long rateId;
     @Column(name = "description", length = 30)
     private String description;
     @Column(name = "weight", nullable = false)
@@ -67,7 +67,7 @@ public class Parcel extends AbstractEntity{
         this.orderId = orderId;
     }
 
-    public void setRateId(int rateId) {
+    public void setRateId(long rateId) {
         this.rateId = rateId;
     }
 
@@ -103,7 +103,7 @@ public class Parcel extends AbstractEntity{
         return orderId;
     }
 
-    public int getRateId() {
+    public long getRateId() {
         return rateId;
     }
 
