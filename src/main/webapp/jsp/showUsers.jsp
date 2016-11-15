@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <title>Users</title>
@@ -31,6 +32,11 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/theme/css/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mobirise/css/mbr-additional.css"
           type="text/css">
+
+    <script src="${pageContext.request.contextPath}/js/tether/tether.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/web/assets/jquery/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 <section id="ext_menu-9">
@@ -75,7 +81,158 @@
 
         </div>
     </nav>
-
 </section>
+
+<div class="container-fluid" style="position: relative; top: 15%;">
+    <div class="row">
+        <div class="col-md-12">
+            <legend>List of users:</legend>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>
+                        Username:
+                    </th>
+                    <th>
+                        Email:
+                    </th>
+                    <th>
+                        Phone number:
+                    </th>
+                    <th>
+                        Number of orders:
+                    </th>
+                    <th>
+                        Total spending:
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+<%--
+                    <c:forEach items="${users}" var="users">
+                    </c:forEach>
+--%>
+
+                    <tr>
+                        <td>${users.username}</td>
+                        <td>${users.email}</td>
+                        <td>${users.phoneNumber}</td>
+                        <td>number of orders.. <%--add there--%>
+                        </td>
+                        <td>total spending.. <%--add there--%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>${users.username}</td>
+                        <td>${users.email}</td>
+                        <td>${users.phoneNumber}</td>
+                        <td>number of orders.. <%--add there--%>
+                        </td>
+                        <td>total spending.. <%--add there--%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>${users.username}</td>
+                        <td>${users.email}</td>
+                        <td>${users.phoneNumber}</td>
+                        <td>number of orders.. <%--add there--%>
+                        </td>
+                        <td>total spending.. <%--add there--%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>${users.username}</td>
+                        <td>${users.email}</td>
+                        <td>${users.phoneNumber}</td>
+                        <td>number of orders.. <%--add there--%>
+                        </td>
+                        <td>total spending.. <%--add there--%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>${users.username}</td>
+                        <td>${users.email}</td>
+                        <td>${users.phoneNumber}</td>
+                        <td>number of orders.. <%--add there--%>
+                        </td>
+                        <td>total spending.. <%--add there--%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>${users.username}</td>
+                        <td>${users.email}</td>
+                        <td>${users.phoneNumber}</td>
+                        <td>number of orders.. <%--add there--%>
+                        </td>
+                        <td>total spending.. <%--add there--%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>${users.username}</td>
+                        <td>${users.email}</td>
+                        <td>${users.phoneNumber}</td>
+                        <td>number of orders.. <%--add there--%>
+                        </td>
+                        <td>total spending.. <%--add there--%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>${users.username}</td>
+                        <td>${users.email}</td>
+                        <td>${users.phoneNumber}</td>
+                        <td>number of orders.. <%--add there--%>
+                        </td>
+                        <td>total spending.. <%--add there--%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>${users.username}</td>
+                        <td>${users.email}</td>
+                        <td>${users.phoneNumber}</td>
+                        <td>number of orders.. <%--add there--%>
+                        </td>
+                        <td>total spending.. <%--add there--%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>${users.username}</td>
+                        <td>${users.email}</td>
+                        <td>${users.phoneNumber}</td>
+                        <td>number of orders.. <%--add there--%>
+                        </td>
+                        <td>total spending.. <%--add there--%>
+                        </td>
+                    </tr>
+
+                </tbody>
+                <%--<tfoot>
+                    <tr>
+                        <td colspan="5">
+                            <div class="row">
+                                <div class="col col-md-4">Page 1 of 5
+                                </div>
+                                <div class="col col-md-8">
+                                    <ul class="pagination hidden-md pull-right">
+                                        <li><a href="#">1</a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li><a href="#">3</a></li>
+                                        <li><a href="#">4</a></li>
+                                        <li><a href="#">5</a></li>
+                                    </ul>
+                                    <ul class="pagination visible-md pull-right">
+                                        <li><a href="#">«</a></li>
+                                        <li><a href="#">»</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>--%>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+
 </body>
 </html>
