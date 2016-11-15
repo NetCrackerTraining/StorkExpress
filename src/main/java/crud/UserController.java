@@ -3,6 +3,8 @@ package crud;
 import entity.User;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Projection;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import utils.HibernateSessionFactory;
 
@@ -47,5 +49,25 @@ public class UserController {
             return user;
         }
         return null;
+    }
+
+    public List<User> getPageOfUsers(int pageNumber, int pageSize){
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(User.class);
+        criteria.setFirstResult((pageNumber - 1)*pageSize);
+        criteria.setMaxResults(pageSize);
+        List<User> list = (List<User>) criteria.list();
+        session.getTransaction().commit();
+        return list;
+    }
+
+    public Integer getPageAmount(int pageSize){
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
+        Criteria criteriaCount = session.createCriteria(User.class);
+        criteriaCount.setProjection(Projections.rowCount());
+        Integer count = (int) (long) (Long) criteriaCount.uniqueResult();
+        Integer pageAmount =  (count - 1) / pageSize + 1;
+        return pageAmount;
     }
 }

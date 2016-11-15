@@ -12,8 +12,7 @@ import java.io.PrintWriter;
 
 @WebServlet("/SignOut")
 public class SignOutServlet extends BaseHttpServlet {
-    protected void process(HttpServletRequest request, HttpServletResponse response)
-    {
+    protected void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setStatus(200);
 
         PrintWriter pw = null;
@@ -25,7 +24,6 @@ public class SignOutServlet extends BaseHttpServlet {
 
         request.getSession().setAttribute("user", null);
 
-        pw.println("Вышли");
-        pw.println(request.getSession().getAttribute("user"));
+        response.sendRedirect(request.getContextPath());
     }
 }
