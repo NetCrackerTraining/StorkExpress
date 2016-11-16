@@ -1,6 +1,7 @@
 package entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -17,13 +18,15 @@ public class Order extends AbstractEntity {
     @Column(name = "totalCost")
     private double totalCost;
     @Transient
-    private List<Parcel> parcels;
+    private ArrayList<Parcel> parcels;
 
 
     public Order() {
+        parcels = new ArrayList<Parcel>();
     }
 
     public Order(long userID) {
+        this();
         this.userId = userID;
     }
 
@@ -41,7 +44,7 @@ public class Order extends AbstractEntity {
     }
 
     public void setParcels(List<Parcel> parcels) {
-        this.parcels = parcels;
+        //this.parcels = parcels;
     }
 
     public long getUserId() {
@@ -58,5 +61,9 @@ public class Order extends AbstractEntity {
 
     public List<Parcel> getParcels() {
         return parcels;
+    }
+
+    public void addParcel(Parcel parcel){
+        parcels.add(parcel);
     }
 }

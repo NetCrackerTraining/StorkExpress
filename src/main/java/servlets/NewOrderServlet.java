@@ -16,26 +16,17 @@ import java.io.PrintWriter;
 
 @WebServlet("/NewOrder")
 public class NewOrderServlet extends BaseHttpServlet {
-    protected void process(HttpServletRequest request, HttpServletResponse response) {
+    protected void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setStatus(200);
 
         User user = (User) request.getSession().getAttribute("user");
 
         Order order = new Order(user.getId());
         OrderController orderController = new OrderController();
-        orderController.addOrder(order);
+        order = orderController.addOrder(order);
 
         request.getSession().setAttribute("order", order);
 
-        PrintWriter pw = null;
-        try {
-            pw = response.getWriter();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        pw.println(order.getId());
-        pw.println(order.getUserId());
-        pw.close();
+        response.sendRedirect(request.getContextPath()+"/jsp/newOrder.jsp");
     }
 }
