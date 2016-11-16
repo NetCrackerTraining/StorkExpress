@@ -115,7 +115,7 @@
                 <div class="form-group" style="margin-top: 10px">
                     <div class="checkbox">
                         <label style="margin-top: 10px">
-                            <input type="checkbox" required style="transform: scale(1.5)"/> Express
+                            <input type="checkbox" name="express" style="transform: scale(1.5)"/> Express
                         </label>
                         <button type="submit" class="btn btn-primary" style="float: right;">
                             Add
@@ -130,7 +130,6 @@
 
         <div class="col-md-8">
             <legend>Your order</legend>
-            <c:out value="hello"/>
             <table class="table table-bordered" style="margin-top: 40px">
                 <thead>
                 <tr>
@@ -171,7 +170,7 @@
                         </td>
                         <td>${parcel.getDescription()}</td>
                         <td>${parcel.getWeight()} kg</td>
-                        <td>${parcel.getFromCountryId()}Belarus</td>
+                        <td>${parcel.getFromCountryId()}</td>
                         <td>${parcel.getToCountryId()}</td>
                         <td>${parcel.getLastName()} ${parcel.getFirstName()}</td>
                         <td>${parcel.isExpress()}</td>
