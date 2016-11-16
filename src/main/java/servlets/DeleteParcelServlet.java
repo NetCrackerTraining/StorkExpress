@@ -1,5 +1,7 @@
 package servlets;
 
+import crud.ParcelController;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,17 +13,23 @@ import java.io.PrintWriter;
  */
 @WebServlet("/DeleteParcel")
 public class DeleteParcelServlet extends BaseHttpServlet {
-    protected void process(HttpServletRequest request, HttpServletResponse response) {
+    protected void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setStatus(200);
 
-        PrintWriter pw = null;
-        try {
-            pw = response.getWriter();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        int parcel_id = Integer.parseInt(request.getParameter("parcelId"));
 
-        pw.println("Ok");
-        pw.close();
+        ParcelController parcelController = new ParcelController();
+        parcelController.deleteParcel(parcel_id);
+
+        response.sendRedirect(request.getContextPath()+"/jsp/newOrder.jsp");
+//        PrintWriter pw = null;
+//        try {
+//            pw = response.getWriter();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        pw.println("Ok");
+//        pw.close();
     }
 }
