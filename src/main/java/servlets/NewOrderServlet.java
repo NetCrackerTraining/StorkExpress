@@ -23,7 +23,7 @@ public class NewOrderServlet extends BaseHttpServlet {
 
         Order order = new Order(user.getId());
         OrderController orderController = new OrderController();
-        orderController.addOrder(order);
+        order = orderController.addOrder(order);
 
         request.getSession().setAttribute("order", order);
 

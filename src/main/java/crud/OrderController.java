@@ -25,7 +25,7 @@ public class OrderController {
         session.getTransaction().commit();
         return orders;
     }
-    public boolean addOrder(Order order){
+    public Order addOrder(Order order){
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
         try {
@@ -33,10 +33,10 @@ public class OrderController {
         }catch (HibernateException e){
             e.printStackTrace();
             session.getTransaction().rollback();
-            return false;
+            return null;
         }
         session.getTransaction().commit();
-        return true;
+        return order;
     }
 
     public List<Order> getUserOrders(long UserId){

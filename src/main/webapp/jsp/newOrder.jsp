@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Alexandr
@@ -85,26 +86,26 @@
 </section>
 
 
-
 <div class="container-fluid" style="position: relative; top: 20%;">
     <div class="row">
         <div class="col-md-4">
+            <form action="${pageContext.request.contextPath}/AddParcel">
             <fieldset>
                 <legend>Add information about your parcel:</legend>
 
-                    <label for="descrition">Descrition:</label>
-                    <input type="text" class="form-control" name="descrition" id="descrition"
+                    <label for="description">Description:</label>
+                    <input type="text" class="form-control" name="description" id="description"
                            placeholder="Parcel with...">
 
                     <label for="weight">Weight:</label>
                     <input type="text" class="form-control" name="weight" id="weight" required placeholder="1.5 kg">
 
                     <label for="from">I will send it from...</label>
-                    <input type="text" class="form-control" name="from" id="from" required
+                    <input type="text" class="form-control" name="fromCountry" id="from" required
                            placeholder="Belarus">
 
                     <label for="to">Country destination...</label>
-                    <input type="text" class="form-control" name="to" id="to" required
+                    <input type="text" class="form-control" name="toCountry" id="to" required
                            placeholder="USA">
 
                     <label for="recipient">This parcel will receive</label>
@@ -122,9 +123,14 @@
                     </div>
                 </div>
             </fieldset>
+            </form>
         </div>
+
+        <jsp:useBean id="order" class="entity.Order" scope="session"/>
+
         <div class="col-md-8">
             <legend>Your order</legend>
+            <c:out value="hello"/>
             <table class="table table-bordered" style="margin-top: 40px">
                 <thead>
                 <tr>
@@ -132,7 +138,7 @@
                         #
                     </th>
                     <th>
-                        Description
+                        Description ${order.getId()}
                     </th>
                     <th>
                         Weight
@@ -158,151 +164,139 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>
-                        1
-                    </td>
-                    <td>
-                        Book
-                    </td>
-                    <td>
-                        0.3 kg
-                    </td>
-                    <td>
-                        Belarus
-                    </td>
-                    <td>
-                        USA
-                    </td>
-                    <td>
-                        Donald Trump
-                    </td>
-                    <td>
-                        Yes
-                    </td>
-                    <td>
-                        42.4 $
-                    </td>
-                    <td>
-                        del
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        2
-                    </td>
-                    <td>
-                        Apple
-                    </td>
-                    <td>
-                        0.1 kg
-                    </td>
-                    <td>
-                        Poland
-                    </td>
-                    <td>
-                        Belarus
-                    </td>
-                    <td>
-                        Mr. Smith
-                    </td>
-                    <td>
-                        No
-                    </td>
-                    <td>
-                        2.4 $
-                    </td>
-                    <td>
-                        del
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        3
-                    </td>
-                    <td>
-                        New laptop
-                    </td>
-                    <td>
-                        2.5 kg
-                    </td>
-                    <td>
-                        USA
-                    </td>
-                    <td>
-                        Russia
-                    </td>
-                    <td>
-                        V. Putin
-                    </td>
-                    <td>
-                        Yes
-                    </td>
-                    <td>
-                        66.0 $
-                    </td>
-                    <td>
-                        del
-                    </td>
-                </tr>
-                <tr >
-                    <td>
-                        4
-                    </td>
-                    <td>
-                        Book
-                    </td>
-                    <td>
-                        0.3 kg
-                    </td>
-                    <td>
-                        Belarus
-                    </td>
-                    <td>
-                        USA
-                    </td>
-                    <td>
-                        Donald Trump
-                    </td>
-                    <td>
-                        Yes
-                    </td>
-                    <td>
-                        42.4 $
-                    </td>
-                    <td>
-                        del
-                    </td>
-                </tr>
-                <tr >
-                    <td>
-                        5
-                    </td>
-                    <td>
-                        Book
-                    </td>
-                    <td>
-                        0.3 kg
-                    </td>
-                    <td>
-                        Belarus
-                    </td>
-                    <td>
-                        USA
-                    </td>
-                    <td>
-                        Donald Trump
-                    </td>
-                    <td>
-                        Yes
-                    </td>
-                    <td>
-                        42.4 $
-                    </td>
-                    <td>
-                        del
-                    </td>
-                </tr>
+                <c:forEach items="${order.getParcels()}" var="parcel">
+                    <tr>
+                        <td>
+                            1
+                        </td>
+                        <td>${parcel.getDescription()}</td>
+                        <td>${parcel.getWeight()} kg</td>
+                        <td>${parcel.getFromCountryId()}Belarus</td>
+                        <td>${parcel.getToCountryId()}</td>
+                        <td>${parcel.getLastName()} ${parcel.getFirstName()}</td>
+                        <td>${parcel.isExpress()}</td>
+                        <td>${parcel.getCost()}</td>
+                        <td>
+                            del
+                        </td>
+                    </tr>
+                </c:forEach>
+                <%--<tr>--%>
+                    <%--<td>--%>
+                        <%--2--%>
+                    <%--</td>--%>
+                    <%--<td>--%>
+                        <%--Apple--%>
+                    <%--</td>--%>
+                    <%--<td>--%>
+                        <%--0.1 kg--%>
+                    <%--</td>--%>
+                    <%--<td>--%>
+                        <%--Poland--%>
+                    <%--</td>--%>
+                    <%--<td>--%>
+                        <%--Belarus--%>
+                    <%--</td>--%>
+                    <%--<td>--%>
+                        <%--Mr. Smith--%>
+                    <%--</td>--%>
+                    <%--<td>--%>
+                        <%--No--%>
+                    <%--</td>--%>
+                    <%--<td>--%>
+                        <%--2.4 $--%>
+                    <%--</td>--%>
+                    <%--<td>--%>
+                        <%--del--%>
+                    <%--</td>--%>
+                <%--</tr>--%>
+                <%--<tr>--%>
+                    <%--<td>--%>
+                        <%--3--%>
+                    <%--</td>--%>
+                    <%--<td>--%>
+                        <%--New laptop--%>
+                    <%--</td>--%>
+                    <%--<td>--%>
+                        <%--2.5 kg--%>
+                    <%--</td>--%>
+                    <%--<td>--%>
+                        <%--USA--%>
+                    <%--</td>--%>
+                    <%--<td>--%>
+                        <%--Russia--%>
+                    <%--</td>--%>
+                    <%--<td>--%>
+                        <%--V. Putin--%>
+                    <%--</td>--%>
+                    <%--<td>--%>
+                        <%--Yes--%>
+                    <%--</td>--%>
+                    <%--<td>--%>
+                        <%--66.0 $--%>
+                    <%--</td>--%>
+                    <%--<td>--%>
+                        <%--del--%>
+                    <%--</td>--%>
+                <%--</tr>--%>
+                <%--<tr >--%>
+                    <%--<td>--%>
+                        <%--4--%>
+                    <%--</td>--%>
+                    <%--<td>--%>
+                        <%--Book--%>
+                    <%--</td>--%>
+                    <%--<td>--%>
+                        <%--0.3 kg--%>
+                    <%--</td>--%>
+                    <%--<td>--%>
+                        <%--Belarus--%>
+                    <%--</td>--%>
+                    <%--<td>--%>
+                        <%--USA--%>
+                    <%--</td>--%>
+                    <%--<td>--%>
+                        <%--Donald Trump--%>
+                    <%--</td>--%>
+                    <%--<td>--%>
+                        <%--Yes--%>
+                    <%--</td>--%>
+                    <%--<td>--%>
+                        <%--42.4 $--%>
+                    <%--</td>--%>
+                    <%--<td>--%>
+                        <%--del--%>
+                    <%--</td>--%>
+                <%--</tr>--%>
+                <%--<tr >--%>
+                    <%--<td>--%>
+                        <%--5--%>
+                    <%--</td>--%>
+                    <%--<td>--%>
+                        <%--Book--%>
+                    <%--</td>--%>
+                    <%--<td>--%>
+                        <%--0.3 kg--%>
+                    <%--</td>--%>
+                    <%--<td>--%>
+                        <%--Belarus--%>
+                    <%--</td>--%>
+                    <%--<td>--%>
+                        <%--USA--%>
+                    <%--</td>--%>
+                    <%--<td>--%>
+                        <%--Donald Trump--%>
+                    <%--</td>--%>
+                    <%--<td>--%>
+                        <%--Yes--%>
+                    <%--</td>--%>
+                    <%--<td>--%>
+                        <%--42.4 $--%>
+                    <%--</td>--%>
+                    <%--<td>--%>
+                        <%--del--%>
+                    <%--</td>--%>
+                <%--</tr>--%>
                 <tr>
                     <td colspan="9" style="text-align: right;">
                         Total: 5 parcels: weight - 3.5 kg; prise - 195.6 $
