@@ -66,4 +66,13 @@ public class Order extends AbstractEntity {
     public void addParcel(Parcel parcel){
         parcels.add(parcel);
     }
+
+    public void deleteParcel(long parcelId){
+        for (int i =0; i < parcels.size(); i++){
+            if (parcels.get(i).getId() == parcelId){
+                parcels.remove(i);
+                break;
+            }
+        }
+    }
 }

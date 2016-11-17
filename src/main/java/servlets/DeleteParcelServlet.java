@@ -1,6 +1,7 @@
 package servlets;
 
 import crud.ParcelController;
+import entity.Order;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,10 +17,13 @@ public class DeleteParcelServlet extends BaseHttpServlet {
     protected void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setStatus(200);
 
-        int parcel_id = Integer.parseInt(request.getParameter("parcelId"));
+        int parcelId = Integer.parseInt(request.getParameter("id"));
+
+        Order order = (Order) request.getSession().getAttribute("order");
+        order.deleteParcel(parcelId);
 
         ParcelController parcelController = new ParcelController();
-        parcelController.deleteParcel(parcel_id);
+        parcelController.deleteParcel(parcelId);
 
         response.sendRedirect(request.getContextPath()+"/jsp/newOrder.jsp");
 //        PrintWriter pw = null;

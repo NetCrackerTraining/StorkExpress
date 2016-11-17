@@ -175,9 +175,7 @@
                         <td>${parcel.getLastName()} ${parcel.getFirstName()}</td>
                         <td>${parcel.isExpress()}</td>
                         <td>${parcel.getCost()}</td>
-                        <td>
-                            del
-                        </td>
+                        <td><a href="${pageContext.request.contextPath}/DeleteParcel?id=${parcel.getId()}">delete</a></td>
                     </tr>
                 </c:forEach>
                 <%--<tr>--%>
