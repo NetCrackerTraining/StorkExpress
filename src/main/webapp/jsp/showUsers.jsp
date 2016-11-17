@@ -88,7 +88,7 @@
         <div class="col-md-12">
             <legend>List of users:</legend>
             <table class="table table-bordered">
-                <thead>
+                <thead style="background: rgba(228, 226, 224, 0.29);">
                 <tr>
                     <th>
                         Username:
@@ -205,7 +205,7 @@
                     </tr>
 
                 </tbody>
-                <tfoot>
+                <tfoot style="background: rgba(228, 226, 224, 0.29);">
                 <tr>
                     <td colspan="5">
                         <nav aria-label="Page navigation">
