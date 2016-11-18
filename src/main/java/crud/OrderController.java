@@ -70,6 +70,16 @@ public class OrderController {
         return true;
     }
     public boolean updateOrder(Order order){
-        return false;
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
+        session.beginTransaction();
+        try {
+            session.update(order);
+        }catch (HibernateException e){
+            e.printStackTrace();
+            session.getTransaction().rollback();
+            return false;
+        }
+        session.getTransaction().commit();
+        return true;
     }
 }

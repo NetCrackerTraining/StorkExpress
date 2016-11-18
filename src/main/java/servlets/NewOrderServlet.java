@@ -22,6 +22,7 @@ public class NewOrderServlet extends BaseHttpServlet {
         response.setStatus(200);
 
         User user = (User) request.getSession().getAttribute("user");
+        //TODO user verification
 
         Order order = new Order(user.getId());
         OrderController orderController = new OrderController();

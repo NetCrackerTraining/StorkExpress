@@ -68,7 +68,7 @@
                         <li class="nav-item"><a class="nav-link link" href="${pageContext.request.contextPath}/UserInfo">ACCOUNT</a></li>
                         <li class="nav-item"><a class="nav-link link" href="${pageContext.request.contextPath}/jsp/about.jsp">ABOUT US</a></li>
                         <li class="nav-item nav-btn"><a class="nav-link btn btn-white btn-white-outline"
-                                                        href="${pageContext.request.contextPath}/NewOrder">New ORDER</a></li>
+                                                        href="${pageContext.request.contextPath}/jsp/newOrder.jsp">New ORDER</a></li>
                         <li class="nav-item nav-btn"><a class="nav-link btn btn-info" href="${pageContext.request.contextPath}/SignOut">Sign
                             Out</a></li>
                     </ul>
@@ -185,7 +185,7 @@
                 </tr>
                 </tbody>
             </table>
-            <form role="form" method="POST" action="${pageContext.request.contextPath}">
+            <form role="form" method="POST" action="${pageContext.request.contextPath}/AddOrder">
                 <button type="submit" class="btn btn-primary" style="float: right; margin-top: 24px;">
                     Confirm
                 </button>

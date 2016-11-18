@@ -15,13 +15,6 @@ public class SignOutServlet extends BaseHttpServlet {
     protected void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setStatus(200);
 
-        PrintWriter pw = null;
-        try {
-            pw = response.getWriter();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
         request.getSession().setAttribute("user", null);
 
         response.sendRedirect(request.getContextPath());

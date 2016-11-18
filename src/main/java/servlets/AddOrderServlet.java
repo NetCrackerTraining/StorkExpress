@@ -1,5 +1,8 @@
 package servlets;
 
+import crud.OrderController;
+import entity.Order;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,17 +14,14 @@ import java.io.PrintWriter;
  */
 @WebServlet("/AddOrder")
 public class AddOrderServlet extends BaseHttpServlet {
-    protected void process(HttpServletRequest request, HttpServletResponse response) {
+    protected void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setStatus(200);
 
-        PrintWriter pw = null;
-        try {
-            pw = response.getWriter();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Order order = (Order) request.getSession().getAttribute("order");
+        order.setDate(java.util.Calendar.getInstance().getTime());
+        OrderController orderController = new OrderController();
+        orderController.updateOrder(order);
 
-        pw.println("Ok");
-        pw.close();
+        response.sendRedirect(request.getContextPath()+"/jsp/history.jsp");
     }
 }
