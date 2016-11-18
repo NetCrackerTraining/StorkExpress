@@ -71,6 +71,7 @@ public class Order extends AbstractEntity {
     public void deleteParcel(long parcelId){
         for (int i =0; i < parcels.size(); i++){
             if (parcels.get(i).getId() == parcelId){
+                this.totalCost -= parcels.get(i).getCost();
                 parcels.remove(i);
                 break;
             }

@@ -30,6 +30,9 @@ public class Rate extends AbstractEntity {
     public double calculateParcelCost(Parcel parcel){
         double cost;
         cost = parcel.getWeight() * this.price;
+        if (parcel.isExpress()){
+            cost *= 1.2;
+        }
         return cost;
     }
 
