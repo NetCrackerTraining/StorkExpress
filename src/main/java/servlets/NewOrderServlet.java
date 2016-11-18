@@ -1,7 +1,9 @@
 package servlets;
 
 import crud.OrderController;
+import crud.RateController;
 import entity.Order;
+import entity.Rate;
 import entity.User;
 
 import javax.servlet.annotation.WebServlet;
@@ -25,6 +27,12 @@ public class NewOrderServlet extends BaseHttpServlet {
         OrderController orderController = new OrderController();
         order = orderController.addOrder(order);
 
+        RateController rateController = new RateController();
+        Rate rate = rateController.getCurrentRate();
+
+        //TODO rate verification
+
+        request.getSession().setAttribute("rate", rate);
         request.getSession().setAttribute("order", order);
 
         response.sendRedirect(request.getContextPath()+"/jsp/newOrder.jsp");

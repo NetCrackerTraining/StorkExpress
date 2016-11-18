@@ -65,6 +65,7 @@ public class Order extends AbstractEntity {
 
     public void addParcel(Parcel parcel){
         parcels.add(parcel);
+        totalCost+=parcel.getCost();
     }
 
     public void deleteParcel(long parcelId){

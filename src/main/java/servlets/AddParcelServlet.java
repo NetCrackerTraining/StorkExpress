@@ -21,44 +21,29 @@ public class AddParcelServlet extends BaseHttpServlet {
         response.setStatus(200);
 
         Order order = (Order) request.getSession().getAttribute("order");
-        //Rate rate = new Rate();
+        Rate rate = (Rate) request.getSession().getAttribute("rate");
 
-        String description = (String) request.getParameter("description");
-        String lastName = (String) request.getParameter("recipient");
-//        String lastName = (String) request.getSession().getAttribute("lastName");
-//        String firstName = (String) request.getSession().getAttribute("firstName");
+        String description =  request.getParameter("description");
+        String recipientInfo = request.getParameter("recipient");
         double weight = Double.parseDouble(request.getParameter("weight"));
         int fromCountry = Integer.parseInt(request.getParameter("fromCountry"));
         int toCountry = Integer.parseInt(request.getParameter("toCountry"));
-        boolean express = Boolean.parseBoolean(request.getParameter("express"));
+        boolean express = false;
+        if (request.getParameter("express") != null){
+            express = true;
+        }
 
-
-        //Parcel parcel = new Parcel(firstName,lastName,weight,toCountry,fromCountry,express);
-        Parcel parcel = new Parcel("",lastName,weight,toCountry,fromCountry,express);
+        Parcel parcel = new Parcel(recipientInfo,weight,toCountry,fromCountry,express);
         parcel.setDescription(description);
-        parcel.setCost(100);
         parcel.setDelivered(false);
         parcel.setOrderId(order.getId());
-        //parcel.setRateId(rate.getId());
-        parcel.setRateId(1);
+        parcel.setRateId(rate.getId());
+        parcel.setCost(rate.calculateParcelCost(parcel));
 
         ParcelController parcelController = new ParcelController();
         parcelController.AddParcel(parcel);
 
         order.addParcel(parcel);
-
-        //request.getSession().setAttribute("order", order);
-        //request.getSession().setAttribute("listParcels", listParcels);
-
-//        PrintWriter pw = null;
-//        try {
-//            pw = response.getWriter();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//        pw.println(listParcels);
-//        pw.close();
 
         response.sendRedirect(request.getContextPath()+"/jsp/newOrder.jsp");
     }

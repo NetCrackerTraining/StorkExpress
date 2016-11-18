@@ -12,13 +12,11 @@ import javax.persistence.Table;
 public class Parcel extends AbstractEntity{
     @Column(name = "orderId")
     private long orderId;
-    @Column(name = "firstName", length = 30)
-    private String firstName;
-    @Column(name = "lastName", length = 30)
-    private String lastName;
+    @Column(name = "recipientInfo", length = 100)
+    private String recipientInfo;
     @Column(name = "rateId")
     private long rateId;
-    @Column(name = "description", length = 30)
+    @Column(name = "description", length = 50)
     private String description;
     @Column(name = "weight", nullable = false)
     private double weight;
@@ -34,9 +32,8 @@ public class Parcel extends AbstractEntity{
     private double cost;
 
 
-    public Parcel(String firstName, String lastName,double weight, int toCountryId, int fromCountryId, boolean express) {
-        this.firstName=firstName;
-        this.lastName=lastName;
+    public Parcel(String recipientInfo,double weight, int toCountryId, int fromCountryId, boolean express) {
+        this.recipientInfo = recipientInfo;
         this.weight = weight;
         this.toCountryId = toCountryId;
         this.fromCountryId = fromCountryId;
@@ -47,20 +44,12 @@ public class Parcel extends AbstractEntity{
 
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public String getRecipientInfo() {
+        return recipientInfo;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
+    public void setRecipientInfo(String recipientInfo) {
+        this.recipientInfo = recipientInfo;
     }
 
     public void setOrderId(long orderId) {

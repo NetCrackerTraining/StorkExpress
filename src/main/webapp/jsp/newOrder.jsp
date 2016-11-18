@@ -172,131 +172,15 @@
                         <td>${parcel.getWeight()} kg</td>
                         <td>${parcel.getFromCountryId()}</td>
                         <td>${parcel.getToCountryId()}</td>
-                        <td>${parcel.getLastName()} ${parcel.getFirstName()}</td>
+                        <td>${parcel.getRecipientInfo()}</td>
                         <td>${parcel.isExpress()}</td>
                         <td>${parcel.getCost()}</td>
                         <td><a href="${pageContext.request.contextPath}/DeleteParcel?id=${parcel.getId()}">delete</a></td>
                     </tr>
                 </c:forEach>
-                <%--<tr>--%>
-                    <%--<td>--%>
-                        <%--2--%>
-                    <%--</td>--%>
-                    <%--<td>--%>
-                        <%--Apple--%>
-                    <%--</td>--%>
-                    <%--<td>--%>
-                        <%--0.1 kg--%>
-                    <%--</td>--%>
-                    <%--<td>--%>
-                        <%--Poland--%>
-                    <%--</td>--%>
-                    <%--<td>--%>
-                        <%--Belarus--%>
-                    <%--</td>--%>
-                    <%--<td>--%>
-                        <%--Mr. Smith--%>
-                    <%--</td>--%>
-                    <%--<td>--%>
-                        <%--No--%>
-                    <%--</td>--%>
-                    <%--<td>--%>
-                        <%--2.4 $--%>
-                    <%--</td>--%>
-                    <%--<td>--%>
-                        <%--del--%>
-                    <%--</td>--%>
-                <%--</tr>--%>
-                <%--<tr>--%>
-                    <%--<td>--%>
-                        <%--3--%>
-                    <%--</td>--%>
-                    <%--<td>--%>
-                        <%--New laptop--%>
-                    <%--</td>--%>
-                    <%--<td>--%>
-                        <%--2.5 kg--%>
-                    <%--</td>--%>
-                    <%--<td>--%>
-                        <%--USA--%>
-                    <%--</td>--%>
-                    <%--<td>--%>
-                        <%--Russia--%>
-                    <%--</td>--%>
-                    <%--<td>--%>
-                        <%--V. Putin--%>
-                    <%--</td>--%>
-                    <%--<td>--%>
-                        <%--Yes--%>
-                    <%--</td>--%>
-                    <%--<td>--%>
-                        <%--66.0 $--%>
-                    <%--</td>--%>
-                    <%--<td>--%>
-                        <%--del--%>
-                    <%--</td>--%>
-                <%--</tr>--%>
-                <%--<tr >--%>
-                    <%--<td>--%>
-                        <%--4--%>
-                    <%--</td>--%>
-                    <%--<td>--%>
-                        <%--Book--%>
-                    <%--</td>--%>
-                    <%--<td>--%>
-                        <%--0.3 kg--%>
-                    <%--</td>--%>
-                    <%--<td>--%>
-                        <%--Belarus--%>
-                    <%--</td>--%>
-                    <%--<td>--%>
-                        <%--USA--%>
-                    <%--</td>--%>
-                    <%--<td>--%>
-                        <%--Donald Trump--%>
-                    <%--</td>--%>
-                    <%--<td>--%>
-                        <%--Yes--%>
-                    <%--</td>--%>
-                    <%--<td>--%>
-                        <%--42.4 $--%>
-                    <%--</td>--%>
-                    <%--<td>--%>
-                        <%--del--%>
-                    <%--</td>--%>
-                <%--</tr>--%>
-                <%--<tr >--%>
-                    <%--<td>--%>
-                        <%--5--%>
-                    <%--</td>--%>
-                    <%--<td>--%>
-                        <%--Book--%>
-                    <%--</td>--%>
-                    <%--<td>--%>
-                        <%--0.3 kg--%>
-                    <%--</td>--%>
-                    <%--<td>--%>
-                        <%--Belarus--%>
-                    <%--</td>--%>
-                    <%--<td>--%>
-                        <%--USA--%>
-                    <%--</td>--%>
-                    <%--<td>--%>
-                        <%--Donald Trump--%>
-                    <%--</td>--%>
-                    <%--<td>--%>
-                        <%--Yes--%>
-                    <%--</td>--%>
-                    <%--<td>--%>
-                        <%--42.4 $--%>
-                    <%--</td>--%>
-                    <%--<td>--%>
-                        <%--del--%>
-                    <%--</td>--%>
-                <%--</tr>--%>
                 <tr>
                     <td colspan="9" style="text-align: right;">
-                        Total: 5 parcels: weight - 3.5 kg; prise - 195.6 $
+                        Total number: ${order.getParcels().size()} prise - ${order.getTotalCost()} $
                     </td>
                 </tr>
                 </tbody>

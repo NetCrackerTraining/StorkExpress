@@ -4,11 +4,11 @@ import entity.Rate;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import utils.HibernateSessionFactory;
 
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Влад on 11.11.2016.
@@ -43,12 +43,24 @@ public class RateController {
 
     public Rate getCurrentRate()
     {
-        Date currentDate = new Date();
+        Date currentDate = java.util.Calendar.getInstance().getTime();
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
         Criteria criteria = session.createCriteria(Rate.class);
-        criteria.add(Restrictions.gt("endDate", currentDate));
-        Rate rate= (Rate) criteria.list();
-        return rate;
+        criteria.add(Restrictions.ge("endDate", currentDate));
+        criteria.add(Restrictions.le("beginDate", currentDate));
+        criteria.addOrder(Order.desc("price"));
+        ArrayList<Rate> list = (ArrayList<Rate>) criteria.list();
+        session.getTransaction().commit();
+        if (list.size()<1)
+            return null;
+        return list.get(0);
+    }
+
+    public void addRate(Rate rate){
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.save(rate);
+        session.getTransaction().commit();
     }
 }
