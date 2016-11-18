@@ -89,7 +89,7 @@
 
 <div class="col-md-12" style="position: relative; top: 20%;">
     <legend>Your orders:</legend>
-    <table class="table table-bordered" style="margin-top: 40px">
+    <table class="table table-bordered">
         <%--Шапка таблицы. Не менять--%>
         <thead>
         <tr>
@@ -115,6 +115,7 @@
         </thead>
             <tbody>
             <%-- Прикрутить forEach по Orders--%>
+            <%-- в  data-target="#collapse..N.." N задавать номером оредера  --%>
             <tr class="accordion-toggle" data-toggle="collapse" data-target="#collapse1" style="cursor: pointer">
                 <td>
                     1
@@ -138,6 +139,7 @@
             <%-- forEach по ордерс заканчивается--%>
             <tr>
                 <td colspan="6" style="padding: 0px">
+                    <%-- id="collapse..N.." то же самое N, что и выше  --%>
                     <div id="collapse1" class="panel-collapse collapse">
                         <table width="100%">
                             <%-- Шапка второй, вложенной таблицы. Тоже не менять--%>
@@ -180,11 +182,6 @@
             </tr>
         </tbody>
     </table>
-    <form role="form" method="POST" action="${pageContext.request.contextPath}">
-        <button type="submit" class="btn btn-primary" style="float: right; margin-top: 24px;">
-            Confirm
-        </button>
-    </form>
 </div>
 
 </body>
