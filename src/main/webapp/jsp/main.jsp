@@ -65,12 +65,18 @@
                                 href="${pageContext.request.contextPath}/jsp/registration.jsp"
                                 >SIGN UP
                         </a>
+
+                        <a class="btn btn-lg btn-white btn-white-outline"
+                                href="${pageContext.request.contextPath}/jsp/about.jsp"
+                                >ABOUT US
+                        </a>
                     </div>
 
                 </div>
             </div>
         </div>
     </div>
+
 </section>
 <form role="form" method="POST" action="${pageContext.request.contextPath}/SignIn">
     <div id="myModal" class="modal fade" role="dialog">
