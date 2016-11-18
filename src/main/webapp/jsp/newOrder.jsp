@@ -115,7 +115,7 @@
                 <div class="form-group" style="margin-top: 10px">
                     <div class="checkbox">
                         <label style="margin-top: 10px">
-                            <input type="checkbox" name="express" style="transform: scale(1.5)"/> Express
+                            <input type="checkbox" name="express" id="express" style="transform: scale(1.5)"/> Express
                         </label>
                         <button type="submit" class="btn btn-primary" style="float: right;">
                             Add
