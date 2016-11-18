@@ -86,7 +86,7 @@
 </section>
 
 
-<div class="container-fluid" style="position: relative; top: 20%;">
+<div class="container-fluid" style="position: relative; top: 8rem;">
     <div class="row">
         <div class="col-md-4">
             <form action="${pageContext.request.contextPath}/AddParcel">

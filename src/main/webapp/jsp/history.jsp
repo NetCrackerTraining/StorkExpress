@@ -87,7 +87,7 @@
 
 </section>
 
-<div class="col-md-12" style="position: relative; top: 20%;">
+<div class="col-md-12" style="position: relative; top: 8rem;">
     <legend>Your orders:</legend>
     <table class="table table-bordered">
         <%--Шапка таблицы. Не менять--%>
