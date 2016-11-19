@@ -1,6 +1,7 @@
 package crud;
 
 import entity.Country;
+import entity.User;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -16,14 +17,8 @@ public class CountryController {
     public List<Country> getAllCountries(){
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
-        List<Country> countries = null;
         Criteria criteria = session.createCriteria(Country.class);
-        try {
-            countries = criteria.list();
-        } catch (HibernateException e) {
-            e.printStackTrace();
-            session.getTransaction().rollback();
-        }
+        List<Country> countries = (List<Country>) criteria.list();
         session.getTransaction().commit();
         return countries;
     }

@@ -1,7 +1,9 @@
 package servlets;
 
+import crud.CountryController;
 import crud.OrderController;
 import crud.RateController;
+import entity.Country;
 import entity.Order;
 import entity.Rate;
 import entity.User;
@@ -11,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 /**
  * Created by Влад on 12.11.2016.
@@ -33,6 +36,10 @@ public class NewOrderServlet extends BaseHttpServlet {
 
         //TODO rate verification
 
+        CountryController countryController = new CountryController();
+        ArrayList<Country> countries = (ArrayList<Country>) countryController.getAllCountries();
+
+        request.getSession().setAttribute("countries", countries);
         request.getSession().setAttribute("rate", rate);
         request.getSession().setAttribute("order", order);
 

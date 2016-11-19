@@ -85,6 +85,7 @@
 
 </section>
 
+<jsp:useBean id="countries" class="java.util.ArrayList" scope="session"/>
 
 <div class="container-fluid" style="position: relative; top: 8rem;">
     <div class="row">
@@ -100,13 +101,25 @@
                     <label for="weight">Weight:</label>
                     <input type="text" class="form-control" name="weight" id="weight" required placeholder="1.5 kg">
 
-                    <label for="from">I will send it from...</label>
-                    <input type="text" class="form-control" name="fromCountry" id="from" required
-                           placeholder="Belarus">
+                    <%--<label for="from">I will send it from...</label>--%>
+                    <%--<input type="text" class="form-control" name="fromCountry" id="from" required--%>
+                           <%--placeholder="Belarus">--%>
 
+                    <%--<label for="to">Country destination...</label>--%>
+                    <%--<input type="text" class="form-control" name="toCountry" id="to" required--%>
+                           <%--placeholder="USA">--%>
+                    <label for="from">I will send it from...</label>
+                    <select name="fromCountry" id="from" required class="form-control">
+                        <c:forEach items="${countries}" var="country">
+                            <option value="${country.getId()}">${country.getCountryNameEN()}</option>
+                        </c:forEach>
+                    </select>
                     <label for="to">Country destination...</label>
-                    <input type="text" class="form-control" name="toCountry" id="to" required
-                           placeholder="USA">
+                    <select name="toCountry" id="to" required class="form-control">
+                        <c:forEach items="${countries}" var="country">
+                            <option value="${country.getId()}">${country.getCountryNameEN()}</option>
+                        </c:forEach>
+                    </select>
 
                     <label for="recipient">This parcel will receive</label>
                     <input type="text" class="form-control" name="recipient" id="recipient" required
@@ -163,15 +176,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${order.getParcels()}" var="parcel">
+                <c:forEach items="${order.getParcels()}" var="parcel" varStatus="loop">
                     <tr>
-                        <td>
-                            1
-                        </td>
+                        <td>${loop.index}</td>
                         <td>${parcel.getDescription()}</td>
                         <td>${parcel.getWeight()} kg</td>
-                        <td>${parcel.getFromCountryId()}</td>
-                        <td>${parcel.getToCountryId()}</td>
+                        <td>${parcel.getFromCountry()}</td>
+                        <td>${parcel.getToCountry()}</td>
                         <td>${parcel.getRecipientInfo()}</td>
                         <td>${parcel.isExpress()}</td>
                         <td>${parcel.getCost()}</td>

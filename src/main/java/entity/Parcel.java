@@ -24,6 +24,10 @@ public class Parcel extends AbstractEntity{
     private int toCountryId;
     @Column(name = "fromCountryId", nullable = false)
     private int fromCountryId;
+    @Column(name = "toCountry", nullable = false)
+    private String toCountry;
+    @Column(name = "fromCountry", nullable = false)
+    private String fromCountry;
     @Column(name = "express", nullable = false)
     private boolean express;
     @Column(name = "delivered")
@@ -42,6 +46,22 @@ public class Parcel extends AbstractEntity{
 
     public Parcel() {
 
+    }
+
+    public void setToCountry(String toCountry) {
+        this.toCountry = toCountry;
+    }
+
+    public void setFromCountry(String fromCountry) {
+        this.fromCountry = fromCountry;
+    }
+
+    public String getToCountry() {
+        return toCountry;
+    }
+
+    public String getFromCountry() {
+        return fromCountry;
     }
 
     public String getRecipientInfo() {

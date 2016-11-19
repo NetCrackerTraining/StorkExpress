@@ -18,6 +18,8 @@ public class Country extends AbstractEntity {
     @Column(name = "countryCode", nullable = false)
     private int countryCode;
 
+    public Country() {
+    }
 
     public Country(String countryNameEN, String countryNameRU, int countryCode) {
         this.countryNameEN = countryNameEN;
