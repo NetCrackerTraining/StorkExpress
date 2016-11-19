@@ -178,7 +178,7 @@
                 <tbody>
                 <c:forEach items="${order.getParcels()}" var="parcel" varStatus="loop">
                     <tr>
-                        <td>${loop.index}</td>
+                        <td>${loop.index + 1}</td>
                         <td>${parcel.getDescription()}</td>
                         <td>${parcel.getWeight()} kg</td>
                         <td>${parcel.getFromCountry()}</td>
