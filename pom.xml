@@ -6,7 +6,7 @@
 
     <groupId>li.project.nc1</groupId>
     <artifactId>StorkExpress</artifactId>
-    <version>1.3.5</version>
+    <version>1.4.0</version>
     <packaging>war</packaging>
 
     <build>

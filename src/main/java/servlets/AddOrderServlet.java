@@ -22,6 +22,6 @@ public class AddOrderServlet extends BaseHttpServlet {
         OrderController orderController = new OrderController();
         orderController.updateOrder(order);
 
-        response.sendRedirect(request.getContextPath()+"/jsp/history.jsp");
+        response.sendRedirect(request.getContextPath()+"/UserOrders");
     }
 }
