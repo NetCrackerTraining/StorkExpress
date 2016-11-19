@@ -96,7 +96,15 @@
 
                 <div class="form-group col-md-12 center-block" style="margin-bottom: 1px;">
                     <label style="font-size: x-large">Email: email@gmail.com
+                        <a data-toggle="collapse" href="#collapse6">
+                            edit
+                        </a>
                     </label>
+                    <div id="collapse6" class="panel-collapse collapse">
+                        <label for="newEmail">New Email: </label>
+                        <input type="email" class="form-control" name="newEmail" id="newEmail"
+                               placeholder="new email">
+                    </div>
                 </div>
 
                 <div class="form-group col-md-12 center-block" style="margin-bottom: 1px;">
