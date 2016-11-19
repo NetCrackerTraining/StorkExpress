@@ -43,7 +43,7 @@ public class OrderController {
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
         Criteria criteria = session.createCriteria(Order.class);
-        criteria.add(Restrictions.eq("ID", UserId));
+        criteria.add(Restrictions.eq("userId", UserId));
         List<Order> orders = criteria.list();
         session.getTransaction().commit();
         if (orders.size() == 0)
