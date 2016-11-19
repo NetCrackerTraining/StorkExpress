@@ -83,6 +83,8 @@
     </nav>
 </section>
 
+<jsp:useBean id="users" class="java.util.ArrayList" scope="request"/>
+
 <div class="container-fluid" style="position: relative; top: 15%;">
     <div class="row">
         <div class="col-md-12">
@@ -108,101 +110,18 @@
                 </tr>
                 </thead>
                 <tbody>
-<%--
-                    <c:forEach items="${users}" var="users">
-                    </c:forEach>
---%>
 
+                <c:forEach items="${users}" var="user">
                     <tr>
-                        <td>${users.username}</td>
-                        <td>${users.email}</td>
-                        <td>${users.phoneNumber}</td>
+                        <td>${user.getUsername()}</td>
+                        <td>${user.getEmail()}</td>
+                        <td>${user.getPhoneNumber()}</td>
                         <td>number of orders.. <%--add there--%>
                         </td>
                         <td>total spending.. <%--add there--%>
                         </td>
                     </tr>
-                    <tr>
-                        <td>${users.username}</td>
-                        <td>${users.email}</td>
-                        <td>${users.phoneNumber}</td>
-                        <td>number of orders.. <%--add there--%>
-                        </td>
-                        <td>total spending.. <%--add there--%>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>${users.username}</td>
-                        <td>${users.email}</td>
-                        <td>${users.phoneNumber}</td>
-                        <td>number of orders.. <%--add there--%>
-                        </td>
-                        <td>total spending.. <%--add there--%>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>${users.username}</td>
-                        <td>${users.email}</td>
-                        <td>${users.phoneNumber}</td>
-                        <td>number of orders.. <%--add there--%>
-                        </td>
-                        <td>total spending.. <%--add there--%>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>${users.username}</td>
-                        <td>${users.email}</td>
-                        <td>${users.phoneNumber}</td>
-                        <td>number of orders.. <%--add there--%>
-                        </td>
-                        <td>total spending.. <%--add there--%>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>${users.username}</td>
-                        <td>${users.email}</td>
-                        <td>${users.phoneNumber}</td>
-                        <td>number of orders.. <%--add there--%>
-                        </td>
-                        <td>total spending.. <%--add there--%>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>${users.username}</td>
-                        <td>${users.email}</td>
-                        <td>${users.phoneNumber}</td>
-                        <td>number of orders.. <%--add there--%>
-                        </td>
-                        <td>total spending.. <%--add there--%>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>${users.username}</td>
-                        <td>${users.email}</td>
-                        <td>${users.phoneNumber}</td>
-                        <td>number of orders.. <%--add there--%>
-                        </td>
-                        <td>total spending.. <%--add there--%>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>${users.username}</td>
-                        <td>${users.email}</td>
-                        <td>${users.phoneNumber}</td>
-                        <td>number of orders.. <%--add there--%>
-                        </td>
-                        <td>total spending.. <%--add there--%>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>${users.username}</td>
-                        <td>${users.email}</td>
-                        <td>${users.phoneNumber}</td>
-                        <td>number of orders.. <%--add there--%>
-                        </td>
-                        <td>total spending.. <%--add there--%>
-                        </td>
-                    </tr>
+                </c:forEach>
 
                 </tbody>
                 <tfoot style="background: rgba(228, 226, 224, 0.29);">
@@ -211,18 +130,46 @@
                         <nav aria-label="Page navigation">
                             <ul class="pagination" style="margin-top: 0.2rem; margin-bottom: 0.2rem; float: right">
                                 <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Previous">
+                                    <a class="page-link" href="${pageContext.request.contextPath}/ShowUsers?page=${pageNumber-1}" aria-label="Previous">
                                         <span aria-hidden="true">&laquo;</span>
                                         <span class="sr-only">Previous</span>
                                     </a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Next">
+
+                                <c:choose>
+                                    <c:when test="${pageNumber-3>0}">
+                                        <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/ShowUsers?page=1">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">...</a></li>
+                                        <c:forEach var="i" begin="${pageNumber-1}" end="${pageNumber-1}">
+                                            <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/ShowUsers?page=${i}">${i}</a></li>
+                                        </c:forEach>
+
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:forEach var="i" begin="1" end="${pageNumber-1}">
+                                            <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/ShowUsers?page=${i}">${i}</a></li>
+                                        </c:forEach>
+                                    </c:otherwise>
+                                </c:choose>
+
+                                <li class="page-item"><a class="page-link" style="color: black" href="#">${pageNumber}</a></li>
+
+
+                                <c:choose>
+                                    <c:when test="${pageAmount-pageNumber>2}">
+                                        <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/ShowUsers?page=${pageNumber+1}">${pageNumber+1}</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">...</a></li>
+                                        <c:forEach var="i" begin="${pageAmount}" end="${pageAmount}">
+                                            <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/ShowUsers?page=${i}">${i}</a></li>
+                                        </c:forEach>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:forEach var="i" begin="${pageNumber+1}" end="${pageAmount}">
+                                            <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/ShowUsers?page=${i}">${i}</a></li>
+                                        </c:forEach>
+                                    </c:otherwise>
+                                </c:choose>
+
+                                    <a class="page-link" href="${pageContext.request.contextPath}/ShowUsers?page=${pageNumber+1}" aria-label="Next">
                                         <span aria-hidden="true">&raquo;</span>
                                         <span class="sr-only">Next</span>
                                     </a>

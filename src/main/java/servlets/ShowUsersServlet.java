@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by Влад on 12.11.2016.
@@ -27,7 +27,7 @@ public class ShowUsersServlet extends BaseHttpServlet {
         return true;
     }
 
-    protected void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void process(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.setStatus(200);
 
         PrintWriter pw = null;
@@ -52,13 +52,13 @@ public class ShowUsersServlet extends BaseHttpServlet {
             pageNumber = reqPage;
         }
 
-        List<User> users = userController.getPageOfUsers(pageNumber, 2);
+        ArrayList<User> users = (ArrayList<User>) userController.getPageOfUsers(pageNumber, 2);
 
         request.setAttribute("users", users);
         request.setAttribute("pageAmount", pageAmount);
         request.setAttribute("pageNumber", pageNumber);
 
-        RequestDispatcher rd = request.getRequestDispatcher(request.getContextPath()+"/showUsers.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("jsp/showUsers.jsp");
         rd.forward(request, response);
     }
 }
