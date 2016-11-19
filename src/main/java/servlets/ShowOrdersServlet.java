@@ -1,27 +1,33 @@
 package servlets;
 
+import crud.OrderController;
+import entity.Order;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 /**
  * Created by Влад on 12.11.2016.
  */
 @WebServlet("/ShowOrders")
 public class ShowOrdersServlet extends BaseHttpServlet {
-    protected void process(HttpServletRequest request, HttpServletResponse response) {
+    protected void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setStatus(200);
 
-        PrintWriter pw = null;
-        try {
-            pw = response.getWriter();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        OrderController orderController = new OrderController();
+        List<Order> allOrders = orderController.getAllOrders();
 
-        pw.println("Ok");
-        pw.close();
+        if(allOrders != null) {
+            request.getSession().setAttribute("allOrders", allOrders);
+            response.sendRedirect(request.getContextPath()+"/jsp/showOrders.jsp");
+        }
+        else {
+            request.getSession().setAttribute("message", "There are no orders in the system");
+            response.sendRedirect(request.getContextPath()+"/jsp/showOrders.jsp");
+        }
     }
 }
