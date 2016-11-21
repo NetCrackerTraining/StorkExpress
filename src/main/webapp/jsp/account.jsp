@@ -81,6 +81,8 @@
         </nav>
     </section>
 
+    <jsp:useBean id="user" class="entity.User" scope="session"/>
+
     <div class="container" style="margin-top: 8rem">
         <div class="row">
 
@@ -90,12 +92,12 @@
                 <legend style="font-size: xx-large;">My account details</legend>
 
                 <div class="form-group col-md-12 center-block" style="margin-bottom: 1px;">
-                    <label style="font-size: x-large">Username: username1
+                    <label style="font-size: x-large">Username: ${user.getUsername()}
                     </label>
                 </div>
 
                 <div class="form-group col-md-12 center-block" style="margin-bottom: 1px;">
-                    <label style="font-size: x-large">Email: email@gmail.com
+                    <label style="font-size: x-large">Email: ${user.getEmail()}
                         <a data-toggle="collapse" href="#collapse6">
                             edit
                         </a>
@@ -108,7 +110,7 @@
                 </div>
 
                 <div class="form-group col-md-12 center-block" style="margin-bottom: 1px;">
-                    <label style="font-size: x-large">First name: Alexander
+                    <label style="font-size: x-large">First name: ${user.getFirstName()}
                         <a data-toggle="collapse" href="#collapse1">
                             edit
                         </a>
@@ -120,7 +122,7 @@
                     </div>
                 </div>
                 <div class="form-group col-md-12 center-block" style="margin-bottom: 1px;">
-                    <label style="font-size: x-large">Second name: Alexander
+                    <label style="font-size: x-large">Second name: ${user.getLastName()}
                         <a data-toggle="collapse" href="#collapse2">
                             edit
                         </a>
@@ -133,7 +135,7 @@
                 </div>
 
                 <div class="form-group col-md-12 center-block" style="margin-bottom: 1px;">
-                    <label style="font-size: x-large">Phone number: +375295552233
+                    <label style="font-size: x-large">Phone number: +${user.getPhoneNumber()}
                         <a data-toggle="collapse" href="#collapse3">
                             edit
                         </a>
@@ -146,7 +148,7 @@
                 </div>
 
                 <div class="form-group col-md-12 center-block" style="margin-bottom: 1px;">
-                    <label style="font-size: x-large">Address: Belarus, Minsk, Pushkin Str. 12 - 33
+                    <label style="font-size: x-large">Address: ${user.getAddress()}
                         <a data-toggle="collapse" href="#collapse4">
                             edit
                         </a>
