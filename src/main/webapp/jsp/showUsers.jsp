@@ -126,7 +126,7 @@
                 </tbody>
                 <tfoot style="background: rgba(228, 226, 224, 0.29);">
                 <tr>
-                    <td colspan="5">
+                    <td colspan="5" style="padding-top: 0.2rem; padding-bottom: 0.2rem;">
                         <nav aria-label="Page navigation">
                             <ul class="pagination" style="margin-top: 0.2rem; margin-bottom: 0.2rem; float: right">
                                 <li class="page-item">

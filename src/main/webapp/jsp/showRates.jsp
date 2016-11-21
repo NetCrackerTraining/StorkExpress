@@ -31,10 +31,13 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/theme/css/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mobirise/css/mbr-additional.css"
           type="text/css">
+
+    <script src="${pageContext.request.contextPath}/js/web/assets/jquery/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 <section id="ext_menu-9">
-
     <nav class="navbar navbar-dropdown">
         <div class="container">
 
@@ -75,8 +78,62 @@
 
         </div>
     </nav>
-
 </section>
+
+<div class="col-md-8 col-md-offset-2" style="position: relative; top: 8rem;">
+    <legend style="font-size: xx-large;">Rates:</legend>
+    <div class="col-md-12">
+        <a data-toggle="collapse" href="#collapse1" style="font-size: x-large;">
+            Add new rate
+        </a>
+    </div>
+    <div id="collapse1" class="panel-collapse collapse">
+    <div class="col-md-12">
+        <form  role="form" method="POST" action="${pageContext.request.contextPath}">
+        <div class="form-group col-md-3">
+            <label for="rate">Rate</label>
+            <input type="text" class="form-control" name="rate" id="rate" placeholder="Rate">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="start_date">Start date</label>
+            <input type="text" class="form-control" name="startDate" id="start_date" placeholder="Start date">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="end_date">End date</label>
+            <input type="text" class="form-control" name="endDate" id="end_date" placeholder="End date">
+        </div>
+        <div class="form-group" class="col-md-3">
+                <button type="submit" class="btn btn-primary" style="margin-top: 2.2rem; margin-left: 0.5rem;">
+                    Save
+                </button>
+        </div>
+        </form>
+    </div>
+    </div>
+    <table class="table table-bordered" style="margin-top: 4rem">
+        <%--Шапка таблицы. Не менять--%>
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Rate</th>
+            <th>Start date</th>
+            <th>End Date</th>
+            <th> </th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td> 1 </td>
+                <td>0.5 $/kg</td>
+                <td>22.02.2012</td>
+                <td>22.02.2013</td>
+                <td style="text-align: center">del</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>
 
 </body>
 </html>
