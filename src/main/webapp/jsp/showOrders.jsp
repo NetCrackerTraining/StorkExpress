@@ -32,10 +32,12 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mobirise/css/mbr-additional.css"
           type="text/css">
 
+    <script src="${pageContext.request.contextPath}/js/web/assets/jquery/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 <section id="ext_menu-9">
-
     <nav class="navbar navbar-dropdown">
         <div class="container">
 
@@ -76,7 +78,104 @@
 
         </div>
     </nav>
-
 </section>
+
+<div class="col-md-12" style="position: relative; top: 8rem;">
+    <legend>Latest orders:</legend>
+    <table class="table table-bordered">
+        <%--Шапка таблицы. Не менять--%>
+        <thead>
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                User
+            </th>
+            <th>
+                Parcels count
+            </th>
+            <th>
+                Total weight
+            </th>
+            <th>
+                Total cost
+            </th>
+            <th>
+                Date
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <%-- Прикрутить forEach по Orders--%>
+        <%-- в  data-target="#collapse..N.." N задавать номером оредера  --%>
+        <tr class="accordion-toggle" data-toggle="collapse" data-target="#collapse1" style="cursor: pointer">
+            <td>
+                102
+            </td>
+            <td>
+                User 1
+            </td>
+            <td>
+                2
+            </td>
+            <td>
+                3.5 kg
+            </td>
+            <td>
+                22.5 $
+            </td>
+            <td>
+                22.02.2016
+            </td>
+        </tr>
+        <%-- forEach по ордерс заканчивается--%>
+        <tr>
+            <td colspan="6" style="padding: 0px">
+                <%-- id="collapse..N.." то же самое N, что и выше  --%>
+                <div id="collapse1" class="panel-collapse collapse">
+                    <table width="100%">
+                        <%-- Шапка второй, вложенной таблицы. Тоже не менять--%>
+                        <tr style="background: rgba(228, 226, 224, 0.29);">
+                            <td>#</td>
+                            <td>Parcel name</td>
+                            <td>Weight</td>
+                            <td>From</td>
+                            <td>To</td>
+                            <td>Express</td>
+                            <td>Status</td>
+                            <td>Price</td>
+                        </tr>
+                        <%--Конец второй, вложенной таблицы.--%>
+                        <%--Прикрутить forEach по Parcels по конкретному Order.. --%>
+                        <tr>
+                            <td>1</td>
+                            <td>Book</td>
+                            <td>2.0 kg</td>
+                            <td>Belarus</td>
+                            <td>USA</td>
+                            <td>Yes</td>
+                            <td>Delivered</td>
+                            <td>12.0 $</td>
+                        </tr>
+                        <%-- forEach заканчивается--%>
+                        <tr>
+                            <td>2</td>
+                            <td>Apple</td>
+                            <td>1.5 kg</td>
+                            <td>Poland</td>
+                            <td>Belarus</td>
+                            <td>No</td>
+                            <td>Not delivered</td>
+                            <td>10.5 $</td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
 </body>
 </html>
