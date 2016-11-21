@@ -23,6 +23,7 @@ public class OrderController {
             session.getTransaction().rollback();
         }
         session.getTransaction().commit();
+        session.close();
         return orders;
     }
     public Order addOrder(Order order){
@@ -36,6 +37,7 @@ public class OrderController {
             return null;
         }
         session.getTransaction().commit();
+        session.close();
         return order;
     }
 
@@ -46,6 +48,7 @@ public class OrderController {
         criteria.add(Restrictions.eq("userId", UserId));
         List<Order> orders = criteria.list();
         session.getTransaction().commit();
+        session.close();
         if (orders.size() == 0)
             return null;
         return orders;
@@ -67,6 +70,7 @@ public class OrderController {
             session.getTransaction().rollback();
         }
         session.getTransaction().commit();
+        session.close();
         return true;
     }
     public boolean updateOrder(Order order){
@@ -80,6 +84,7 @@ public class OrderController {
             return false;
         }
         session.getTransaction().commit();
+        session.close();
         return true;
     }
 }

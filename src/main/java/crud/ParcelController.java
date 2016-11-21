@@ -25,6 +25,7 @@ public class ParcelController {
             return false;
         }
         session.getTransaction().commit();
+        session.close();
         return true;
     }
 
@@ -32,9 +33,10 @@ public class ParcelController {
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
         Criteria criteria = session.createCriteria(Parcel.class);
-        criteria.add(Restrictions.eq("id_orders", orderId));
+        criteria.add(Restrictions.eq("orderId", orderId));
         List<Parcel> parcels = criteria.list();
         session.getTransaction().commit();
+        session.close();
         if (parcels.size() == 0)
             return null;
         return parcels;
@@ -72,6 +74,7 @@ public class ParcelController {
             return false;
         }
         session.getTransaction().commit();
+        session.close();
         return true;
     }
 }

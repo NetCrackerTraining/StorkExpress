@@ -132,12 +132,26 @@ public class Parcel extends AbstractEntity{
         return fromCountryId;
     }
 
-    public boolean isExpress() {
+    public boolean getExpress() {
         return express;
     }
 
-    public boolean isDelivered() {
+    public String isExpress() {
+        if (this.getExpress()){
+            return "Yes";
+        }
+        return "No";
+    }
+
+    public boolean getDelivered() {
         return delivered;
+    }
+
+    public String isDelivered() {
+        if (this.getDelivered()){
+            return "Yes";
+        }
+        return "No";
     }
 
     public double getCost() {

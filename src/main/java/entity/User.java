@@ -2,9 +2,13 @@ package entity;
 
 
 
+import crud.OrderController;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import java.util.ArrayList;
 
 /**
  * Created by Влад on 08.11.2016.
@@ -28,16 +32,31 @@ public class User extends AbstractEntity {
     private int role;
     @Column(name = "address", length = 100)
     private String address;
+    @Transient
+    private ArrayList<Order> orders;
 
     public User() {
         this.setRole(1);
     }
 
     public User(String username, String password, String email) {
+        this();
         this.password = password;
         this.username = username;
         this.email = email;
-        this.setRole(1);
+    }
+
+    public ArrayList<Order> getOrders() {
+        OrderController orderController = new OrderController();
+        ArrayList<Order> userOrders = (ArrayList<Order>) orderController.getUserOrders(this.getId());
+        if (userOrders!=null){
+            return userOrders;
+        }
+        return new ArrayList<Order>();
+    }
+
+    public void setOrders(ArrayList<Order> orders) {
+        this.orders = orders;
     }
 
     public String getAddress() {

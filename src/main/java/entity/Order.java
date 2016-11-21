@@ -1,5 +1,7 @@
 package entity;
 
+import crud.ParcelController;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,11 +20,10 @@ public class Order extends AbstractEntity {
     @Column(name = "totalCost")
     private double totalCost;
     @Transient
-    private ArrayList<Parcel> parcels;
+    private ArrayList<Parcel> parcels = new ArrayList<Parcel>();
 
 
     public Order() {
-        parcels = new ArrayList<Parcel>();
     }
 
     public Order(long userID) {
@@ -43,8 +44,8 @@ public class Order extends AbstractEntity {
         this.totalCost = totalCost;
     }
 
-    public void setParcels(List<Parcel> parcels) {
-        //this.parcels = parcels;
+    public void setParcels(ArrayList<Parcel> parcels) {
+        this.parcels = parcels;
     }
 
     public long getUserId() {
@@ -59,8 +60,13 @@ public class Order extends AbstractEntity {
         return totalCost;
     }
 
-    public List<Parcel> getParcels() {
-        return parcels;
+    public ArrayList<Parcel> getParcels() {
+        ParcelController parcelController = new ParcelController();
+        ArrayList<Parcel> orderParcels = (ArrayList<Parcel>) parcelController.getOrderParcels(this.getId());
+        if (orderParcels!=null){
+            return orderParcels;
+        }
+        return new ArrayList<Parcel>();
     }
 
     public void addParcel(Parcel parcel){

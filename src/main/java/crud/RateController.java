@@ -26,6 +26,7 @@ public class RateController {
             session.getTransaction().rollback();
         }
         session.getTransaction().commit();
+        session.close();
         return rates;
     }
 
@@ -36,6 +37,7 @@ public class RateController {
         criteria.add(Restrictions.between("startDate", fromDate, toDate));
         List<Rate> rates=criteria.list();
         session.getTransaction().commit();
+        session.close();
         if (rates.size() == 0)
             return null;
         return rates;
@@ -52,6 +54,7 @@ public class RateController {
         criteria.addOrder(Order.desc("price"));
         ArrayList<Rate> list = (ArrayList<Rate>) criteria.list();
         session.getTransaction().commit();
+        session.close();
         if (list.size()<1)
             return null;
         return list.get(0);
@@ -62,5 +65,6 @@ public class RateController {
         session.beginTransaction();
         session.save(rate);
         session.getTransaction().commit();
+        session.close();
     }
 }

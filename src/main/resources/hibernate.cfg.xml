@@ -13,7 +13,7 @@
         <property name="connection.username">ncuser</property>
         <property name="connection.password">12345nc</property>
         <property name="hbm2ddl.auto">update</property>
-        <property name="connection.pool_size">1</property>
+        <property name="connection.pool_size">100</property>
         <property name="show_sql">true</property>
         <!-- NOTE that after automapping with IDEA property username and password will delete -->
         <mapping class="entity.User"/>

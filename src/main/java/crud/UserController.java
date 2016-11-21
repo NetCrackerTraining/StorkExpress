@@ -22,6 +22,7 @@ public class UserController {
         criteria.add(Restrictions.eq("username", username));
         List<User> list = criteria.list();
         session.getTransaction().commit();
+        session.close();
         if (list.size() == 0)
             return null;
         return list.get(0);
@@ -36,7 +37,7 @@ public class UserController {
         session.beginTransaction();
         session.save(user);
         session.getTransaction().commit();
-
+        session.close();
         return user;
     }
 
@@ -59,6 +60,7 @@ public class UserController {
         criteria.setMaxResults(pageSize);
         List<User> list = (List<User>) criteria.list();
         session.getTransaction().commit();
+        session.close();
         return list;
     }
 
@@ -68,6 +70,7 @@ public class UserController {
         criteriaCount.setProjection(Projections.rowCount());
         Integer count = (int) (long) (Long) criteriaCount.uniqueResult();
         Integer pageAmount =  (count - 1) / pageSize + 1;
+        session.close();
         return pageAmount;
     }
 }

@@ -20,6 +20,7 @@ public class CountryController {
         Criteria criteria = session.createCriteria(Country.class);
         List<Country> countries = (List<Country>) criteria.list();
         session.getTransaction().commit();
+        session.close();
         return countries;
     }
 }
