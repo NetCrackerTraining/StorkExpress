@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <title>Account</title>
@@ -87,7 +88,12 @@
         <div class="row">
 
             <div class="col-md-8 col-md-offset-2" >
-                <form  role="form" method="POST" action="${pageContext.request.contextPath}">
+                <form  role="form" method="POST" action="${pageContext.request.contextPath}/EditUser">
+
+                <div class="form-group col-md-12" style="color: #ff0000">
+                    <c:out value="${sessionScope.PasswordMessage}"/>
+                    <c:remove var="newPasswordErrorMessage" scope="session"/>
+                </div>
 
                 <legend style="font-size: xx-large;">My account details</legend>
 
@@ -104,7 +110,7 @@
                     </label>
                     <div id="collapse6" class="panel-collapse collapse">
                         <label for="newEmail">New Email: </label>
-                        <input type="email" class="form-control" name="newEmail" id="newEmail"
+                        <input type="email" class="form-control" name="newEmail" id="newEmail" value="${user.getEmail()}"
                                placeholder="new email">
                     </div>
                 </div>
@@ -117,7 +123,7 @@
                     </label>
                     <div id="collapse1" class="panel-collapse collapse">
                         <label for="newFirstName">New First name: </label>
-                        <input type="text" class="form-control" name="newFirstName" id="newFirstName"
+                        <input type="text" class="form-control" name="newFirstName" id="newFirstName" value="${user.getFirstName()}"
                                placeholder="new first name">
                     </div>
                 </div>
@@ -129,20 +135,20 @@
                     </label>
                     <div id="collapse2" class="panel-collapse collapse">
                         <label for="newSecondName">New Second name: </label>
-                        <input type="text" class="form-control" name="newSecondName" id="newSecondName"
+                        <input type="text" class="form-control" name="newSecondName" id="newSecondName" value="${user.getLastName()}"
                                placeholder="new second name">
                     </div>
                 </div>
 
                 <div class="form-group col-md-12 center-block" style="margin-bottom: 1px;">
-                    <label style="font-size: x-large">Phone number: +${user.getPhoneNumber()}
+                    <label style="font-size: x-large">Phone number: ${user.getPhoneNumber()}
                         <a data-toggle="collapse" href="#collapse3">
                             edit
                         </a>
                     </label>
                     <div id="collapse3" class="panel-collapse collapse">
                         <label for="newPhoneNumber">New Phone number: </label>
-                        <input type="text" class="form-control" name="newPhoneNumber" id="newPhoneNumber"
+                        <input type="text" class="form-control" name="newPhoneNumber" id="newPhoneNumber" value="${user.getPhoneNumber()}"
                                placeholder="+375...">
                     </div>
                 </div>
@@ -155,7 +161,7 @@
                     </label>
                     <div id="collapse4" class="panel-collapse collapse">
                         <label for="newAddress">New Address: </label>
-                        <input type="text" class="form-control" name="newAddress" id="newAddress"
+                        <input type="text" class="form-control" name="newAddress" id="newAddress" value="${user.getAddress()}"
                                placeholder="New address">
                     </div>
                 </div>

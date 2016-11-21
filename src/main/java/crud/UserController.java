@@ -73,4 +73,13 @@ public class UserController {
         session.close();
         return pageAmount;
     }
+
+    public User editUser(User user){
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.update(user);
+        session.getTransaction().commit();
+        session.close();
+        return user;
+    }
 }
