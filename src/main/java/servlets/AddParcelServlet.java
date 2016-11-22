@@ -1,16 +1,15 @@
 package servlets;
 
 import crud.ParcelController;
-import entity.Country;
-import entity.Order;
-import entity.Parcel;
-import entity.Rate;
+import entity.*;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +20,30 @@ import java.util.List;
 public class AddParcelServlet extends BaseHttpServlet {
     protected void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setStatus(200);
+
+        String refererURI = null;
+        String s = request.getHeader("Referer");
+        if (s == null){
+            response.sendRedirect(request.getContextPath()+"/NewOrder");
+            return;
+        }
+        try {
+            refererURI = new URI(request.getHeader("Referer")).getPath();
+        }
+        catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+
+        if (!refererURI.contains("jsp/newOrder.jsp")){
+            response.sendRedirect(request.getContextPath()+"/NewOrder");
+            return;
+        }
+
+        User user = (User) request.getSession().getAttribute("user");
+        if(user.getUsername() == null || user.isSimpleUser()) {
+            response.sendRedirect(request.getContextPath());
+            return;
+        }
 
         Order order = (Order) request.getSession().getAttribute("order");
         Rate rate = (Rate) request.getSession().getAttribute("rate");

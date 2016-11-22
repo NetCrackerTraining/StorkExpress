@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 /**
@@ -24,8 +26,12 @@ public class NewOrderServlet extends BaseHttpServlet {
     protected void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setStatus(200);
 
+
         User user = (User) request.getSession().getAttribute("user");
-        //TODO user verification
+        if (user.getUsername()==null || !user.isSimpleUser()){
+            response.sendRedirect(request.getContextPath());
+            return;
+        }
 
         Order order = new Order(user.getId());
         OrderController orderController = new OrderController();
