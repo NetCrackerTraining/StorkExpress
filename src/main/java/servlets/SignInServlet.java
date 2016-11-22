@@ -20,13 +20,14 @@ public class SignInServlet extends BaseHttpServlet {
     protected void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setStatus(200);
         UserController userController = new UserController();
-        User user = userController.checkUser(request.getParameter("username"), request.getParameter("password"));
 
-        Object object = request.getSession().getAttribute("user");
-        if (object != null){
+        User sesUser = (User) request.getSession().getAttribute("user");
+        if (sesUser.getUsername() != null){
             response.sendRedirect(request.getContextPath());
             return;
         }
+
+        User user = userController.checkUser(request.getParameter("username"), request.getParameter("password"));
 
         if (user != null) {
             request.getSession().setAttribute("user", user);

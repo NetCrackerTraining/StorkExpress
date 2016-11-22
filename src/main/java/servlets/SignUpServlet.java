@@ -35,8 +35,8 @@ public class SignUpServlet extends BaseHttpServlet {
 
     protected void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setStatus(200);
-        Object object = request.getSession().getAttribute("user");
-        if (object != null){
+        User sesUser = (User) request.getSession().getAttribute("user");
+        if (sesUser.getUsername() != null){
             response.sendRedirect(request.getContextPath());
             return;
         }

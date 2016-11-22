@@ -70,7 +70,8 @@
                             <c:choose>
                                 <c:when test="${user.isAdmin()}">
                                     <%--<li class="nav-item"><a class="nav-link link" href="${pageContext.request.contextPath}/">RATES</a></li>--%>
-                                    <li class="nav-item"><a class="nav-link link" href="${pageContext.request.contextPath}/ShowUsers">Show Users</a></li>
+                                    <li class="nav-item"><a class="nav-link link" href="${pageContext.request.contextPath}/jsp/account.jsp">ACCOUNT</a></li>
+                                    <li class="nav-item"><a class="nav-link link" href="${pageContext.request.contextPath}/ShowUsers">USERS</a></li>
                                     <li class="nav-item"><a class="nav-link link" href="${pageContext.request.contextPath}/jsp/about.jsp">ABOUT US</a></li>
                                     <%--<li class="nav-item nav-btn"><a class="nav-link btn btn-white btn-white-outline"--%>
                                                                     <%--href="${pageContext.request.contextPath}/ShowOrders">ORDERS</a></li>--%>
