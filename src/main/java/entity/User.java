@@ -122,4 +122,11 @@ public class User extends AbstractEntity {
     public void setRole(int role) {
         this.role = role;
     }
+
+    public boolean isAdmin(){
+        return this.role == 3;
+    }
+    public boolean isSimpleUser(){
+        return this.role == 1;
+    }
 }

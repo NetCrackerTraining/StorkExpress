@@ -44,6 +44,11 @@
 <section class="mbr-section mbr-section-hero mbr-section-full mbr-parallax-background" id="header1-2"
          style="background-image: url(${pageContext.request.contextPath}/images/photo-1454165804606-c3d57bc86b40-2000x1334-34.jpg);">
 
+    <jsp:useBean id="user" class="entity.User" scope="session"/>
+    <c:if test="${user.getUsername() != null}">
+        <c:redirect url="/jsp/account.jsp"></c:redirect>
+    </c:if>
+
     <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(0, 0, 0);"></div>
 
     <div class="mbr-table-cell">
