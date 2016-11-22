@@ -26,7 +26,7 @@ import java.util.ArrayList;
 public class NewOrderServlet extends BaseHttpServlet {
     protected void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setStatus(200);
-
+        
         User user = (User) request.getSession().getAttribute("user");
         if (user.getUsername()==null || !user.isSimpleUser()){
             response.sendRedirect(request.getContextPath());
