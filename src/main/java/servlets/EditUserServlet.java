@@ -52,6 +52,10 @@ public class EditUserServlet extends BaseHttpServlet {
     protected void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setStatus(200);
         User user = (User) request.getSession().getAttribute("user");
+        if (user.getUsername()==null){
+            response.sendRedirect(request.getContextPath());
+            return;
+        }
         editUser(user, request);
         UserController userController = new UserController();
         userController.editUser(user);

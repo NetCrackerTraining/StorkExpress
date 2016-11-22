@@ -18,7 +18,7 @@ import java.util.List;
 public class GetUserOrdersServlet extends BaseHttpServlet {
     protected void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setStatus(200);
-
+        //!!not used!!
         User user = (User) request.getSession().getAttribute("user");
         OrderController orderController = new OrderController();
 
