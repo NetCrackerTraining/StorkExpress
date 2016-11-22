@@ -38,7 +38,7 @@ public class AddParcelServlet extends BaseHttpServlet {
         }
 
         User user = (User) request.getSession().getAttribute("user");
-        if(user.getUsername() == null || user.isSimpleUser()) {
+        if(user.getUsername() == null || !user.isSimpleUser()) {
             response.sendRedirect(request.getContextPath());
             return;
         }
