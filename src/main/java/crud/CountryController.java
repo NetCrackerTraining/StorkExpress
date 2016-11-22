@@ -1,9 +1,9 @@
 package crud;
 
 import entity.Country;
-import entity.User;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import utils.HibernateSessionFactory;
 
@@ -22,5 +22,30 @@ public class CountryController {
         session.getTransaction().commit();
         session.close();
         return countries;
+    }
+    public void addCountry(Country country){
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
+        session.beginTransaction();
+        try {
+            session.save(country);
+            session.getTransaction().commit();
+        }
+        catch (HibernateException e){
+            session.getTransaction().rollback();
+        }
+        session.close();
+    }
+    public void deleteAllCountries(){
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
+        session.beginTransaction();
+
+            String stringQuery = "DELETE FROM entity.Country";
+            Query query = session.createQuery(stringQuery);
+            query.executeUpdate();
+            session.getTransaction().commit();
+
+
+        session.close();
+
     }
 }
