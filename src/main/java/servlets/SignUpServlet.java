@@ -35,14 +35,11 @@ public class SignUpServlet extends BaseHttpServlet {
 
     protected void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setStatus(200);
-
-        PrintWriter pw = null;
-        try {
-            pw = response.getWriter();
-        } catch (IOException e) {
-            e.printStackTrace();
+        Object object = request.getSession().getAttribute("user");
+        if (object != null){
+            response.sendRedirect(request.getContextPath());
+            return;
         }
-
         User newUser = getUser(request);
         if (newUser != null) {
             UserController userController = new UserController();

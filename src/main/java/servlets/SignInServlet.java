@@ -22,11 +22,10 @@ public class SignInServlet extends BaseHttpServlet {
         UserController userController = new UserController();
         User user = userController.checkUser(request.getParameter("username"), request.getParameter("password"));
 
-        PrintWriter pw = null;
-        try {
-            pw = response.getWriter();
-        } catch (IOException e) {
-            e.printStackTrace();
+        Object object = request.getSession().getAttribute("user");
+        if (object != null){
+            response.sendRedirect(request.getContextPath());
+            return;
         }
 
         if (user != null) {

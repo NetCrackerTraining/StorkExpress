@@ -70,10 +70,11 @@
 
                     <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm"
                         id="exCollapsingNavbar">
-                        <li class="nav-item"><a class="nav-link link" href="${pageContext.request.contextPath}">RATES</a></li>
+                        <%--<li class="nav-item"><a class="nav-link link" href="${pageContext.request.contextPath}">RATES</a></li>--%>
                         <li class="nav-item"><a class="nav-link link" href="${pageContext.request.contextPath}/ShowUsers">USERS</a></li>
-                        <li class="nav-item nav-btn"><a class="nav-link btn btn-white btn-white-outline"
-                                                        href="${pageContext.request.contextPath}/ShowOrders">ORDERS</a></li>
+                        <%--<li class="nav-item nav-btn"><a class="nav-link btn btn-white btn-white-outline"--%>
+                                                        <%--href="${pageContext.request.contextPath}/ShowOrders">ORDERS</a></li>--%>
+                        <li class="nav-item"><a class="nav-link link" href="${pageContext.request.contextPath}/jsp/about.jsp">ABOUT US</a></li>
                         <li class="nav-item nav-btn"><a class="nav-link btn btn-info" href="${pageContext.request.contextPath}/SignOut">Sign
                             Out</a></li>
                     </ul>
