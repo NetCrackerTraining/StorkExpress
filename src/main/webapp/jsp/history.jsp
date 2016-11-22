@@ -41,6 +41,11 @@
 </head>
 <body>
 
+<jsp:useBean id="user" class="entity.User" scope="session"/>
+<c:if test="${user.getUsername() == null || !user.isSimpleUser()}">
+    <c:redirect url="/"></c:redirect>
+</c:if>
+
 <section id="ext_menu-9">
 
     <nav class="navbar navbar-dropdown">
@@ -86,8 +91,6 @@
     </nav>
 
 </section>
-
-<jsp:useBean id="user" class="entity.User" scope="session"/>
 
 <div class="col-md-12" style="position: relative; top: 8rem;">
     <legend>Your orders:</legend>

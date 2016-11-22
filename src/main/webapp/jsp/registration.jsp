@@ -29,6 +29,12 @@
           type="text/css">
 </head>
 <body>
+
+<jsp:useBean id="user" class="entity.User" scope="session"/>
+<c:if test="${user.getUsername() != null}">
+    <c:redirect url="/jsp/account.jsp"></c:redirect>
+</c:if>
+
 <div class="container">
     <div class="row">
 

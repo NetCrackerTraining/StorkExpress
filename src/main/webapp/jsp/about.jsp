@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <title>About us</title>
@@ -34,7 +35,7 @@
 </head>
 
 <body>
-
+<jsp:useBean id="user" class="entity.User" scope="session"/>
 <section id="ext_menu-9">
 
     <nav class="navbar navbar-dropdown">
@@ -60,13 +61,30 @@
 
                     <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm"
                         id="exCollapsingNavbar">
-                        <li class="nav-item"><a class="nav-link link" href="${pageContext.request.contextPath}/UserOrders">MY HISTORY</a></li>
-                        <li class="nav-item"><a class="nav-link link" href="${pageContext.request.contextPath}/jsp/account.jsp">ACCOUNT</a></li>
-                        <li class="nav-item"><a class="nav-link link" href="${pageContext.request.contextPath}/jsp/about.jsp">ABOUT US</a></li>
-                        <li class="nav-item nav-btn"><a class="nav-link btn btn-white btn-white-outline"
-                                                        href="${pageContext.request.contextPath}/NewOrder">New ORDER</a></li>
-                        <li class="nav-item nav-btn"><a class="nav-link btn btn-info" href="${pageContext.request.contextPath}/SignOut">Sign
-                            Out</a></li>
+                        <c:choose>
+                            <c:when test="${user.getUsername() == null}">
+                                <li class="nav-item"><a class="nav-link link" href="${pageContext.request.contextPath}/jsp/about.jsp">ABOUT US</a></li>
+                                <li class="nav-item nav-btn"><a class="nav-link btn btn-info" href="${pageContext.request.contextPath}/#SignIn">Sign
+                                In</a></li>
+                                <li class="nav-item nav-btn"><a class="nav-link btn btn-info" href="${pageContext.request.contextPath}/jsp/SignUp.jsp">Sign
+                                Up</a></li>
+                            </c:when>
+                            <c:when test="${user.isAdmin()}">
+                                <li class="nav-item"><a class="nav-link link" href="${pageContext.request.contextPath}/ShowUsers">Show Users</a></li>
+                                <li class="nav-item"><a class="nav-link link" href="${pageContext.request.contextPath}/jsp/about.jsp">ABOUT US</a></li>
+                                <li class="nav-item nav-btn"><a class="nav-link btn btn-info" href="${pageContext.request.contextPath}/SignOut">Sign
+                                    Out</a></li>
+                            </c:when>
+                            <c:when test="${user.isSimpleUser()}">
+                                <li class="nav-item"><a class="nav-link link" href="${pageContext.request.contextPath}/UserOrders">MY HISTORY</a></li>
+                                <li class="nav-item"><a class="nav-link link" href="${pageContext.request.contextPath}/jsp/account.jsp">ACCOUNT</a></li>
+                                <li class="nav-item"><a class="nav-link link" href="${pageContext.request.contextPath}/jsp/about.jsp">ABOUT US</a></li>
+                                <li class="nav-item nav-btn"><a class="nav-link btn btn-white btn-white-outline"
+                                                                href="${pageContext.request.contextPath}/NewOrder">New ORDER</a></li>
+                                <li class="nav-item nav-btn"><a class="nav-link btn btn-info" href="${pageContext.request.contextPath}/SignOut">Sign
+                                    Out</a></li>
+                            </c:when>
+                        </c:choose>
                     </ul>
                     <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse"
                             data-target="#exCollapsingNavbar">

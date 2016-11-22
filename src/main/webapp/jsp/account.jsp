@@ -38,7 +38,11 @@
     <script src="${pageContext.request.contextPath}/js/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <<section id="ext_menu-9">
+    <jsp:useBean id="user" class="entity.User" scope="session"/>
+    <c:if test="${user.getUsername() == null}">
+        <c:redirect url="/"></c:redirect>
+    </c:if>
+    <section id="ext_menu-9">
 
         <nav class="navbar navbar-dropdown">
             <div class="container">
@@ -82,7 +86,6 @@
         </nav>
     </section>
 
-    <jsp:useBean id="user" class="entity.User" scope="session"/>
 
     <div class="container" style="margin-top: 8rem">
         <div class="row">

@@ -39,6 +39,11 @@
 </head>
 <body>
 
+<jsp:useBean id="user" class="entity.User" scope="session"/>
+<c:if test="${user.getUsername() == null || !user.isSimpleUser()}">
+    <c:redirect url="/"></c:redirect>
+</c:if>
+
 <section id="ext_menu-9">
 
     <nav class="navbar navbar-dropdown">
