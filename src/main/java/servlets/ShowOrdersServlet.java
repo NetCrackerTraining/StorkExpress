@@ -2,12 +2,14 @@ package servlets;
 
 import crud.OrderController;
 import entity.Order;
+import entity.User;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,8 +21,7 @@ public class ShowOrdersServlet extends BaseHttpServlet {
         response.setStatus(200);
 
         OrderController orderController = new OrderController();
-        List<Order> allOrders = orderController.getAllOrders();
-
+        ArrayList<Order> allOrders = orderController.getAllOrders();
         if(allOrders != null) {
             request.getSession().setAttribute("allOrders", allOrders);
             response.sendRedirect(request.getContextPath()+"/jsp/showOrders.jsp");

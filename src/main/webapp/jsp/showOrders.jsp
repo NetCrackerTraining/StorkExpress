@@ -1,3 +1,4 @@
+
 <%--
   Created by IntelliJ IDEA.
   User: Alexandr
@@ -6,6 +7,11 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--
+<%@ page import="java.lang.*" %>
+<%@ page import="crud.UserController.*" %>
+--%>
 <html>
 <head>
     <title>Orders</title>
@@ -80,62 +86,46 @@
     </nav>
 </section>
 
+<jsp:useBean id="allOrders" class="java.util.ArrayList" scope="session"/>
+
 <div class="col-md-12" style="position: relative; top: 8rem;">
     <legend>Latest orders:</legend>
     <table class="table table-bordered">
         <%--Шапка таблицы. Не менять--%>
         <thead>
         <tr>
-            <th>
-                #
-            </th>
-            <th>
-                User
-            </th>
-            <th>
-                Parcels count
-            </th>
-            <th>
-                Total weight
-            </th>
-            <th>
-                Total cost
-            </th>
-            <th>
-                Date
-            </th>
+            <th>#</th>
+            <th>User</th>
+            <th>Parcels count</th>
+            <%--TODO<th>Total weight</th>--%>
+            <th>Total cost</th>
+            <th>Date</th>
         </tr>
         </thead>
         <tbody>
         <%-- Прикрутить forEach по Orders--%>
         <%-- в  data-target="#collapse..N.." N задавать номером оредера  --%>
-        <tr class="accordion-toggle" data-toggle="collapse" data-target="#collapse1" style="cursor: pointer">
-            <td>
-                102
-            </td>
-            <td>
-                User 1
-            </td>
-            <td>
-                2
-            </td>
-            <td>
-                3.5 kg
-            </td>
-            <td>
-                22.5 $
-            </td>
-            <td>
-                22.02.2016
-            </td>
-        </tr>
+
+            <c:forEach items="${allOrders}" var="order">
+
+                <tr>
+                    <td>${order.getId()}</td>
+                    <%--TODO${crud.UserController.getUsernameByOrder(order)}--%>
+                    <td>${order.getUserId()}</td>
+                    <td>${order.getParcels().size()}</td>
+                    <%--TODO<td>totalWeight</td>--%>
+                    <td>${order.getTotalCost()}</td>
+                    <td>${order.getDate()}</td>
+                </tr>
+            </c:forEach>
         <%-- forEach по ордерс заканчивается--%>
+        <%--TODO
         <tr>
             <td colspan="6" style="padding: 0px">
-                <%-- id="collapse..N.." то же самое N, что и выше  --%>
+
                 <div id="collapse1" class="panel-collapse collapse">
                     <table width="100%">
-                        <%-- Шапка второй, вложенной таблицы. Тоже не менять--%>
+
                         <tr style="background: rgba(228, 226, 224, 0.29);">
                             <td>#</td>
                             <td>Parcel name</td>
@@ -146,8 +136,8 @@
                             <td>Status</td>
                             <td>Price</td>
                         </tr>
-                        <%--Конец второй, вложенной таблицы.--%>
-                        <%--Прикрутить forEach по Parcels по конкретному Order.. --%>
+
+
                         <tr>
                             <td>1</td>
                             <td>Book</td>
@@ -158,7 +148,7 @@
                             <td>Delivered</td>
                             <td>12.0 $</td>
                         </tr>
-                        <%-- forEach заканчивается--%>
+
                         <tr>
                             <td>2</td>
                             <td>Apple</td>
@@ -173,6 +163,7 @@
                 </div>
             </td>
         </tr>
+        --%>
         </tbody>
     </table>
 </div>

@@ -100,7 +100,7 @@
         <tr>
             <th>#</th>
             <th>Parcels count</th>
-            <th>Total weight</th>
+            <%--TODO <th>Total weight</th>--%>
             <th>Total cost</th>
             <th>Date</th>
         </tr>
@@ -112,7 +112,7 @@
                 <tr class="accordion-toggle" data-toggle="collapse" data-target="#collapse${loop.index}" style="cursor: pointer">
                     <td>${loop.index + 1}</td>
                     <td>${order.getParcels().size()}</td>
-                    <td>TODO TotalWeight kg</td>
+                    <%--<td>TODO TotalWeight kg</td>--%>
                     <td>${order.getTotalCost()} $</td>
                     <td>${order.getDate()}</td>
                 </tr>

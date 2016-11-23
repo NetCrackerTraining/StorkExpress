@@ -1,5 +1,6 @@
 package crud;
 
+import entity.Order;
 import entity.User;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -81,4 +82,19 @@ public class UserController {
         session.close();
         return user;
     }
+/**Method for show usernames in admin.ShowOrders**/
+/**
+    public static String getUsernameByOrder(Order order){
+
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
+        session.beginTransaction();
+        long userid = order.getUserId();
+        Criteria criteria = session.createCriteria(User.class);
+        criteria.add(Restrictions.eq("ID", userid));
+        List<User> users = criteria.list();
+        session.getTransaction().commit();
+        session.close();
+        return users.get(0).getUsername();
+    }
+ **/
 }

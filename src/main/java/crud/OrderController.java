@@ -7,17 +7,18 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import utils.HibernateSessionFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class OrderController {
-    public List<Order> getAllOrders(){
+    public ArrayList<Order> getAllOrders(){
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
-        List<Order> orders = null;
+        ArrayList<Order> orders = null;
         Criteria criteria = session.createCriteria(Order.class);
         try {
-            orders = criteria.list();
+            orders = (ArrayList<Order>) criteria.list();
         } catch (HibernateException e) {
             e.printStackTrace();
             session.getTransaction().rollback();
@@ -40,7 +41,6 @@ public class OrderController {
         session.close();
         return order;
     }
-
     public List<Order> getUserOrders(long UserId){
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
@@ -53,7 +53,6 @@ public class OrderController {
             return null;
         return orders;
     }
-
     public boolean deleteOrder(long OrderId){
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();

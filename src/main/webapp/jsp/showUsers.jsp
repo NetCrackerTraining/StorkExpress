@@ -110,9 +110,7 @@
                     <th>
                         Number of orders:
                     </th>
-                    <th>
-                        Total spending:
-                    </th>
+                    <%--TODO<th>Total spending:</th>--%>
                 </tr>
                 </thead>
                 <tbody>
@@ -122,10 +120,8 @@
                         <td>${user.getUsername()}</td>
                         <td>${user.getEmail()}</td>
                         <td>${user.getPhoneNumber()}</td>
-                        <td>number of orders.. <%--add there--%>
-                        </td>
-                        <td>total spending.. <%--add there--%>
-                        </td>
+                        <td>${user.getOrders().size()}</td>
+                         <%--TODO <td>total spending.. add there</td>--%>
                     </tr>
                 </c:forEach>
 
