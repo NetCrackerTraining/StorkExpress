@@ -2,6 +2,8 @@ package servlets;
 
 import crud.ParcelController;
 import entity.Order;
+import entity.User;
+import javafx.scene.chart.NumberAxis;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,8 +18,18 @@ import java.io.PrintWriter;
 public class DeleteParcelServlet extends BaseHttpServlet {
     protected void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setStatus(200);
-
-        int parcelId = Integer.parseInt(request.getParameter("id"));
+        User user = (User) request.getSession().getAttribute("user");
+        if (user.getUsername() == null || !user.isSimpleUser()){
+            response.sendRedirect(request.getContextPath()+"/jsp/newOrder.jsp");
+            return;
+        }
+        int parcelId;
+        try{
+            parcelId = Integer.parseInt(request.getParameter("id"));
+        } catch (NumberFormatException e){
+            response.sendRedirect(request.getContextPath()+"/jsp/newOrder.jsp");
+            return;
+        }
 
         Order order = (Order) request.getSession().getAttribute("order");
         order.deleteParcel(parcelId);

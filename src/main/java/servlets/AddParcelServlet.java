@@ -1,18 +1,15 @@
 package servlets;
 
 import crud.ParcelController;
-import entity.Country;
-import entity.Order;
-import entity.Parcel;
-import entity.Rate;
+import entity.*;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Влад on 12.11.2016.
@@ -22,6 +19,30 @@ public class AddParcelServlet extends BaseHttpServlet {
     protected void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setStatus(200);
 
+        String refererURI = null;
+        String s = request.getHeader("Referer");
+        if (s == null){
+            response.sendRedirect(request.getContextPath()+"/NewOrder");
+            return;
+        }
+        try {
+            refererURI = new URI(request.getHeader("Referer")).getPath();
+        }
+        catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+
+        if (!refererURI.contains("jsp/newOrder.jsp")){
+            response.sendRedirect(request.getContextPath()+"/NewOrder");
+            return;
+        }
+
+        User user = (User) request.getSession().getAttribute("user");
+        if(user.getUsername() == null || !user.isSimpleUser()) {
+            response.sendRedirect(request.getContextPath());
+            return;
+        }
+
         Order order = (Order) request.getSession().getAttribute("order");
         Rate rate = (Rate) request.getSession().getAttribute("rate");
 
@@ -29,7 +50,15 @@ public class AddParcelServlet extends BaseHttpServlet {
 
         String description =  request.getParameter("description");
         String recipientInfo = request.getParameter("recipient");
-        double weight = Double.parseDouble(request.getParameter("weight"));
+        String stringWeight = request.getParameter("weight");
+        double weight = 0;
+        try{
+            weight = Double.parseDouble(stringWeight);
+        } catch (Exception e){
+            request.getSession().setAttribute("ParcelError", "Wrong weight");
+            response.sendRedirect(request.getContextPath()+"/jsp/newOrder.jsp");
+            return;
+        }
         int fromCountryId = Integer.parseInt(request.getParameter("fromCountry"));
         int toCountryId = Integer.parseInt(request.getParameter("toCountry"));
         String fromCountry = null;

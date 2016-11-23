@@ -29,18 +29,21 @@ public class ShowUsersServlet extends BaseHttpServlet {
 
     protected void process(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.setStatus(200);
-
-        PrintWriter pw = null;
-        try {
-            pw = response.getWriter();
-        } catch (IOException e) {
-            e.printStackTrace();
+        Object object = request.getSession().getAttribute("user");
+        if (object == null){
+            response.sendRedirect(request.getContextPath());
+            return;
+        }
+        User user = (User) object;
+        if (!user.isAdmin()){
+            response.sendRedirect(request.getContextPath());
+            return;
         }
 
         UserController userController = new UserController();
         Object obj = request.getParameter("page");
         Integer pageNumber = 1;
-        Integer pageAmount = userController.getPageAmount(2);
+        Integer pageAmount = userController.getPageAmount(5);
         if (obj != null && isDigit((String) obj)){
             Integer reqPage = Integer.parseInt((String) obj);
             if (reqPage < 1){
@@ -52,7 +55,7 @@ public class ShowUsersServlet extends BaseHttpServlet {
             pageNumber = reqPage;
         }
 
-        ArrayList<User> users = (ArrayList<User>) userController.getPageOfUsers(pageNumber, 2);
+        ArrayList<User> users = (ArrayList<User>) userController.getPageOfUsers(pageNumber, 5);
 
         request.setAttribute("users", users);
         request.setAttribute("pageAmount", pageAmount);

@@ -97,6 +97,10 @@
         <div class="col-md-4">
             <form action="${pageContext.request.contextPath}/AddParcel">
             <fieldset>
+                <div class="form-group col-md-6" style="color: #ff0000">
+                    <c:out value="${sessionScope.ParcelError}"/>
+                    <c:remove var="ParcelError" scope="session"/>
+                </div>
                 <legend>Add information about your parcel:</legend>
 
                     <label for="description">Description:</label>

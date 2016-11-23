@@ -27,6 +27,10 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/theme/css/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mobirise/css/mbr-additional.css"
           type="text/css">
+
+    <script src="${pageContext.request.contextPath}/js/web/assets/jquery/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 
@@ -43,7 +47,7 @@
                   onsubmit="
                         if(document.getElementById('password').value !== document.getElementById('confirm_password').value)
                         {
-                        alert('password and confirm password do not match');
+                        $('#myModal').modal('show');
                         return false;
                         }">
 
@@ -125,6 +129,34 @@
             </form>
         </div>
 
+    </div>
+</div>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Error</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid bd-example-row">
+
+
+
+                    <div class="row">
+                        <div class="form-group col-md-10">
+                           <p style="font-size: x-large;">Password and confirm password should be the same</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="margin-right: 15px">Close</button>
+            </div>
+        </div>
     </div>
 </div>
 

@@ -1,15 +1,15 @@
 <%--
   Created by IntelliJ IDEA.
   User: Alexandr
-  Date: 11.11.2016
-  Time: 23:35
+  Date: 24.11.2016
+  Time: 1:22
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>About us</title>
+    <title>Error</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,8 +33,8 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mobirise/css/mbr-additional.css"
           type="text/css">
 </head>
-
 <body>
+
 <jsp:useBean id="user" class="entity.User" scope="session"/>
 <section id="ext_menu-9">
 
@@ -65,9 +65,9 @@
                             <c:when test="${user.getUsername() == null}">
                                 <li class="nav-item"><a class="nav-link link" href="${pageContext.request.contextPath}/jsp/about.jsp">ABOUT US</a></li>
                                 <li class="nav-item nav-btn"><a class="nav-link btn btn-info" href="${pageContext.request.contextPath}/#SignIn">Sign
-                                In</a></li>
+                                    In</a></li>
                                 <li class="nav-item nav-btn"><a class="nav-link btn btn-info" href="${pageContext.request.contextPath}/jsp/SignUp.jsp">Sign
-                                Up</a></li>
+                                    Up</a></li>
                             </c:when>
                             <c:when test="${user.isAdmin()}">
                                 <li class="nav-item"><a class="nav-link link" href="${pageContext.request.contextPath}/jsp/account.jsp">ACCOUNT</a></li>
@@ -100,34 +100,8 @@
 
 </section>
 
-<section class="mbr-section mbr-section-hero mbr-section-full mbr-parallax-background mbr-after-navbar" id="header1-i"
-         style="background-image: url(${pageContext.request.contextPath}/images/photo-1445865272827-4894eb9d48de-2000x1333-50.jpg);">
-
-    <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(0, 0, 0);"></div>
-
-    <div class="mbr-table-cell">
-
-        <div class="container">
-            <div class="row">
-                <div class="mbr-section col-md-10 col-md-offset-1 text-xs-center">
-
-                    <h1 class="mbr-section-title display-1">ABOUT US</h1>
-                    <p class="mbr-section-lead lead">Windows talking painted pasture yet its express parties use. Sure
-                        last upon he same as knew next. Of believed or diverted no rejoiced. End friendship sufficient
-                        assistance can prosperous met. As game he show it park do. Was has unknown few certain ten
-                        promise. No finished my an likewise cheerful packages we. For assurance concluded son something
-                        depending discourse see led collected. Packages oh no denoting my advanced humoured. Pressed be
-                        so thought natural. <br><br>View fine me gone this name an rank. Compact greater and demands mrs
-                        the parlors. Park be fine easy am size away. Him and fine bred knew. At of hardly sister favour.
-                        As society explain country raising weather of. Sentiments nor everything off out uncommonly
-                        partiality bed.&nbsp;<br></p>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-</section>
+<div class="col-md-8 col-md-offset-2" style="position: relative; top: 8rem;">
+    <legend style="font-size: xx-large;"> There is no such page :(</legend>
+</div>
 </body>
 </html>
