@@ -50,7 +50,15 @@ public class AddParcelServlet extends BaseHttpServlet {
 
         String description =  request.getParameter("description");
         String recipientInfo = request.getParameter("recipient");
-        double weight = Double.parseDouble(request.getParameter("weight"));
+        String stringWeight = request.getParameter("weight");
+        double weight = 0;
+        try{
+            weight = Double.parseDouble(stringWeight);
+        } catch (Exception e){
+            request.getSession().setAttribute("ParcelError", "Wrong weight");
+            response.sendRedirect(request.getContextPath()+"/jsp/newOrder.jsp");
+            return;
+        }
         int fromCountryId = Integer.parseInt(request.getParameter("fromCountry"));
         int toCountryId = Integer.parseInt(request.getParameter("toCountry"));
         String fromCountry = null;
