@@ -36,6 +36,8 @@
     <script src="${pageContext.request.contextPath}/js/tether/tether.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/web/assets/jquery/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/custom/custom.js"></script>
+
 </head>
 <body>
     <jsp:useBean id="user" class="entity.User" scope="session"/>
@@ -166,7 +168,8 @@
                     </label>
                     <div id="collapse3" class="panel-collapse collapse">
                         <label for="newPhoneNumber">New Phone number: </label>
-                        <input type="text" class="form-control" name="newPhoneNumber" id="newPhoneNumber" value="${user.getPhoneNumber()}"
+                        <input type="text" class="form-control" name="newPhoneNumber" pattern="(\+?\d[- .]*){7,13}"
+                               id="newPhoneNumber" value="${user.getPhoneNumber()}" onkeyup="return phoneCheck2(this);"
                                placeholder="+375...">
                     </div>
                 </div>

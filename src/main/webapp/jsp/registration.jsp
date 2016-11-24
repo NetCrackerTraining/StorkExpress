@@ -53,7 +53,10 @@
                           $('#myModal').modal('show');
                           return false;
                           }
-                        if(checkEmail() == false){ //TODO: Разобраться что тут не так
+                        if(checkEmail() == false){
+                          //TODO: Разобраться что тут не так
+                            <%--<c:set var="error" scope="session" value="Password and confirm password should be the same"/>--%>
+                         /* $('#myModal').modal('show');*/
                           return false;
                           }
                         ">
@@ -110,7 +113,8 @@
 
                     <div class="form-group col-md-6">
                         <label for="phone_number">Phone number</label>
-                        <input type="tel" class="form-control" onkeyup="return phoneCheck(this);" name="phoneNumber" id="phone_number"
+                        <input type="tel" class="form-control" onkeyup="return phoneCheck(this);" pattern="(\+?\d[- .]*){7,13}"
+                               name="phoneNumber" id="phone_number"
                                placeholder="Phone number">
                     </div>
 
