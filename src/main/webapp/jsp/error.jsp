@@ -101,7 +101,8 @@
 </section>
 
 <div class="col-md-8 col-md-offset-2" style="position: relative; top: 8rem;">
-    <legend style="font-size: xx-large;"> There is no such page :(</legend>
+    <legend style="font-size: xx-large;"> Error :(</legend>
+    <legend style="font-size: xx-large;">Please, try again later</legend>
 </div>
 </body>
 </html>
