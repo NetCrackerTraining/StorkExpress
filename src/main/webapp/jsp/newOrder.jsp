@@ -198,7 +198,7 @@
                         <td><c:out value="${parcel.getRecipientInfo()}"/></td>
                         <td>${parcel.isExpress()}</td>
                         <td>${parcel.getCost()}</td>
-                        <td><a href="${pageContext.request.contextPath}/DeleteParcel?id=${parcel.getId()}">delete</a></td>
+                        <td><a href="${pageContext.request.contextPath}/DeleteParcel?id=${loop.index}">delete</a></td>
                     </tr>
                 </c:forEach>
                 <tr>

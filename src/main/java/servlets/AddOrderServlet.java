@@ -52,7 +52,7 @@ public class AddOrderServlet extends BaseHttpServlet {
 
         order.setDate(java.util.Calendar.getInstance().getTime());
         OrderController orderController = new OrderController();
-        orderController.updateOrder(order);
+        orderController.addOrder(order);
 
         response.sendRedirect(request.getContextPath()+"/UserOrders");
     }

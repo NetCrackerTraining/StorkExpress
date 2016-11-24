@@ -149,9 +149,9 @@ public class Parcel extends AbstractEntity{
 
     public String isDelivered() {
         if (this.getDelivered()){
-            return "Yes";
+            return "Delivered";
         }
-        return "No";
+        return "Not delivered";
     }
 
     public double getCost() {

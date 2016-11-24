@@ -33,38 +33,14 @@ public class NewOrderServlet extends BaseHttpServlet {
             return;
         }
         Order order = new Order(user.getId());
-        OrderController orderController = new OrderController();
-        order = orderController.addOrder(order);
+//        OrderController orderController = new OrderController();
+//        order = orderController.addOrder(order);
 
         RateController rateController = new RateController();
         Rate rate = rateController.getCurrentRate();
 
-        //TODO rate verification
 
         CountryController countryController = new CountryController();
-        /** CODE FOR ADD COUNTRIES TO DATABASE START HERE**/
-        /**
-         countryController.deleteAllCountries();
-         BufferedReader readerEN = new BufferedReader(new FileReader("F:\\StorkExpress\\src\\main\\resources\\cntry_nm_EN.txt"));
-         BufferedReader readerRU = new BufferedReader(new FileReader("F:\\StorkExpress\\src\\main\\resources\\cntry_nm_RU.txt"));
-         BufferedReader readerCode = new BufferedReader(new FileReader("F:\\StorkExpress\\src\\main\\resources\\cntry_cd.txt"));
-
-         String nameEN;
-         String nameRU;
-         String code;
-         int codeInt,i=0;
-
-         while (i<251){
-         nameEN = readerEN.readLine();
-         nameRU = readerRU.readLine();
-         code = readerCode.readLine();
-         i++;
-         codeInt= Integer.parseInt(code);
-         Country country = new Country(nameEN,nameRU,codeInt);
-         countryController.addCountry(country);
-         }
-         **/
-        /** CODE FOR ADD COUNTRIES TO DATABASE END HERE**/
         ArrayList<Country> countries = (ArrayList<Country>) countryController.getAllCountries();
 
         request.getSession().setAttribute("countries", countries);

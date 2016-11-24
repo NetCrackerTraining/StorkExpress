@@ -1,6 +1,7 @@
 package crud;
 
 import entity.Order;
+import entity.Parcel;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -39,6 +40,12 @@ public class OrderController {
         }
         session.getTransaction().commit();
         session.close();
+        ParcelController parcelController = new ParcelController();
+        for (Parcel parcel:order.getParcels()
+             ) {
+            parcel.setOrderId(order.getId());
+            parcelController.AddParcel(parcel);
+        }
         return order;
     }
     public List<Order> getUserOrders(long UserId){

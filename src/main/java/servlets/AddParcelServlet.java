@@ -82,14 +82,14 @@ public class AddParcelServlet extends BaseHttpServlet {
         Parcel parcel = new Parcel(recipientInfo,weight,toCountryId,fromCountryId,express);
         parcel.setDescription(description);
         parcel.setDelivered(false);
-        parcel.setOrderId(order.getId());
+        //parcel.setOrderId(order.getId());
         parcel.setRateId(rate.getId());
         parcel.setCost(rate.calculateParcelCost(parcel));
         parcel.setToCountry(toCountry);
         parcel.setFromCountry(fromCountry);
 
-        ParcelController parcelController = new ParcelController();
-        parcelController.AddParcel(parcel);
+//        ParcelController parcelController = new ParcelController();
+//        parcelController.AddParcel(parcel);
 
         order.addParcel(parcel);
 

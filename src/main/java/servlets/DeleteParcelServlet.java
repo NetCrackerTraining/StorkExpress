@@ -34,8 +34,8 @@ public class DeleteParcelServlet extends BaseHttpServlet {
         Order order = (Order) request.getSession().getAttribute("order");
         order.deleteParcel(parcelId);
 
-        ParcelController parcelController = new ParcelController();
-        parcelController.deleteParcel(parcelId);
+//        ParcelController parcelController = new ParcelController();
+//        parcelController.deleteParcel(parcelId);
 
         response.sendRedirect(request.getContextPath()+"/jsp/newOrder.jsp");
 //        PrintWriter pw = null;
