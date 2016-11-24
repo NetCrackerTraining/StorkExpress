@@ -13,3 +13,12 @@ function phoneCheck2(input) {
     }
     input.value = ch;
 }
+function weightCheck(input) {
+    ch = input.value.replace(/[^\d,.]/g, '');
+    document.getElementById('weight').onkeypress = function (e) {
+        if (this.value.indexOf(".") != '-1' || this.value.indexOf(",") != '-1') {
+            return !(/[.,]/.test(String.fromCharCode(e.charCode)));
+        }
+    }
+    input.value = ch;
+}

@@ -50,7 +50,7 @@ public class AddParcelServlet extends BaseHttpServlet {
 
         String description =  request.getParameter("description");
         String recipientInfo = request.getParameter("recipient");
-        String stringWeight = request.getParameter("weight");
+        String stringWeight = request.getParameter("weight").replace(",",".");
         double weight = 0;
         try{
             weight = Double.parseDouble(stringWeight);

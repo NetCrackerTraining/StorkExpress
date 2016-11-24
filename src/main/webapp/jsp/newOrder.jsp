@@ -35,6 +35,7 @@
 
     <script src="${pageContext.request.contextPath}/js/web/assets/jquery/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/custom/custom.js"></script>
 
 </head>
 <body>
@@ -108,7 +109,8 @@
                            placeholder="Parcel with...">
 
                     <label for="weight">Weight:</label>
-                    <input type="text" class="form-control" name="weight" id="weight" required placeholder="1.5 kg">
+                    <input type="text" class="form-control" name="weight" id="weight" onkeyup="return weightCheck(this);"
+                           required placeholder="1.5 kg">
 
                     <%--<label for="from">I will send it from...</label>--%>
                     <%--<input type="text" class="form-control" name="fromCountry" id="from" required--%>
