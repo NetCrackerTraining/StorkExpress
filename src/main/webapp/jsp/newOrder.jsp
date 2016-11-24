@@ -161,7 +161,7 @@
                         #
                     </th>
                     <th>
-                        Description ${order.getId()}
+                        Description
                     </th>
                     <th>
                         Weight
