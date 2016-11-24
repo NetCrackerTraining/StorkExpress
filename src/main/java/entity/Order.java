@@ -20,7 +20,7 @@ public class Order extends AbstractEntity {
     @Column(name = "totalCost")
     private double totalCost;
     @Transient
-    private ArrayList<Parcel> parcels = new ArrayList<Parcel>();
+    private ArrayList<Parcel> parcels = null;
 
 
     public Order() {
@@ -29,6 +29,7 @@ public class Order extends AbstractEntity {
     public Order(long userID) {
         this();
         this.userId = userID;
+        this.parcels = new ArrayList<Parcel>();
     }
 
 
@@ -61,6 +62,9 @@ public class Order extends AbstractEntity {
     }
 
     public ArrayList<Parcel> getParcels() {
+        if (parcels!=null){
+            return parcels;
+        }
         ParcelController parcelController = new ParcelController();
         ArrayList<Parcel> orderParcels = (ArrayList<Parcel>) parcelController.getOrderParcels(this.getId());
         if (orderParcels!=null){
@@ -75,12 +79,14 @@ public class Order extends AbstractEntity {
     }
 
     public void deleteParcel(long parcelId){
-        for (int i =0; i < parcels.size(); i++){
-            if (parcels.get(i).getId() == parcelId){
-                this.totalCost -= parcels.get(i).getCost();
-                parcels.remove(i);
-                break;
-            }
-        }
+//        for (int i =0; i < parcels.size(); i++){
+//            if (parcels.get(i).getId() == parcelId){
+//                this.totalCost -= parcels.get(i).getCost();
+//                parcels.remove(i);
+//                break;
+//            }
+//        }
+        this.totalCost -= parcels.get((int) parcelId).getCost();
+        parcels.remove(parcelId);
     }
 }
