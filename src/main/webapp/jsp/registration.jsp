@@ -67,7 +67,8 @@
 
                     <div class="form-group col-md-6">
                         <label for="username">Username</label>
-                        <input type="text" class="form-control" name="username" id="username" required
+                        <input type="text" class="form-control" name="username" id="username"
+                               pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{3,20}$" required
                                placeholder="Username">
                     </div>
 
