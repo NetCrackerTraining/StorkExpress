@@ -30,6 +30,8 @@
 
     <script src="${pageContext.request.contextPath}/js/web/assets/jquery/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/custom/custom.js"></script>
+
 
 </head>
 <body>
@@ -43,13 +45,18 @@
     <div class="row">
 
         <div class="col-md-8 col-md-offset-2">
-            <form role="form" method="POST" action="${pageContext.request.contextPath}/SignUp" style="margin-top: 4rem"
+            <form name="myForm" role="form" method="POST" action="${pageContext.request.contextPath}/SignUp" style="margin-top: 4rem"
                   onsubmit="
                         if(document.getElementById('password').value !== document.getElementById('confirm_password').value)
-                        {
-                        $('#myModal').modal('show');
-                        return false;
-                        }">
+                          {
+                        <c:set var="error" scope="session" value="Password and confirm password should be the same"/>
+                          $('#myModal').modal('show');
+                          return false;
+                          }
+                        if(checkEmail() == false){ //TODO: Разобраться что тут не так
+                          return false;
+                          }
+                        ">
 
                 <div class="form-group col-md-12" style="color: #ff0000">
                 <c:out value="${sessionScope.SignUpError}"/>
@@ -103,7 +110,7 @@
 
                     <div class="form-group col-md-6">
                         <label for="phone_number">Phone number</label>
-                        <input type="tel" class="form-control" name="phoneNumber" id="phone_number"
+                        <input type="tel" class="form-control" onkeyup="return phoneCheck(this);" name="phoneNumber" id="phone_number"
                                placeholder="Phone number">
                     </div>
 
@@ -148,7 +155,7 @@
 
                     <div class="row">
                         <div class="form-group col-md-10">
-                           <p style="font-size: x-large;">Password and confirm password should be the same</p>
+                           <p style="font-size: x-large;"><c:out value="${error}" /></p>
                         </div>
                     </div>
                 </div>
