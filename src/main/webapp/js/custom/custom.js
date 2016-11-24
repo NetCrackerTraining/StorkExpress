@@ -3,7 +3,13 @@
  */
 function phoneCheck(input) {
     ch = input.value.replace(/[^\d+ ]/g, '');
-    document.getElementById('calories').onkeypress = function (e) {
+    document.getElementById('phone_number').onkeypress = function (e) {
+    }
+    input.value = ch;
+}
+function phoneCheck2(input) {
+    ch = input.value.replace(/[^\d+ ]/g, '');
+    document.getElementById('newPhoneNumber').onkeypress = function (e) {
     }
     input.value = ch;
 }
