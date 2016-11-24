@@ -119,9 +119,9 @@
 
                 <c:forEach items="${users}" var="user">
                     <tr>
-                        <td>${user.getUsername()}</td>
+                        <td><c:out value="${user.getUsername()}"/></td>
                         <td>${user.getEmail()}</td>
-                        <td>${user.getPhoneNumber()}</td>
+                        <td><c:out value="${user.getPhoneNumber()}"/></td>
                         <td>${user.getOrders().size()}</td>
                          <%--TODO <td>total spending.. add there</td>--%>
                     </tr>
