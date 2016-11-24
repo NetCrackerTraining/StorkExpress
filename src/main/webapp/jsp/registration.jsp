@@ -68,7 +68,7 @@
                     <div class="form-group col-md-6">
                         <label for="username">Username</label>
                         <input type="text" class="form-control" name="username" id="username"
-                               pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{3,20}$" required
+                               pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{3,30}$" required  maxlength="30"
                                placeholder="Username">
                     </div>
 
@@ -76,19 +76,19 @@
                     <div class="form-group col-md-6">
                         <label for="email">Email</label>
                         <input type="email" class="form-control" name="email" id="email"
-                               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required placeholder="Email">
+                               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required placeholder="Email"  maxlength="50">
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="password">Password</label>
                         <input type="password" class="form-control" name="password" id="password" required
-                               placeholder="Password">
+                              maxlength="30" placeholder="Password">
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="confirm_password">Confirm Password</label>
                         <input type="password" class="form-control" name="" id="confirm_password" required
-                               placeholder="Confirm Password">
+                               maxlength="30" placeholder="Confirm Password">
                     </div>
 
 
@@ -99,24 +99,24 @@
 
                     <div class="form-group col-md-6">
                         <label for="first_name">First name</label>
-                        <input type="text" class="form-control" name="firstName" id="first_name" placeholder="First Name">
+                        <input type="text" class="form-control" name="firstName"  id="first_name" placeholder="First Name"  maxlength="30">
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="last_name">Last name</label>
-                        <input type="text" class="form-control" name="lastName" id="last_name" placeholder="Last Name">
+                        <input type="text" class="form-control" name="lastName" id="last_name" placeholder="Last Name"  maxlength="30">
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="phone_number">Phone number</label>
                         <input type="tel" class="form-control" onkeyup="return phoneCheck(this);" pattern="(\+?\d[- .]*){7,13}"
-                               name="phoneNumber" id="phone_number"
+                               name="phoneNumber" id="phone_number"  maxlength="15"
                                placeholder="Phone number">
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="address">Address</label>
-                        <input type="text" class="form-control" name="address" id="address" placeholder="Your address">
+                        <input type="text" class="form-control" name="address" id="address" placeholder="Your address"  maxlength="100">
                     </div>
 
 
