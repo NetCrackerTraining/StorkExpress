@@ -110,18 +110,18 @@
 
                 <div class="form-group col-md-12" style="color: #ff0000">
                     <c:out value="${sessionScope.PasswordMessage}"/>
-                    <c:remove var="newPasswordErrorMessage" scope="session"/>
+                    <c:remove var="PasswordMessage" scope="session"/>
                 </div>
 
                 <legend style="font-size: xx-large;">My account details</legend>
 
                 <div class="form-group col-md-12 center-block" style="margin-bottom: 1px;">
-                    <label style="font-size: x-large">Username: ${user.getUsername()}
+                    <label style="font-size: x-large">Username: <c:out value="${user.getUsername()}"/>
                     </label>
                 </div>
 
                 <div class="form-group col-md-12 center-block" style="margin-bottom: 1px;">
-                    <label style="font-size: x-large">Email: ${user.getEmail()}
+                    <label style="font-size: x-large">Email: <c:out value="${user.getEmail()}"/>
                         <a data-toggle="collapse" href="#collapse6">
                             edit
                         </a>
@@ -134,7 +134,7 @@
                 </div>
 
                 <div class="form-group col-md-12 center-block" style="margin-bottom: 1px;">
-                    <label style="font-size: x-large">First name: ${user.getFirstName()}
+                    <label style="font-size: x-large">First name: <c:out value="${user.getFirstName()}"/>
                         <a data-toggle="collapse" href="#collapse1">
                             edit
                         </a>
@@ -146,7 +146,7 @@
                     </div>
                 </div>
                 <div class="form-group col-md-12 center-block" style="margin-bottom: 1px;">
-                    <label style="font-size: x-large">Second name: ${user.getLastName()}
+                    <label style="font-size: x-large">Second name: <c:out value="${user.getLastName()}"/>
                         <a data-toggle="collapse" href="#collapse2">
                             edit
                         </a>
@@ -159,7 +159,7 @@
                 </div>
 
                 <div class="form-group col-md-12 center-block" style="margin-bottom: 1px;">
-                    <label style="font-size: x-large">Phone number: ${user.getPhoneNumber()}
+                    <label style="font-size: x-large">Phone number: <c:out value="${user.getPhoneNumber()}"/>
                         <a data-toggle="collapse" href="#collapse3">
                             edit
                         </a>
@@ -172,7 +172,7 @@
                 </div>
 
                 <div class="form-group col-md-12 center-block" style="margin-bottom: 1px;">
-                    <label style="font-size: x-large">Address: ${user.getAddress()}
+                    <label style="font-size: x-large">Address: <c:out value="${user.getAddress()}"/>
                         <a data-toggle="collapse" href="#collapse4">
                             edit
                         </a>

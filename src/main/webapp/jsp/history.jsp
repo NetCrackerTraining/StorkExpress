@@ -140,7 +140,7 @@
                                         <tr>
                                             <%--<td>${i + 1}</td>--%>
                                             <td>${loop2.index+1}</td>
-                                            <td>${parcel.getDescription()}</td>
+                                            <td><c:out value="${parcel.getDescription()}"/></td>
                                             <td>${parcel.getWeight()} kg</td>
                                             <td>${parcel.getFromCountry()}</td>
                                             <td>${parcel.getToCountry()}</td>
