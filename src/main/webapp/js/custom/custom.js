@@ -13,14 +13,12 @@ function phoneCheck2(input) {
     }
     input.value = ch;
 }
-
-
-
-function checkEmail() {
-    var email = document.getElementById('email');
-    var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-    if (!filter.test(email.value)) {
-        alert('Please provide a valid email address');
-        return false;
+function weightCheck(input) {
+    ch = input.value.replace(/[^\d,.]/g, '');
+    document.getElementById('weight').onkeypress = function (e) {
+        if (this.value.indexOf(".") != '-1' || this.value.indexOf(",") != '-1') {
+            return !(/[.,]/.test(String.fromCharCode(e.charCode)));
+        }
     }
+    input.value = ch;
 }

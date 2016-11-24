@@ -130,7 +130,8 @@
                     </label>
                     <div id="collapse6" class="panel-collapse collapse">
                         <label for="newEmail">New Email: </label>
-                        <input type="email" class="form-control" name="newEmail" id="newEmail" value="${user.getEmail()}"
+                        <input type="email" class="form-control" name="newEmail"
+                               id="newEmail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" value="${user.getEmail()}"
                                placeholder="new email">
                     </div>
                 </div>

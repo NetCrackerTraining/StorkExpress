@@ -53,12 +53,6 @@
                           $('#myModal').modal('show');
                           return false;
                           }
-                        if(checkEmail() == false){
-                          //TODO: Разобраться что тут не так
-                            <%--<c:set var="error" scope="session" value="Password and confirm password should be the same"/>--%>
-                         /* $('#myModal').modal('show');*/
-                          return false;
-                          }
                         ">
 
                 <div class="form-group col-md-12" style="color: #ff0000">
@@ -73,14 +67,16 @@
 
                     <div class="form-group col-md-6">
                         <label for="username">Username</label>
-                        <input type="text" class="form-control" name="username" id="username" required
+                        <input type="text" class="form-control" name="username" id="username"
+                               pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{3,20}$" required
                                placeholder="Username">
                     </div>
 
 
                     <div class="form-group col-md-6">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" name="email" id="email" required placeholder="Email">
+                        <input type="email" class="form-control" name="email" id="email"
+                               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required placeholder="Email">
                     </div>
 
                     <div class="form-group col-md-6">
