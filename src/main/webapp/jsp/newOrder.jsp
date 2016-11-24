@@ -106,7 +106,7 @@
 
                     <label for="description">Description:</label>
                     <input type="text" class="form-control" name="description" id="description"
-                           placeholder="Parcel with..."  maxlength="50">
+                           placeholder="Parcel with..."  maxlength="50" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{3,30}$">
 
                     <label for="weight">Weight:</label>
                     <input type="number" class="form-control" name="weight" id="weight" min="0.1" max="100" step="0.1"
