@@ -188,11 +188,11 @@
                 <c:forEach items="${order.getParcels()}" var="parcel" varStatus="loop">
                     <tr>
                         <td>${loop.index + 1}</td>
-                        <td>${parcel.getDescription()}</td>
+                        <td><c:out value="${parcel.getDescription()}"/></td>
                         <td>${parcel.getWeight()} kg</td>
                         <td>${parcel.getFromCountry()}</td>
                         <td>${parcel.getToCountry()}</td>
-                        <td>${parcel.getRecipientInfo()}</td>
+                        <td><c:out value="${parcel.getRecipientInfo()}"/></td>
                         <td>${parcel.isExpress()}</td>
                         <td>${parcel.getCost()}</td>
                         <td><a href="${pageContext.request.contextPath}/DeleteParcel?id=${parcel.getId()}">delete</a></td>
