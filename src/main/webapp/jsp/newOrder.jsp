@@ -106,7 +106,7 @@
 
                     <label for="description">Description:</label>
                     <input maxlength="30" type="text" class="form-control" name="description" id="description" required
-                           placeholder="Parcel with..."  pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{3,30}$">
+                           placeholder="Parcel with..."  pattern="^[a-zA-Z][a-zA-Z0-9 ]{3,30}$">
 
                     <label for="weight">Weight:</label>
                     <input maxlength="3" type="number" class="form-control" name="weight" id="weight" min="0.1" max="100" step="0.1"
@@ -135,7 +135,7 @@
 
                     <label for="recipient">This parcel will receive</label>
                     <input maxlength="30" type="text" class="form-control" name="recipient" id="recipient" required
-                           placeholder="Donald Trump"pattern="^[a-zA-Z][a-zA-Z]{3,30}$">
+                           placeholder="Donald Trump"pattern="^[a-zA-Z][a-zA-Z ]{3,30}$">
 
                 <div class="form-group" style="margin-top: 10px">
                     <div class="checkbox">

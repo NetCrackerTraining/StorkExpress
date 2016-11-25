@@ -119,7 +119,7 @@
                     <div class="form-group col-md-6">
                         <label for="address">Address</label>
                         <input type="text" class="form-control" name="address" id="address" placeholder="Your address"  maxlength="100"
-                               pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{2,100}$">
+                               pattern="^[a-zA-Z][a-zA-Z0-9-_\. ]{2,100}$">
                     </div>
 
 

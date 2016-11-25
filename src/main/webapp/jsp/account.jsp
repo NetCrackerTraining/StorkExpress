@@ -186,7 +186,7 @@
                     <div id="collapse4" class="panel-collapse collapse">
                         <label for="newAddress">New Address: </label>
                         <input type="text" class="form-control" name="newAddress" id="newAddress" value="${user.getAddress()}"
-                               maxlength="100" placeholder="New address" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{2,100}$">
+                               maxlength="100" placeholder="New address" pattern="^[a-zA-Z][a-zA-Z0-9-_\. ]{2,100}$">
                     </div>
                 </div>
                 <div class="form-group col-md-12 center-block" style="margin-bottom: 1px;">
