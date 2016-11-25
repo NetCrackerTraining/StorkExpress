@@ -66,7 +66,7 @@
                                 <li class="nav-item"><a class="nav-link link" href="${pageContext.request.contextPath}/jsp/about.jsp">ABOUT US</a></li>
                                 <li class="nav-item nav-btn"><a class="nav-link btn btn-info" href="${pageContext.request.contextPath}/#SignIn">Sign
                                 In</a></li>
-                                <li class="nav-item nav-btn"><a class="nav-link btn btn-info" href="${pageContext.request.contextPath}/jsp/SignUp.jsp">Sign
+                                <li class="nav-item nav-btn"><a class="nav-link btn btn-info" href="${pageContext.request.contextPath}/jsp/registration.jsp">Sign
                                 Up</a></li>
                             </c:when>
                             <c:when test="${user.isAdmin()}">
