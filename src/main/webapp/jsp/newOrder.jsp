@@ -98,7 +98,7 @@
         <div class="col-md-4">
             <form action="${pageContext.request.contextPath}/AddParcel" method="post">
             <fieldset>
-                <div class="form-group col-md-6" style="color: #ff0000">
+                <div class="form-group col-md-12" style="color: #ff0000">
                     <c:out value="${sessionScope.ParcelError}"/>
                     <c:remove var="ParcelError" scope="session"/>
                 </div>
