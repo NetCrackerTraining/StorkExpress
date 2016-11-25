@@ -23,28 +23,34 @@ public class EditUserServlet extends BaseHttpServlet {
         String oldPassword = request.getParameter("oldPassword");
         String newPassword = request.getParameter("newPassword");
         String newPassword2 = request.getParameter("newPassword2");
-        if (!newEmail.equals("")){
-            user.setEmail(newEmail);
+        if (newEmail.length() > 30 || newFirstName.length() > 30 || newLastName.length() > 30
+                || newPhoneNumber.length()>20 || newAddress.length()>100
+                || oldPassword.length() > 20 || newPassword.length()>20 || newPassword2.length() > 20){
+            request.getSession().setAttribute("PasswordMessage", "Incorrect data");
         }
-        if (!newFirstName.equals("")){
-            user.setFirstName(newFirstName);
-        }
-        if (!newLastName.equals("")){
-            user.setLastName(newLastName);
-        }
-        if(!newPhoneNumber.equals("")){
-            user.setPhoneNumber(newPhoneNumber);
-        }
-        if (!newAddress.equals("")){
-            user.setAddress(newAddress);
-        }
-        if (!oldPassword.equals("")){
-            if (oldPassword.equals(user.getPassword()) && newPassword.equals(newPassword2)){
-                user.setPassword(newPassword);
-                request.getSession().setAttribute("PasswordMessage", "Password is changed");
+        else {
+            if (!newEmail.equals("")) {
+                user.setEmail(newEmail);
             }
-            else{
-                request.getSession().setAttribute("PasswordMessage", "The password is not changed");
+            if (!newFirstName.equals("")) {
+                user.setFirstName(newFirstName);
+            }
+            if (!newLastName.equals("")) {
+                user.setLastName(newLastName);
+            }
+            if (!newPhoneNumber.equals("")) {
+                user.setPhoneNumber(newPhoneNumber);
+            }
+            if (!newAddress.equals("")) {
+                user.setAddress(newAddress);
+            }
+            if (!oldPassword.equals("")) {
+                if (oldPassword.equals(user.getPassword()) && newPassword.equals(newPassword2)) {
+                    user.setPassword(newPassword);
+                    request.getSession().setAttribute("PasswordMessage", "Password is changed");
+                } else {
+                    request.getSession().setAttribute("PasswordMessage", "The password is not changed");
+                }
             }
         }
 
