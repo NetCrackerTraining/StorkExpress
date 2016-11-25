@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by Влад on 12.11.2016.
@@ -18,6 +20,10 @@ import java.util.ArrayList;
 public class AddParcelServlet extends BaseHttpServlet {
     protected void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setStatus(200);
+
+        Pattern descriptionPattern = Pattern.compile("^[a-zA-Z][a-zA-Z0-9-_\\.]{3,30}$");
+        Pattern recipientPattern = Pattern.compile("^[a-zA-Z][a-zA-Z]{3,30}$");
+
 
         String refererURI = null;
         String s = request.getHeader("Referer");
@@ -64,8 +70,10 @@ public class AddParcelServlet extends BaseHttpServlet {
             response.sendRedirect(request.getContextPath()+"/jsp/newOrder.jsp");
             return;
         }
-        if (description.length()>30 || recipientInfo.length()>30){
-            request.getSession().setAttribute("ParcelError", "Wrong weight");
+        if (description.length()>30 || recipientInfo.length()>30
+                || !descriptionPattern.matcher(description).matches()
+                || !recipientPattern.matcher(recipientInfo).matches()){
+            request.getSession().setAttribute("ParcelError", "Wrong input");
             response.sendRedirect(request.getContextPath()+"/jsp/newOrder.jsp");
             return;
         }
