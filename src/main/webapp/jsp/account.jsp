@@ -108,7 +108,7 @@
         <div class="row">
 
             <div class="col-md-8 col-md-offset-2" >
-                <form  role="form" method="POST" action="${pageContext.request.contextPath}/EditUser">
+                <form role="form" method="POST" action="${pageContext.request.contextPath}/EditUser" novalidate>
 
                 <div class="form-group col-md-12" style="color: #ff0000">
                     <c:out value="${sessionScope.PasswordMessage}"/>
@@ -172,7 +172,7 @@
                     <div id="collapse3" class="panel-collapse collapse">
                         <label for="newPhoneNumber">New Phone number: </label>
                         <input type="text" class="form-control" name="newPhoneNumber" pattern="(\d[- .]*){7,13}"
-                               id="newPhoneNumber" value="${user.getPhoneNumber()}" onkeyup="return phoneCheck2(this);"
+                               id="newPhoneNumber" value="${user.getPhoneNumber()}" <%--onkeyup="return phoneCheck2(this);"--%>
                                placeholder="375..." maxlength="15">
                     </div>
                 </div>

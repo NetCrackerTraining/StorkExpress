@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by Влад on 21.11.2016.
@@ -15,6 +17,14 @@ import java.io.PrintWriter;
 @WebServlet("/EditUser")
 public class EditUserServlet extends BaseHttpServlet {
     private void editUser(User user, HttpServletRequest request) {
+
+        Pattern passwordPattern = Pattern.compile("^[a-zA-Z0-9]{2,30}$");
+        Pattern emailPattern = Pattern.compile("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$");
+        Pattern phonenumberPattern = Pattern.compile("(\\d[- .]*){7,13}");
+        Pattern namePattern = Pattern.compile("^[a-zA-Z]{2,30}$");
+        Pattern addressPattern = Pattern.compile("^[a-zA-Z0-9., -]{2,100}$");
+
+
         String newEmail = request.getParameter("newEmail");
         String newFirstName = request.getParameter("newFirstName");
         String newLastName = request.getParameter("newSecondName");
@@ -29,23 +39,24 @@ public class EditUserServlet extends BaseHttpServlet {
             request.getSession().setAttribute("PasswordMessage", "Incorrect data");
         }
         else {
-            if (!newEmail.equals("")) {
+            if (!newEmail.equals("") && emailPattern.matcher(newEmail).matches()) {
                 user.setEmail(newEmail);
             }
-            if (!newFirstName.equals("")) {
+            if (!newFirstName.equals("") && namePattern.matcher(newFirstName).matches()) {
                 user.setFirstName(newFirstName);
             }
-            if (!newLastName.equals("")) {
+            if (!newLastName.equals("") && namePattern.matcher(newLastName).matches()) {
                 user.setLastName(newLastName);
             }
-            if (!newPhoneNumber.equals("")) {
+            if (!newPhoneNumber.equals("") && phonenumberPattern.matcher(newPhoneNumber).matches()) {
                 user.setPhoneNumber(newPhoneNumber);
             }
-            if (!newAddress.equals("")) {
+            if (!newAddress.equals("") && addressPattern.matcher(newAddress).matches()) {
                 user.setAddress(newAddress);
             }
             if (!oldPassword.equals("")) {
-                if (oldPassword.equals(user.getPassword()) && newPassword.equals(newPassword2)) {
+                if (oldPassword.equals(user.getPassword()) && newPassword.equals(newPassword2)
+                        && passwordPattern.matcher(newPassword).matches()) {
                     user.setPassword(newPassword);
                     request.getSession().setAttribute("PasswordMessage", "Password is changed");
                 } else {

@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by Влад on 09.11.2016.
@@ -17,6 +19,16 @@ import java.net.URISyntaxException;
 @WebServlet("/SignUp")
 public class SignUpServlet extends BaseHttpServlet {
     private User getUser(HttpServletRequest request, HttpServletResponse response) {
+        Pattern usernamePattern = Pattern.compile("^[a-zA-Z][a-zA-Z0-9-_.]{3,30}$");
+        Pattern passwordPattern = Pattern.compile("^[a-zA-Z0-9]{2,30}$");
+        Pattern emailPattern = Pattern.compile("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$");
+        Pattern phonenumberPattern = Pattern.compile("(\\d[- .]*){7,13}");
+        Pattern namePattern = Pattern.compile("^[a-zA-Z]{2,30}$");
+        Pattern addressPattern = Pattern.compile("^[a-zA-Z0-9., -]{2,100}$");
+
+
+
+
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String email = request.getParameter("email");
@@ -32,6 +44,17 @@ public class SignUpServlet extends BaseHttpServlet {
                 || address.length()>100){
             return null;
         }
+
+        if (!usernamePattern.matcher(username).matches() || !passwordPattern.matcher(password).matches()
+                || !emailPattern.matcher(email).matches()){
+            return null;
+        }
+
+        if (!firstName.equals("") && !namePattern.matcher(firstName).matches()) { return null;}
+        if (!lastName.equals("") && !namePattern.matcher(lastName).matches()) { return null;}
+        if (!address.equals("") && !addressPattern.matcher(address).matches()) { return null;}
+        if (!phoneNumber.equals("") && !phonenumberPattern.matcher(phoneNumber).matches()) { return null;}
+
 
         User user = new User(username, password, email);
         user.setFirstName(firstName);
