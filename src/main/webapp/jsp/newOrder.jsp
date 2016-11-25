@@ -105,11 +105,11 @@
                 <legend>Add information about your parcel:</legend>
 
                     <label for="description">Description:</label>
-                    <input type="text" class="form-control" name="description" id="description"
-                           placeholder="Parcel with..."  maxlength="50" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{3,30}$">
+                    <input maxlength="30" type="text" class="form-control" name="description" id="description"
+                           placeholder="Parcel with..."  pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{3,30}$">
 
                     <label for="weight">Weight:</label>
-                    <input type="number" class="form-control" name="weight" id="weight" min="0.1" max="100" step="0.1"
+                    <input maxlength="3" type="number" class="form-control" name="weight" id="weight" min="0.1" max="100" step="0.1"
                            <%--onkeyup="return weightCheck(this);"--%>
                            required placeholder="1.5 kg">
 
@@ -134,8 +134,8 @@
                     </select>
 
                     <label for="recipient">This parcel will receive</label>
-                    <input type="text" class="form-control" name="recipient" id="recipient" required
-                           placeholder="Donald Trump" maxlength="100">
+                    <input maxlength="30" type="text" class="form-control" name="recipient" id="recipient" required
+                           placeholder="Donald Trump">
 
                 <div class="form-group" style="margin-top: 10px">
                     <div class="checkbox">

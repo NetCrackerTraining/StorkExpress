@@ -130,7 +130,7 @@
                     </label>
                     <div id="collapse6" class="panel-collapse collapse">
                         <label for="newEmail">New Email: </label>
-                        <input type="email" class="form-control" name="newEmail"
+                        <input maxlength="50" type="email" class="form-control" name="newEmail"
                                    id="newEmail" pattern="[a-z0-9._%+-]+@[a-z0-9]+\.[a-z]{2,4}$" value="${user.getEmail()}"
                                    placeholder="new email">
                 </div>
@@ -173,7 +173,7 @@
                         <label for="newPhoneNumber">New Phone number: </label>
                         <input type="text" class="form-control" name="newPhoneNumber" pattern="(\+?\d[- .]*){7,13}"
                                id="newPhoneNumber" value="${user.getPhoneNumber()}" onkeyup="return phoneCheck2(this);"
-                               placeholder="+375..." maxlength="13">
+                               placeholder="+375..." maxlength="15">
                     </div>
                 </div>
 
@@ -197,17 +197,17 @@
                     </label>
                     <div id="collapse5" class="panel-collapse collapse">
                         <label for="oldPassword">Old password: </label>
-                        <input type="password" class="form-control" name="oldPassword" id="oldPassword"
+                        <input maxlength="20" type="password" class="form-control" name="oldPassword" id="oldPassword"
                                placeholder="Old password">
                         <div class="form-group col-md-6" style="padding-left: 0px;  padding-top: 5px">
                             <label for="newPassword">New password: </label>
                             <input type="password" class="form-control" name="newPassword" id="newPassword"
-                                   placeholder="New password"  pattern="^[a-zA-Z0-9]{2,30}$" maxlength="30">
+                                   placeholder="New password"  pattern="^[a-zA-Z0-9]{2,30}$" maxlength="20">
                         </div>
                         <div class="form-group col-md-6" style="padding-left: 0px; padding-right: 0px; padding-top: 5px">
                             <label for="newPassword2">One more time: </label>
                             <input type="password" class="form-control" name="newPassword2" id="newPassword2"
-                                   placeholder="New password one more time" pattern="^[a-zA-Z0-9]{2,30}$" maxlength="30">
+                                   placeholder="New password one more time" pattern="^[a-zA-Z0-9]{2,30}$" maxlength="20">
                         </div>
                     </div>
 

@@ -101,13 +101,13 @@
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <label for="username">Username</label>
-                                <input type="text" class="form-control" name="username" id="username"
+                                <input maxlength="30" type="text" class="form-control" name="username" id="username"
                                        required
                                        placeholder="Username">
                             </div>
                             <div class="form-group col-md-6" >
                                 <label for="password">Password</label>
-                                <input type="password" class="form-control" name="password" id="password"
+                                <input maxlength="20" type="password" class="form-control" name="password" id="password"
                                        required
                                        placeholder="Password">
                             </div>
