@@ -145,7 +145,7 @@
                     <div id="collapse1" class="panel-collapse collapse">
                         <label for="newFirstName">New First name: </label>
                         <input type="text" class="form-control" name="newFirstName" id="newFirstName"
-                               maxlength="30" value="${user.getFirstName()}" pattern="^[a-zA-Z]{2,30}$"
+                               maxlength="30" value="${user.getFirstName()}" pattern="^[a-zA-Z][a-zA-Z]{2,30}$"
                                placeholder="new first name">
                     </div>
                 </div>
@@ -158,7 +158,7 @@
                     <div id="collapse2" class="panel-collapse collapse">
                         <label for="newSecondName">New Second name: </label>
                         <input type="text" class="form-control" name="newSecondName" id="newSecondName"
-                               maxlength="30" value="${user.getLastName()}" pattern="^[a-zA-Z]{2,30}$"
+                               maxlength="30" value="${user.getLastName()}" pattern="^[a-zA-Z][a-zA-Z]{2,30}$"
                                placeholder="new second name">
                     </div>
                 </div>
@@ -186,7 +186,7 @@
                     <div id="collapse4" class="panel-collapse collapse">
                         <label for="newAddress">New Address: </label>
                         <input type="text" class="form-control" name="newAddress" id="newAddress" value="${user.getAddress()}"
-                               maxlength="100" placeholder="New address" pattern="^[a-zA-Z0-9.,- ]{2,100}$">
+                               maxlength="100" placeholder="New address" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{2,100}$">
                     </div>
                 </div>
                 <div class="form-group col-md-12 center-block" style="margin-bottom: 1px;">

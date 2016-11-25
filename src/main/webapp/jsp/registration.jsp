@@ -82,13 +82,13 @@
                     <div class="form-group col-md-6">
                         <label for="password">Password</label>
                         <input type="password" class="form-control" name="password" id="password" required
-                              maxlength="30" placeholder="Password" pattern="^[a-zA-Z0-9]{2,30}$">
+                              maxlength="30" placeholder="Password" pattern="^[a-zA-Z][a-zA-Z0-9]{2,30}$">
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="confirm_password">Confirm Password</label>
                         <input type="password" class="form-control" name="" id="confirm_password" required
-                               maxlength="30" placeholder="Confirm Password" pattern="^[a-zA-Z0-9]{2,30}$">
+                               maxlength="30" placeholder="Confirm Password" pattern="^[a-zA-Z][a-zA-Z0-9]{2,30}$">
                     </div>
 
 
@@ -99,12 +99,14 @@
 
                     <div class="form-group col-md-6">
                         <label for="first_name">First name</label>
-                        <input type="text" class="form-control" name="firstName"  id="first_name" placeholder="First Name"  maxlength="30">
+                        <input type="text" class="form-control" name="firstName"  id="first_name" placeholder="First Name"  maxlength="30"
+                               pattern="^[a-zA-Z][a-zA-Z]{2,30}$">
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="last_name">Last name</label>
-                        <input type="text" class="form-control" name="lastName" id="last_name" placeholder="Last Name"  maxlength="30">
+                        <input type="text" class="form-control" name="lastName" id="last_name" placeholder="Last Name"  maxlength="30"
+                               pattern="^[a-zA-Z][a-zA-Z]{2,30}$">
                     </div>
 
                     <div class="form-group col-md-6">
@@ -116,7 +118,8 @@
 
                     <div class="form-group col-md-6">
                         <label for="address">Address</label>
-                        <input type="text" class="form-control" name="address" id="address" placeholder="Your address"  maxlength="100">
+                        <input type="text" class="form-control" name="address" id="address" placeholder="Your address"  maxlength="100"
+                               pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{2,100}$">
                     </div>
 
 
