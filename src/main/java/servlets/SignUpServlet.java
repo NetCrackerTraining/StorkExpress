@@ -16,22 +16,33 @@ import java.net.URISyntaxException;
  */
 @WebServlet("/SignUp")
 public class SignUpServlet extends BaseHttpServlet {
-    private User getUser(HttpServletRequest request) {
+    private User getUser(HttpServletRequest request, HttpServletResponse response) {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String email = request.getParameter("email");
         if (username.equals("") || password.equals("") || email.equals(""))
             return null;
+        String firstName = request.getParameter("firstName");
+        String lastName = request.getParameter("lastName");
+        String phoneNumber = request.getParameter("phoneNumber");
+        String address = request.getParameter("address");
+
+        if (username.length()>30 || password.length() > 20 || email.length()>50
+                || firstName.length()>30 || lastName.length()>30 || phoneNumber.length()>20
+                || address.length()>100){
+            return null;
+        }
+
         User user = new User(username, password, email);
-        user.setFirstName(request.getParameter("firstName"));
-        user.setLastName(request.getParameter("lastName"));
-        user.setPhoneNumber(request.getParameter("phoneNumber"));
-        user.setAddress(request.getParameter("address"));
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setPhoneNumber(phoneNumber);
+        user.setAddress(address);
         return user;
     }
 
     private void sendError(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        request.getSession().setAttribute("SignUpError", "Error, choose another username");
+        request.getSession().setAttribute("SignUpError", "Error, wrong data");
         response.sendRedirect(request.getContextPath()+"/jsp/registration.jsp");
     }
 
@@ -61,20 +72,23 @@ public class SignUpServlet extends BaseHttpServlet {
             response.sendRedirect(request.getContextPath());
             return;
         }
-        User newUser = getUser(request);
+        User newUser = getUser(request, response);
         if (newUser != null) {
             UserController userController = new UserController();
             newUser = userController.addUser(newUser);
             if (newUser == null){
                 sendError(request, response);
+                return;
             }
             else{
                 request.getSession().setAttribute("user", newUser);
                 response.sendRedirect(request.getContextPath()+"/NewOrder");
+                return;
             }
         }
         else{
             sendError(request, response);
+            return;
         }
     }
 }

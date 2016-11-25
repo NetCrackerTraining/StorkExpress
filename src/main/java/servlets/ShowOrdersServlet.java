@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by Влад on 12.11.2016.
  */
-@WebServlet("/ShowOrders")
+//@WebServlet("/ShowOrders")
 public class ShowOrdersServlet extends BaseHttpServlet {
     protected void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setStatus(200);

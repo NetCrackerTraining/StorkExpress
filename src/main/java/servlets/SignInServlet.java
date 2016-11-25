@@ -26,15 +26,25 @@ public class SignInServlet extends BaseHttpServlet {
             response.sendRedirect(request.getContextPath());
             return;
         }
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
 
-        User user = userController.checkUser(request.getParameter("username"), request.getParameter("password"));
+        if (username.length()>30 || password.length()>20){
+            request.getSession().setAttribute("SignInError", "Wrong username or password");
+            response.sendRedirect(request.getContextPath() + "#SignIn");
+            return;
+        }
+
+        User user = userController.checkUser(username, password);
 
         if (user != null) {
             request.getSession().setAttribute("user", user);
             response.sendRedirect(request.getContextPath()+"/NewOrder");
+            return;
         } else {
             request.getSession().setAttribute("SignInError", "Wrong username or password");
             response.sendRedirect(request.getContextPath() + "#SignIn");
+            return;
         }
     }
 }
