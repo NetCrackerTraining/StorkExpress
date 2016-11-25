@@ -109,7 +109,7 @@
 
                     <div class="form-group col-md-6">
                         <label for="phone_number">Phone number</label>
-                        <input type="tel" class="form-control" onkeyup="return phoneCheck(this);" pattern="(\+?\d[- .]*){7,13}"
+                        <input type="tel" class="form-control" onkeyup="return phoneCheck(this);" pattern="(\d[- .]*){7,13}"
                                name="phoneNumber" id="phone_number"  maxlength="15"
                                placeholder="Phone number">
                     </div>

@@ -171,9 +171,9 @@
                     </label>
                     <div id="collapse3" class="panel-collapse collapse">
                         <label for="newPhoneNumber">New Phone number: </label>
-                        <input type="text" class="form-control" name="newPhoneNumber" pattern="(\+?\d[- .]*){7,13}"
+                        <input type="text" class="form-control" name="newPhoneNumber" pattern="(\d[- .]*){7,13}"
                                id="newPhoneNumber" value="${user.getPhoneNumber()}" onkeyup="return phoneCheck2(this);"
-                               placeholder="+375..." maxlength="15">
+                               placeholder="375..." maxlength="15">
                     </div>
                 </div>
 
