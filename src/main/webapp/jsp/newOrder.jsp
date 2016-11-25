@@ -105,7 +105,7 @@
                 <legend>Add information about your parcel:</legend>
 
                     <label for="description">Description:</label>
-                    <input maxlength="30" type="text" class="form-control" name="description" id="description"
+                    <input maxlength="30" type="text" class="form-control" name="description" id="description" required
                            placeholder="Parcel with..."  pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{3,30}$">
 
                     <label for="weight">Weight:</label>
