@@ -59,6 +59,11 @@ public class AddParcelServlet extends BaseHttpServlet {
             response.sendRedirect(request.getContextPath()+"/jsp/newOrder.jsp");
             return;
         }
+        if (weight > 100){
+            request.getSession().setAttribute("ParcelError", "Wrong weight");
+            response.sendRedirect(request.getContextPath()+"/jsp/newOrder.jsp");
+            return;
+        }
         int fromCountryId = Integer.parseInt(request.getParameter("fromCountry"));
         int toCountryId = Integer.parseInt(request.getParameter("toCountry"));
         String fromCountry = null;

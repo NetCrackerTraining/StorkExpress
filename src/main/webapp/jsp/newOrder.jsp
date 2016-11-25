@@ -96,7 +96,7 @@
 <div class="container-fluid" style="position: relative; top: 8rem;">
     <div class="row">
         <div class="col-md-4">
-            <form action="${pageContext.request.contextPath}/AddParcel">
+            <form action="${pageContext.request.contextPath}/AddParcel" method="post">
             <fieldset>
                 <div class="form-group col-md-6" style="color: #ff0000">
                     <c:out value="${sessionScope.ParcelError}"/>

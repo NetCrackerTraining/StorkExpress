@@ -87,6 +87,6 @@ public class Order extends AbstractEntity {
 //            }
 //        }
         this.totalCost -= parcels.get((int) parcelId).getCost();
-        parcels.remove(parcelId);
+        parcels.remove((int)parcelId);
     }
 }
