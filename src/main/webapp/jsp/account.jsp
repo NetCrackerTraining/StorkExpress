@@ -131,9 +131,9 @@
                     <div id="collapse6" class="panel-collapse collapse">
                         <label for="newEmail">New Email: </label>
                         <input type="email" class="form-control" name="newEmail"
-                               id="newEmail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" value="${user.getEmail()}"
-                               placeholder="new email">
-                    </div>
+                                   id="newEmail" pattern="[a-z0-9._%+-]+@[a-z0-9]+\.[a-z]{2,4}$" value="${user.getEmail()}"
+                                   placeholder="new email">
+                </div>
                 </div>
 
                 <div class="form-group col-md-12 center-block" style="margin-bottom: 1px;">
@@ -144,7 +144,8 @@
                     </label>
                     <div id="collapse1" class="panel-collapse collapse">
                         <label for="newFirstName">New First name: </label>
-                        <input type="text" class="form-control" name="newFirstName" id="newFirstName" value="${user.getFirstName()}"
+                        <input type="text" class="form-control" name="newFirstName" id="newFirstName"
+                               maxlength="30" value="${user.getFirstName()}" pattern="^[a-zA-Z]{2,30}$"
                                placeholder="new first name">
                     </div>
                 </div>
@@ -156,7 +157,8 @@
                     </label>
                     <div id="collapse2" class="panel-collapse collapse">
                         <label for="newSecondName">New Second name: </label>
-                        <input type="text" class="form-control" name="newSecondName" id="newSecondName" value="${user.getLastName()}"
+                        <input type="text" class="form-control" name="newSecondName" id="newSecondName"
+                               maxlength="30" value="${user.getLastName()}" pattern="^[a-zA-Z]{2,30}$"
                                placeholder="new second name">
                     </div>
                 </div>
@@ -171,7 +173,7 @@
                         <label for="newPhoneNumber">New Phone number: </label>
                         <input type="text" class="form-control" name="newPhoneNumber" pattern="(\+?\d[- .]*){7,13}"
                                id="newPhoneNumber" value="${user.getPhoneNumber()}" onkeyup="return phoneCheck2(this);"
-                               placeholder="+375...">
+                               placeholder="+375..." maxlength="13">
                     </div>
                 </div>
 
@@ -184,7 +186,7 @@
                     <div id="collapse4" class="panel-collapse collapse">
                         <label for="newAddress">New Address: </label>
                         <input type="text" class="form-control" name="newAddress" id="newAddress" value="${user.getAddress()}"
-                               placeholder="New address">
+                               maxlength="100" placeholder="New address" pattern="^[a-zA-Z0-9.,- ]{2,100}$">
                     </div>
                 </div>
                 <div class="form-group col-md-12 center-block" style="margin-bottom: 1px;">
@@ -200,12 +202,12 @@
                         <div class="form-group col-md-6" style="padding-left: 0px;  padding-top: 5px">
                             <label for="newPassword">New password: </label>
                             <input type="password" class="form-control" name="newPassword" id="newPassword"
-                                   placeholder="New password">
+                                   placeholder="New password"  pattern="^[a-zA-Z0-9]{2,30}$" maxlength="30">
                         </div>
                         <div class="form-group col-md-6" style="padding-left: 0px; padding-right: 0px; padding-top: 5px">
                             <label for="newPassword2">One more time: </label>
                             <input type="password" class="form-control" name="newPassword2" id="newPassword2"
-                                   placeholder="New password one more time">
+                                   placeholder="New password one more time" pattern="^[a-zA-Z0-9]{2,30}$" maxlength="30">
                         </div>
                     </div>
 

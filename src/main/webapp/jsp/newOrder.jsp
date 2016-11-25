@@ -106,10 +106,11 @@
 
                     <label for="description">Description:</label>
                     <input type="text" class="form-control" name="description" id="description"
-                           placeholder="Parcel with...">
+                           placeholder="Parcel with..."  maxlength="50" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{3,30}$">
 
                     <label for="weight">Weight:</label>
-                    <input type="text" class="form-control" name="weight" id="weight" onkeyup="return weightCheck(this);"
+                    <input type="number" class="form-control" name="weight" id="weight" min="0.1" max="100" step="0.1"
+                           <%--onkeyup="return weightCheck(this);"--%>
                            required placeholder="1.5 kg">
 
                     <%--<label for="from">I will send it from...</label>--%>
@@ -134,7 +135,7 @@
 
                     <label for="recipient">This parcel will receive</label>
                     <input type="text" class="form-control" name="recipient" id="recipient" required
-                           placeholder="Donald Trump">
+                           placeholder="Donald Trump" maxlength="100">
 
                 <div class="form-group" style="margin-top: 10px">
                     <div class="checkbox">
