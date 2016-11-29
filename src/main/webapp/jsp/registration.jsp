@@ -82,13 +82,13 @@
                     <div class="form-group col-md-6">
                         <label for="password">Password</label>
                         <input type="password" class="form-control" name="password" id="password" required
-                              maxlength="30" placeholder="Password" pattern="^[a-zA-Z][a-zA-Z0-9]{2,30}$">
+                              maxlength="20" placeholder="Password" pattern="^[a-zA-Z][a-zA-Z0-9]{2,30}$">
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="confirm_password">Confirm Password</label>
                         <input type="password" class="form-control" name="" id="confirm_password" required
-                               maxlength="30" placeholder="Confirm Password" pattern="^[a-zA-Z][a-zA-Z0-9]{2,30}$">
+                               maxlength="20" placeholder="Confirm Password" pattern="^[a-zA-Z][a-zA-Z0-9]{2,30}$">
                     </div>
 
 
