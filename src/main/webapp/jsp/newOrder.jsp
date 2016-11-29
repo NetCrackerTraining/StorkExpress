@@ -155,6 +155,10 @@
 
         <div class="col-md-8">
             <legend>Your order</legend>
+            <div class="form-group col-md-12" style="color: #ff0000">
+                <c:out value="${sessionScope.ErrorMessage}"/>
+                <c:remove var="ErrorMessage" scope="session"/>
+            </div>
             <table class="table table-bordered" style="margin-top: 40px">
                 <thead>
                 <tr>

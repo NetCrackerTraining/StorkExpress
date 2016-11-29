@@ -50,6 +50,12 @@ public class AddOrderServlet extends BaseHttpServlet {
             return;
         }
 
+        if (order.getParcels().size() == 0){
+            request.getSession().setAttribute("ErrorMessage", "There is no parcels");
+            response.sendRedirect(request.getContextPath()+"/NewOrder");
+            return;
+        }
+
         order.setDate(java.util.Calendar.getInstance().getTime());
         OrderController orderController = new OrderController();
         orderController.addOrder(order);
