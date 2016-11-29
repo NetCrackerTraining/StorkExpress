@@ -113,7 +113,10 @@
                 <div class="form-group col-md-12" style="color: #ff0000">
                     <c:out value="${sessionScope.PasswordMessage}"/>
                     <c:remove var="PasswordMessage" scope="session"/>
+                    <c:out value="${sessionScope.Message}"/>
+                    <c:remove var="Message" scope="session"/>
                 </div>
+
 
                 <legend style="font-size: xx-large;">My account details</legend>
 

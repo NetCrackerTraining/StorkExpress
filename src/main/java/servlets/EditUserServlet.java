@@ -18,6 +18,7 @@ import java.util.regex.Pattern;
 public class EditUserServlet extends BaseHttpServlet {
     private void editUser(User user, HttpServletRequest request) {
 
+        String message = "";
         Pattern passwordPattern = Pattern.compile("^[a-zA-Z0-9]{2,30}$");
         Pattern emailPattern = Pattern.compile("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$");
         Pattern phonenumberPattern = Pattern.compile("(\\d[- .]*){7,13}");
@@ -39,21 +40,50 @@ public class EditUserServlet extends BaseHttpServlet {
             request.getSession().setAttribute("PasswordMessage", "Incorrect data");
         }
         else {
-            if (!newEmail.equals("") && emailPattern.matcher(newEmail).matches()) {
-                user.setEmail(newEmail);
+            if (!newEmail.equals(user.getEmail())){
+                if (emailPattern.matcher(newEmail).matches()) {
+                    user.setEmail(newEmail);
+                }
+                else{
+                    message = message.concat("The email isn't changed\n");
+                }
             }
-            if (!newFirstName.equals("") && namePattern.matcher(newFirstName).matches()) {
-                user.setFirstName(newFirstName);
+            if (!newFirstName.equals(user.getFirstName())){
+                if (namePattern.matcher(newFirstName).matches()) {
+                    user.setFirstName(newFirstName);
+                }
+                else{
+                    message = message.concat("The First Name isn't changed\n");
+                }
             }
-            if (!newLastName.equals("") && namePattern.matcher(newLastName).matches()) {
-                user.setLastName(newLastName);
+
+            if (!newLastName.equals(user.getLastName())){
+                if (namePattern.matcher(newLastName).matches()) {
+                    user.setLastName(newLastName);
+                }
+                else{
+                    message = message.concat("The last name isn't changed\n");
+                }
             }
-            if (!newPhoneNumber.equals("") && phonenumberPattern.matcher(newPhoneNumber).matches()) {
-                user.setPhoneNumber(newPhoneNumber);
+
+            if (!newPhoneNumber.equals(user.getPhoneNumber())){
+                if (phonenumberPattern.matcher(newPhoneNumber).matches()) {
+                    user.setPhoneNumber(newPhoneNumber);
+                }
+                else{
+                    message = message.concat("The phone number isn't changed\n");
+                }
             }
-            if (!newAddress.equals("") && addressPattern.matcher(newAddress).matches()) {
-                user.setAddress(newAddress);
+
+            if (!newAddress.equals(user.getAddress())){
+                if (namePattern.matcher(newAddress).matches()) {
+                    user.setAddress(newAddress);
+                }
+                else{
+                    message = message.concat("The address isn't changed\n");
+                }
             }
+
             if (!oldPassword.equals("")) {
                 if (oldPassword.equals(user.getPassword()) && newPassword.equals(newPassword2)
                         && passwordPattern.matcher(newPassword).matches()) {
@@ -64,7 +94,7 @@ public class EditUserServlet extends BaseHttpServlet {
                 }
             }
         }
-
+        request.getSession().setAttribute("Message", message);
     }
     protected void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setStatus(200);
