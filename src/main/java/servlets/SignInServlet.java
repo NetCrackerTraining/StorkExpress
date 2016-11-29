@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 /**
  * Created by Влад on 09.11.2016.
@@ -19,6 +21,21 @@ import java.io.PrintWriter;
 public class SignInServlet extends BaseHttpServlet {
     protected void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setStatus(200);
+
+        String refererURI = null;
+        String s = request.getHeader("Referer");
+        if (s == null){
+            response.sendRedirect(request.getContextPath());
+            return;
+        }
+        try {
+            refererURI = new URI(request.getHeader("Referer")).getPath();
+        }
+        catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+
+
         UserController userController = new UserController();
 
         User sesUser = (User) request.getSession().getAttribute("user");
