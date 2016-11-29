@@ -43,6 +43,7 @@
 
 </head>
 <body>
+<c:redirect url="/"></c:redirect>
 <section id="ext_menu-9">
     <nav class="navbar navbar-dropdown">
         <div class="container">
