@@ -19,11 +19,11 @@ public class EditUserServlet extends BaseHttpServlet {
     private void editUser(User user, HttpServletRequest request) {
 
         String message = "";
-        Pattern passwordPattern = Pattern.compile("^[a-zA-Z0-9]{2,30}$");
+        Pattern passwordPattern = Pattern.compile("^[a-zA-Z0-9]{2,20}$");
         Pattern emailPattern = Pattern.compile("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$");
-        Pattern phonenumberPattern = Pattern.compile("(\\d[- .]*){7,13}");
-        Pattern namePattern = Pattern.compile("^[a-zA-Z]{2,30}$");
-        Pattern addressPattern = Pattern.compile("^[a-zA-Z0-9., -]{2,100}$");
+        Pattern phonenumberPattern = Pattern.compile("(\\d){7,13}");
+        Pattern namePattern = Pattern.compile("^[A-Z][a-z]{2,30}$");
+        Pattern addressPattern = Pattern.compile("^[a-zA-Z][a-zA-Z0-9-_\\., ]{2,100}$");
 
 
         String newEmail = request.getParameter("newEmail");
@@ -76,7 +76,7 @@ public class EditUserServlet extends BaseHttpServlet {
             }
 
             if (!newAddress.equals(user.getAddress())){
-                if (namePattern.matcher(newAddress).matches()) {
+                if (addressPattern.matcher(newAddress).matches()) {
                     user.setAddress(newAddress);
                 }
                 else{

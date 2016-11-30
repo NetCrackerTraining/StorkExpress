@@ -21,8 +21,8 @@ public class AddParcelServlet extends BaseHttpServlet {
     protected void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setStatus(200);
 
-        Pattern descriptionPattern = Pattern.compile("^[a-zA-Z][a-zA-Z0-9 ]{3,30}$");
-        Pattern recipientPattern = Pattern.compile("^[a-zA-Z][a-zA-Z ]{3,30}$");
+        Pattern descriptionPattern = Pattern.compile("^[a-zA-Z][a-zA-Z0-9 ]{2,30}$");
+        Pattern recipientPattern = Pattern.compile("^[A-Z][a-z]{3,29}[a-zA-Z. ]{0,29}$");
 
 
         String refererURI = null;
