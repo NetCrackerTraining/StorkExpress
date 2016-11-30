@@ -7,7 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<html>
+
+<html lang="en">
 <head>
     <title>Registration</title>
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/logo.png" type="image/x-icon">
@@ -68,27 +69,41 @@
                     <div class="form-group col-md-6">
                         <label for="username">Username</label>
                         <input type="text" class="form-control" name="username" id="username"
-                               pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{3,30}$" required  maxlength="30"
-                               placeholder="Username">
+                               pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{2,30}$" required  maxlength="30"
+                               placeholder="Username" title="First character only letter. Other - letters or digits. From 3 to 30 characters."
+                               oninvalid="setCustomValidity('Wrong username.' +
+                                ' First character only letter. Other - letters or digits. From 3 to 30 characters.')"
+                               onchange="try{setCustomValidity('')}catch(e){}">
                     </div>
 
 
                     <div class="form-group col-md-6">
                         <label for="email">Email</label>
                         <input type="email" class="form-control" name="email" id="email"
-                               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required placeholder="Email"  maxlength="50">
+                               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required placeholder="Email"  maxlength="50"
+                               title="Enter your email, please. Format: example@example.com."
+                               oninvalid="setCustomValidity('Wrong email form. Try one more time, please.')"
+                               onchange="try{setCustomValidity('')}catch(e){}">
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="password">Password</label>
                         <input type="password" class="form-control" name="password" id="password" required
-                              maxlength="20" placeholder="Password" pattern="^[a-zA-Z][a-zA-Z0-9]{2,30}$">
+                              maxlength="20" placeholder="Password" pattern="^[a-zA-Z][a-zA-Z0-9]{2,20}$"
+                               title="Enter your password. First character only letter. Other - letters or digits. From 3 to 20 characters."
+                               oninvalid="setCustomValidity('Wrong password.' +
+                                ' First character only letter. Other - letters or digits. From 3 to 20 characters.')"
+                               onchange="try{setCustomValidity('')}catch(e){}">
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="confirm_password">Confirm Password</label>
                         <input type="password" class="form-control" name="" id="confirm_password" required
-                               maxlength="20" placeholder="Confirm Password" pattern="^[a-zA-Z][a-zA-Z0-9]{2,30}$">
+                               maxlength="20" placeholder="Confirm Password" pattern="^[a-zA-Z][a-zA-Z0-9]{2,20}$"
+                               title="Enter your password one more time, please."
+                               oninvalid="setCustomValidity('Wrong password.' +
+                                ' First character only letter. Other - letters or digits. From 3 to 20 characters.')"
+                               onchange="try{setCustomValidity('')}catch(e){}">
                     </div>
 
 
@@ -100,26 +115,42 @@
                     <div class="form-group col-md-6">
                         <label for="first_name">First name</label>
                         <input type="text" class="form-control" name="firstName"  id="first_name" placeholder="First Name"  maxlength="30"
-                               pattern="^[a-zA-Z][a-zA-Z]{2,30}$">
+                               pattern="^[A-Z][a-z]{2,30}$"
+                               title="Enter your first name. Only letters. The first letter should be capitalized. From 3 to 30 characters."
+                               oninvalid="setCustomValidity('Wrong first name.' +
+                                ' Only letters. The first letter should be capitalized. From 3 to 30 characters.')"
+                               onchange="try{setCustomValidity('')}catch(e){}">
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="last_name">Last name</label>
                         <input type="text" class="form-control" name="lastName" id="last_name" placeholder="Last Name"  maxlength="30"
-                               pattern="^[a-zA-Z][a-zA-Z]{2,30}$">
+                               pattern="^[A-Z][a-z]{2,30}$"
+                               title="Enter your last name. Only letters. The first letter should be capitalized. From 3 to 30 characters."
+                               oninvalid="setCustomValidity('Wrong last name.' +
+                                ' Only letters. The first letter should be capitalized. From 3 to 30 characters.')"
+                               onchange="try{setCustomValidity('')}catch(e){}">
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="phone_number">Phone number</label>
-                        <input type="tel" class="form-control" onkeyup="return phoneCheck(this);" pattern="(\d[- .]*){7,13}"
-                               name="phoneNumber" id="phone_number"  maxlength="15"
+                        <input type="tel" class="form-control" onkeyup="return phoneCheck(this);" pattern="(\d){7,13}"
+                               name="phoneNumber" id="phone_number"  maxlength="13"
+                               title="Enter your phone number. Only digits. No spaces. From 7 to 13 digits."
+                               oninvalid="setCustomValidity('Wrong phone number format.' +
+                                ' Only digits. No spaces. From 7 to 13 digits.')"
+                               onchange="try{setCustomValidity('')}catch(e){}"
                                placeholder="Phone number">
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="address">Address</label>
                         <input type="text" class="form-control" name="address" id="address" placeholder="Your address"  maxlength="100"
-                               pattern="^[a-zA-Z][a-zA-Z0-9-_\. ]{2,100}$">
+                               pattern="^[a-zA-Z][a-zA-Z0-9-_\., ]{2,100}$"
+                               title="Enter your address. From 3 to 100 characters. Only letters, digits, dots, commas and next symbols: - \\ _. "
+                               oninvalid="setCustomValidity('Wrong address format.' +
+                                ' Only letters, digits, dots, commas and next symbols: - \\ _.  From 3 to 100 characters.')"
+                               onchange="try{setCustomValidity('')}catch(e){}">
                     </div>
 
 

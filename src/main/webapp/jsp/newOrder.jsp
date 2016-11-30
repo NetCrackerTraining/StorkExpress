@@ -106,20 +106,20 @@
 
                     <label for="description">Description:</label>
                     <input maxlength="30" type="text" class="form-control" name="description" id="description" required
-                           placeholder="Parcel with..."  pattern="^[a-zA-Z][a-zA-Z0-9 ]{3,30}$">
+                           placeholder="Parcel with..."  pattern="^[a-zA-Z][a-zA-Z0-9 ]{2,30}$"
+                           title="Enter your description. First character only letter. Other - letters or digits. From 3 to 30 characters."
+                           oninvalid="setCustomValidity('Wrong description.' +
+                                ' First character only letter. Other - letters or digits. From 3 to 30 characters.')"
+                           onchange="try{setCustomValidity('')}catch(e){}">
 
                     <label for="weight">Weight:</label>
                     <input maxlength="3" type="number" class="form-control" name="weight" id="weight" min="0.1" max="100" step="0.1"
-                           <%--onkeyup="return weightCheck(this);"--%>
-                           required placeholder="1.5 kg">
+                           required placeholder="1.5 kg"
+                           title="Only digits. Min weight - 0.1 kg, max weight - 100 kg."
+                           oninvalid="setCustomValidity('Wrong weight.' +
+                                ' Only digits. Min weight - 0.1 kg, max weight - 100 kg.')"
+                           onchange="try{setCustomValidity('')}catch(e){}">
 
-                    <%--<label for="from">I will send it from...</label>--%>
-                    <%--<input type="text" class="form-control" name="fromCountry" id="from" required--%>
-                           <%--placeholder="Belarus">--%>
-
-                    <%--<label for="to">Country destination...</label>--%>
-                    <%--<input type="text" class="form-control" name="toCountry" id="to" required--%>
-                           <%--placeholder="USA">--%>
                     <label for="from">I will send it from...</label>
                     <select name="fromCountry" id="from" required class="form-control">
                         <c:forEach items="${countries}" var="country">
@@ -135,7 +135,12 @@
 
                     <label for="recipient">This parcel will receive</label>
                     <input maxlength="30" type="text" class="form-control" name="recipient" id="recipient" required
-                           placeholder="Donald Trump"pattern="^[a-zA-Z][a-zA-Z ]{3,30}$">
+                           placeholder="Recipient's name" pattern="^[A-Z][a-z]{3,29}[a-zA-Z. ]{0,29}$"
+                           title="Enter the recipient's name. The first letter should be capitalized. Only letters, spaces and dots. From 3 to 30 characters."
+                           oninvalid="setCustomValidity('Wrong name format.' +
+                                ' The first letter should be capitalized. Only letters, spaces and dots. From 3 to 30 characters.' +
+                                ' For example: Donald Trump, Trump D., Trump.')"
+                           onchange="try{setCustomValidity('')}catch(e){}">
 
                 <div class="form-group" style="margin-top: 10px">
                     <div class="checkbox">

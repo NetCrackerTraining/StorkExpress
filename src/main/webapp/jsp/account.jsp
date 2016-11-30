@@ -135,7 +135,10 @@
                         <label for="newEmail">New Email: </label>
                         <input maxlength="50" type="email" class="form-control" name="newEmail"
                                    id="newEmail" pattern="[a-z0-9._%+-]+@[a-z0-9]+\.[a-z]{2,4}$" value="${user.getEmail()}"
-                                   placeholder="new email">
+                                   placeholder="new email"
+                                   title="Enter your email, please. Format: example@example.com."
+                                   oninvalid="setCustomValidity('Wrong email form. Try one more time, please.')"
+                                   onchange="try{setCustomValidity('')}catch(e){}">
                 </div>
                 </div>
 
@@ -148,8 +151,12 @@
                     <div id="collapse1" class="panel-collapse collapse">
                         <label for="newFirstName">New First name: </label>
                         <input type="text" class="form-control" name="newFirstName" id="newFirstName"
-                               maxlength="30" value="${user.getFirstName()}" pattern="^[a-zA-Z][a-zA-Z]{2,30}$"
-                               placeholder="new first name">
+                               maxlength="30" value="${user.getFirstName()}" pattern="^[A-Z][a-z]{2,30}$"
+                               placeholder="new first name"
+                               title="Enter your new first name. Only letters. The first letter should be capitalized. From 3 to 30 characters."
+                               oninvalid="setCustomValidity('Wrong new first name.' +
+                                ' Only letters. The first letter should be capitalized. From 3 to 30 characters.')"
+                               onchange="try{setCustomValidity('')}catch(e){}">
                     </div>
                 </div>
                 <div class="form-group col-md-12 center-block" style="margin-bottom: 1px;">
@@ -161,8 +168,12 @@
                     <div id="collapse2" class="panel-collapse collapse">
                         <label for="newSecondName">New Second name: </label>
                         <input type="text" class="form-control" name="newSecondName" id="newSecondName"
-                               maxlength="30" value="${user.getLastName()}" pattern="^[a-zA-Z][a-zA-Z]{2,30}$"
-                               placeholder="new second name">
+                               maxlength="30" value="${user.getLastName()}" pattern="^[A-Z][a-z]{2,30}$"
+                               placeholder="new second name"
+                               title="Enter your new last name. Only letters. The first letter should be capitalized. From 3 to 30 characters."
+                               oninvalid="setCustomValidity('Wrong new last name.' +
+                                ' Only letters. The first letter should be capitalized. From 3 to 30 characters.')"
+                               onchange="try{setCustomValidity('')}catch(e){}">
                     </div>
                 </div>
 
@@ -174,9 +185,13 @@
                     </label>
                     <div id="collapse3" class="panel-collapse collapse">
                         <label for="newPhoneNumber">New Phone number: </label>
-                        <input type="text" class="form-control" name="newPhoneNumber" pattern="(\d[- .]*){7,13}"
-                               id="newPhoneNumber" value="${user.getPhoneNumber()}" <%--onkeyup="return phoneCheck2(this);"--%>
-                               placeholder="375..." maxlength="15">
+                        <input type="text" class="form-control" name="newPhoneNumber" pattern="(\d){7,13}"
+                               id="newPhoneNumber" value="${user.getPhoneNumber()}"
+                               placeholder="new phone number" maxlength="13"
+                               title="Enter your new phone number. Only digits. No spaces. From 7 to 13 digits."
+                               oninvalid="setCustomValidity('Wrong new phone number format.' +
+                                ' Only digits. No spaces. From 7 to 13 digits.')"
+                               onchange="try{setCustomValidity('')}catch(e){}">
                     </div>
                 </div>
 
@@ -189,7 +204,11 @@
                     <div id="collapse4" class="panel-collapse collapse">
                         <label for="newAddress">New Address: </label>
                         <input type="text" class="form-control" name="newAddress" id="newAddress" value="${user.getAddress()}"
-                               maxlength="100" placeholder="New address" pattern="^[a-zA-Z][a-zA-Z0-9-_\. ]{2,100}$">
+                               maxlength="100" placeholder="New address" pattern="^[a-zA-Z][a-zA-Z0-9-_\. ]{2,100}$"
+                               title="Enter your new address. From 3 to 100 characters. Only letters, digits, dots, commas and next symbols: - \\ _. "
+                               oninvalid="setCustomValidity('Wrong new address format.' +
+                                ' Only letters, digits, dots, commas and next symbols: - \\ _.  From 3 to 100 characters.')"
+                               onchange="try{setCustomValidity('')}catch(e){}">
                     </div>
                 </div>
                 <div class="form-group col-md-12 center-block" style="margin-bottom: 1px;">
@@ -205,12 +224,20 @@
                         <div class="form-group col-md-6" style="padding-left: 0px;  padding-top: 5px">
                             <label for="newPassword">New password: </label>
                             <input type="password" class="form-control" name="newPassword" id="newPassword"
-                                   placeholder="New password"  pattern="^[a-zA-Z0-9]{2,30}$" maxlength="20">
+                                   placeholder="New password"  pattern="^[a-zA-Z0-9]{2,20}$" maxlength="20"
+                                   title="Enter your new password. First character only letter. Other - letters or digits. From 3 to 20 characters."
+                                   oninvalid="setCustomValidity('Wrong new password.' +
+                                ' First character only letter. Other - letters or digits. From 3 to 20 characters.')"
+                                   onchange="try{setCustomValidity('')}catch(e){}">
                         </div>
                         <div class="form-group col-md-6" style="padding-left: 0px; padding-right: 0px; padding-top: 5px">
                             <label for="newPassword2">One more time: </label>
                             <input type="password" class="form-control" name="newPassword2" id="newPassword2"
-                                   placeholder="New password one more time" pattern="^[a-zA-Z0-9]{2,30}$" maxlength="20">
+                                   placeholder="New password one more time" pattern="^[a-zA-Z0-9]{2,20}$" maxlength="20"
+                                   title="Enter your new password one more time, please."
+                                   oninvalid="setCustomValidity('Wrong new password.' +
+                                ' First character only letter. Other - letters or digits. From 3 to 20 characters.')"
+                                   onchange="try{setCustomValidity('')}catch(e){}">
                         </div>
                     </div>
 
