@@ -11,32 +11,32 @@ import javax.persistence.Table;
 @Table(name="currency")
 public class Currency extends AbstractEntity{
     @Column(name = "currencyName", nullable = false,  length = 45)
-    private String currencyName;
+    private String Cur_Name;
     @Column(name = "currencyAbbreviation", nullable = false,  length = 5)
-    private String currencyAbbreviation;
-    @Column(name = "currencySymbol", nullable = false,  length = 5)
+    private String Cur_Abbreviation;
+    @Column(name = "currencySymbol",  length = 5)
     private String currencySymbol;
     @Column(name = "currencyRate", nullable = false)
-    private Double currencyRate;
+    private Double Cur_OfficialRate;
 
     public Currency(String currencyName, String currencyAbbreviation, String currencySymbol, Double currencyRate) {
-        this.currencyName = currencyName;
-        this.currencyAbbreviation = currencyAbbreviation;
+        this.Cur_Name = currencyName;
+        this.Cur_Abbreviation = currencyAbbreviation;
         this.currencySymbol = currencySymbol;
-        this.currencyRate = currencyRate;
+        this.Cur_OfficialRate = currencyRate;
     }
 
     public Currency(Double currencyRate) {
-        this.currencyRate = currencyRate;
+        this.Cur_OfficialRate = currencyRate;
     }
 
 
     public void setCurrencyName(String currencyName) {
-        this.currencyName = currencyName;
+        this.Cur_Name = currencyName;
     }
 
     public void setCurrencyAbbreviation(String currencyAbbreviation) {
-        this.currencyAbbreviation = currencyAbbreviation;
+        this.Cur_Abbreviation = currencyAbbreviation;
     }
 
     public void setCurrencySymbol(String currencySymbol) {
@@ -44,15 +44,15 @@ public class Currency extends AbstractEntity{
     }
 
     public void setCurrencyRate(Double currencyRate) {
-        this.currencyRate = currencyRate;
+        this.Cur_OfficialRate = currencyRate;
     }
 
     public String getCurrencyName() {
-        return currencyName;
+        return Cur_Name;
     }
 
     public String getCurrencyAbbreviation() {
-        return currencyAbbreviation;
+        return Cur_Abbreviation;
     }
 
     public String getCurrencySymbol() {
@@ -60,6 +60,6 @@ public class Currency extends AbstractEntity{
     }
 
     public Double getCurrencyRate() {
-        return currencyRate;
+        return Cur_OfficialRate;
     }
 }
