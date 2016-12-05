@@ -20,27 +20,19 @@ public class Currency extends AbstractEntity{
     private String Cur_OfficialRate;
     @Column(name = "date")
     private String Date;
-
-    public Currency(String currencyName, String currencyAbbreviation, String currencyRate, int currencyId) {
-        this.Cur_ID = currencyId;
-        this.Cur_Name = currencyName;
-        this.Cur_Abbreviation = currencyAbbreviation;
-        this.Cur_OfficialRate = currencyRate;
-    }
-
-    public Currency(String currencyRate) {
-        this.Cur_OfficialRate = currencyRate;
-    }
+    @Column(name = "currencyScale")
+    private int Cur_Scale;
 
     public Currency() {
     }
 
-    public Currency(int cur_ID, String cur_Name, String cur_Abbreviation, String cur_OfficialRate, String date) {
+    public Currency(int cur_ID, String cur_Name, String cur_Abbreviation, String cur_OfficialRate, String date, int cur_Scale) {
         Cur_ID = cur_ID;
         Cur_Name = cur_Name;
         Cur_Abbreviation = cur_Abbreviation;
         Cur_OfficialRate = cur_OfficialRate;
         Date = date;
+        Cur_Scale = cur_Scale;
     }
 
 
@@ -79,5 +71,17 @@ public class Currency extends AbstractEntity{
 
     public String getDate() {
         return Date;
+    }
+
+    public void setDate(String date) {
+        Date = date;
+    }
+
+    public int getCur_Scale() {
+        return Cur_Scale;
+    }
+
+    public void setCur_Scale(int cur_Scale) {
+        Cur_Scale = cur_Scale;
     }
 }
