@@ -2,8 +2,8 @@ package crud;
 
 import entity.Currency;
 import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.criterion.Restrictions;
 import utils.HibernateSessionFactory;
 
 import java.util.List;
@@ -25,18 +25,25 @@ public class CurrencyController {
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
         Criteria criteria = session.createCriteria(Currency.class);
-        List<Currency> currency = (List<Currency>) criteria.list();
+        List<Currency> countries = (List<Currency>) criteria.list();
         session.getTransaction().commit();
         session.close();
-        return currency;
+        return countries;
     }
 
-    public void updateCurrency(Currency currency) {
+    public boolean updateCurrency(Currency currency) {
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
-        session.update(currency);
+        try {
+            session.update(currency);
+        }catch (HibernateException e){
+            e.printStackTrace();
+            session.getTransaction().rollback();
+            return false;
+        }
         session.getTransaction().commit();
         session.close();
+        return true;
     }
 
 }

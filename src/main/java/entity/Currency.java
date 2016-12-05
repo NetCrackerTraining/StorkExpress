@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="currency")
 public class Currency extends AbstractEntity{
-    @Column(name = "currencyId", nullable = false)
+    @Column(name = "currencyId")
     private int Cur_ID;
     @Column(name = "currencyName", nullable = false,  length = 45)
     private String Cur_Name;
@@ -21,7 +21,7 @@ public class Currency extends AbstractEntity{
     @Column(name = "currencyRate", nullable = false)
     private String Cur_OfficialRate;
     @Column(name = "date")
-    private String date;
+    private String Date;
 
     public Currency(String currencyName, String currencyAbbreviation, String currencyRate, int currencyId) {
         this.Cur_ID = currencyId;
@@ -32,6 +32,18 @@ public class Currency extends AbstractEntity{
 
     public Currency(String currencyRate) {
         this.Cur_OfficialRate = currencyRate;
+    }
+
+    public Currency() {
+    }
+
+    public Currency(int cur_ID, String cur_Name, String cur_Abbreviation, String currencySymbol, String cur_OfficialRate, String date) {
+        Cur_ID = cur_ID;
+        Cur_Name = cur_Name;
+        Cur_Abbreviation = cur_Abbreviation;
+        this.currencySymbol = currencySymbol;
+        Cur_OfficialRate = cur_OfficialRate;
+        Date = date;
     }
 
 
@@ -70,5 +82,9 @@ public class Currency extends AbstractEntity{
 
     public String getCurrencyRate() {
         return Cur_OfficialRate;
+    }
+
+    public String getDate() {
+        return Date;
     }
 }
