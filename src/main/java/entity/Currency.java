@@ -10,23 +10,27 @@ import javax.persistence.Table;
 @Entity
 @Table(name="currency")
 public class Currency extends AbstractEntity{
+    @Column(name = "currencyId", nullable = false)
+    private int Cur_ID;
     @Column(name = "currencyName", nullable = false,  length = 45)
     private String Cur_Name;
     @Column(name = "currencyAbbreviation", nullable = false,  length = 5)
     private String Cur_Abbreviation;
-    @Column(name = "currencySymbol",  length = 5)
+    @Column(name = "currencySymbol", length = 5)
     private String currencySymbol;
     @Column(name = "currencyRate", nullable = false)
-    private Double Cur_OfficialRate;
+    private String Cur_OfficialRate;
+    @Column(name = "date")
+    private String date;
 
-    public Currency(String currencyName, String currencyAbbreviation, String currencySymbol, Double currencyRate) {
+    public Currency(String currencyName, String currencyAbbreviation, String currencyRate, int currencyId) {
+        this.Cur_ID = currencyId;
         this.Cur_Name = currencyName;
         this.Cur_Abbreviation = currencyAbbreviation;
-        this.currencySymbol = currencySymbol;
         this.Cur_OfficialRate = currencyRate;
     }
 
-    public Currency(Double currencyRate) {
+    public Currency(String currencyRate) {
         this.Cur_OfficialRate = currencyRate;
     }
 
@@ -39,11 +43,16 @@ public class Currency extends AbstractEntity{
         this.Cur_Abbreviation = currencyAbbreviation;
     }
 
-    public void setCurrencySymbol(String currencySymbol) {
-        this.currencySymbol = currencySymbol;
+    public int getCur_ID() {
+        return Cur_ID;
     }
 
-    public void setCurrencyRate(Double currencyRate) {
+    public void setCur_ID(int cur_ID) {
+        Cur_ID = cur_ID;
+    }
+
+
+    public void setCurrencyRate(String currencyRate) {
         this.Cur_OfficialRate = currencyRate;
     }
 
@@ -59,7 +68,7 @@ public class Currency extends AbstractEntity{
         return currencySymbol;
     }
 
-    public Double getCurrencyRate() {
+    public String getCurrencyRate() {
         return Cur_OfficialRate;
     }
 }

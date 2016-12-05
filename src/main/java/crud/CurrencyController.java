@@ -3,6 +3,7 @@ package crud;
 import entity.Currency;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 import utils.HibernateSessionFactory;
 
 import java.util.List;
