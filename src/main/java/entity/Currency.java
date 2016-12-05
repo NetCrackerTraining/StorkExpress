@@ -16,8 +16,6 @@ public class Currency extends AbstractEntity{
     private String Cur_Name;
     @Column(name = "currencyAbbreviation", nullable = false,  length = 5)
     private String Cur_Abbreviation;
-    @Column(name = "currencySymbol", length = 5)
-    private String currencySymbol;
     @Column(name = "currencyRate", nullable = false)
     private String Cur_OfficialRate;
     @Column(name = "date")
@@ -37,11 +35,10 @@ public class Currency extends AbstractEntity{
     public Currency() {
     }
 
-    public Currency(int cur_ID, String cur_Name, String cur_Abbreviation, String currencySymbol, String cur_OfficialRate, String date) {
+    public Currency(int cur_ID, String cur_Name, String cur_Abbreviation, String cur_OfficialRate, String date) {
         Cur_ID = cur_ID;
         Cur_Name = cur_Name;
         Cur_Abbreviation = cur_Abbreviation;
-        this.currencySymbol = currencySymbol;
         Cur_OfficialRate = cur_OfficialRate;
         Date = date;
     }
@@ -74,10 +71,6 @@ public class Currency extends AbstractEntity{
 
     public String getCurrencyAbbreviation() {
         return Cur_Abbreviation;
-    }
-
-    public String getCurrencySymbol() {
-        return currencySymbol;
     }
 
     public String getCurrencyRate() {
