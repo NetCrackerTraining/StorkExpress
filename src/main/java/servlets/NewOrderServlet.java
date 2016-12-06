@@ -1,12 +1,10 @@
 package servlets;
 
 import crud.CountryController;
+import crud.CurrencyController;
 import crud.OrderController;
 import crud.RateController;
-import entity.Country;
-import entity.Order;
-import entity.Rate;
-import entity.User;
+import entity.*;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -43,7 +41,12 @@ public class NewOrderServlet extends BaseHttpServlet {
         CountryController countryController = new CountryController();
         ArrayList<Country> countries = (ArrayList<Country>) countryController.getAllCountries();
 
+        CurrencyController currencyController = new CurrencyController();
+        ArrayList<Currency> currencies = (ArrayList<Currency>) currencyController.getAllCurrency();
+
+
         request.getSession().setAttribute("countries", countries);
+        request.getSession().setAttribute("currencies", currencies);
         request.getSession().setAttribute("rate", rate);
         request.getSession().setAttribute("order", order);
 
