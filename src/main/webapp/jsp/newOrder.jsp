@@ -92,6 +92,7 @@
 </section>
 
 <jsp:useBean id="countries" class="java.util.ArrayList" scope="session"/>
+<jsp:useBean id="currencies" class="java.util.ArrayList" scope="session"/>
 
 <div class="container-fluid" style="position: relative; top: 8rem;">
     <div class="row">
@@ -142,11 +143,18 @@
                                 ' For example: Donald Trump, Trump D., Trump.')"
                            onchange="try{setCustomValidity('')}catch(e){}">
 
-                <div class="form-group" style="margin-top: 10px">
+                <div class="form-group" style="margin-top: 15px">
                     <div class="checkbox">
-                        <label style="margin-top: 10px">
-                            <input type="checkbox" name="express" id="express" style="transform: scale(1.5)"/> Express
+                        <label style="margin-top: 15px; padding-left: 30px;">
+                            <input type="checkbox" name="express" id="express" style="transform: scale(2.0)"/> Express
                         </label>
+                        <div class="col-md-4" style="padding-left: 0px">
+                        <select name="currency" id="currency" required class="form-control">
+                            <c:forEach items="${currencies}" var="currency">
+                                <option value="${currency.getCurrencyAbbreviation()}">${currency.getCurrencyAbbreviation()}</option>
+                            </c:forEach>
+                        </select>
+                        </div>
                         <button type="submit" class="btn btn-primary" style="float: right;">
                             Add
                         </button>
@@ -157,6 +165,7 @@
         </div>
 
         <jsp:useBean id="order" class="entity.Order" scope="session"/>
+        <jsp:useBean id="parcel" class="entity.Parcel" scope="session"/>
 
         <div class="col-md-8">
             <legend>Your order</legend>
@@ -212,7 +221,12 @@
                 </c:forEach>
                 <tr>
                     <td colspan="9" style="text-align: right;">
-                        Total number: ${order.getParcels().size()} prise - ${order.getTotalCost()} $
+                        Total number: ${order.getParcels().size()}; price - ${order.getTotalCost()}
+                        <c:set var="count" value="${order.getParcels().size()}" scope="session"/>
+                        <c:if test="${count != 0}">
+                            <c:set var="name" value="${order.getParcels().get(0).getCurrency()}" scope="session"/>
+                            ${name}
+                        </c:if>
                     </td>
                 </tr>
                 </tbody>
@@ -225,5 +239,23 @@
         </div>
     </div>
 </div>
+<script>
+    var numb = ${order.getParcels().size()};
+
+    <c:if test="${count != 0}">
+    alert(name) //TODO: Сделать, чтобы работало :/
+    </c:if>
+    alert(${count});
+    if (numb != 0) {
+
+
+        $('#currency').val("EUR");
+        document.getElementById('currency').disabled = true;
+    }
+    else {
+        document.getElementById('currency').disabled = false;
+    }
+</script>
 </body>
+
 </html>
