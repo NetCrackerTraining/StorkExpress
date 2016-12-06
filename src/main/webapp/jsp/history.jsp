@@ -113,7 +113,7 @@
                     <td>${loop.index + 1}</td>
                     <td>${order.getParcels().size()}</td>
                     <%--<td>TODO TotalWeight kg</td>--%>
-                    <td>${order.getTotalCost()} $</td>
+                    <td>${order.getTotalCost()} ${order.getCurrency()}</td>
                     <td>${order.getDate()}</td>
                 </tr>
                 <%-- forEach по ордерс заканчивается--%>
@@ -146,7 +146,7 @@
                                             <td>${parcel.getToCountry()}</td>
                                             <td>${parcel.isExpress()}</td>
                                             <td>${parcel.isDelivered()}</td>
-                                            <td>${parcel.getCost()} $</td>
+                                            <td>${parcel.getCost()} ${parcel.getCurrency()}</td>
                                         </tr>
                                     </c:forEach>
                             </table>

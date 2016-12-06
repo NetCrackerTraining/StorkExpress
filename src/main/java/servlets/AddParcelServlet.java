@@ -56,6 +56,7 @@ public class AddParcelServlet extends BaseHttpServlet {
 
         String description =  request.getParameter("description");
         String recipientInfo = request.getParameter("recipient");
+        String currency = request.getParameter("currency");
         String stringWeight = request.getParameter("weight").replace(",",".");
         double weight = 0;
         try{
@@ -97,7 +98,7 @@ public class AddParcelServlet extends BaseHttpServlet {
             express = true;
         }
 
-        Parcel parcel = new Parcel(recipientInfo,weight,toCountryId,fromCountryId,express);
+        Parcel parcel = new Parcel(recipientInfo,weight,toCountryId,fromCountryId,express,currency);
         parcel.setDescription(description);
         parcel.setDelivered(false);
         //parcel.setOrderId(order.getId());
