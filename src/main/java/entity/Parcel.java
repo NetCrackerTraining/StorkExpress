@@ -34,19 +34,29 @@ public class Parcel extends AbstractEntity{
     private boolean delivered;
     @Column(name = "cost")
     private double cost;
+    @Column(name = "currency")
+    private String currency;
 
 
-    public Parcel(String recipientInfo,double weight, int toCountryId, int fromCountryId, boolean express) {
+
+
+    public Parcel(String recipientInfo, double weight, int toCountryId, int fromCountryId, boolean express, String currency) {
         this.recipientInfo = recipientInfo;
         this.weight = weight;
         this.toCountryId = toCountryId;
         this.fromCountryId = fromCountryId;
         this.express = express;
+        this.currency = currency;
+
     }
 
     public Parcel() {
 
     }
+
+    public String getCurrency() {return currency;}
+
+    public void setCurrency(String currency) {this.currency = currency;}
 
     public void setToCountry(String toCountry) {
         this.toCountry = toCountry;

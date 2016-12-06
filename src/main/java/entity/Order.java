@@ -19,6 +19,8 @@ public class Order extends AbstractEntity {
     private Date date;
     @Column(name = "totalCost")
     private double totalCost;
+    @Column(name = "currency")
+    private String currency;
     @Transient
     private ArrayList<Parcel> parcels = null;
 
@@ -32,6 +34,11 @@ public class Order extends AbstractEntity {
         this.parcels = new ArrayList<Parcel>();
     }
 
+    public String getCurrency() {return currency;}
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
 
     public void setUserId(long userID) {
         this.userId = userID;
