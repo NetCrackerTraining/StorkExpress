@@ -97,7 +97,12 @@
 <div class="container-fluid" style="position: relative; top: 8rem;">
     <div class="row">
         <div class="col-md-4">
-            <form action="${pageContext.request.contextPath}/AddParcel" method="post">
+            <form action="${pageContext.request.contextPath}/AddParcel" method="post"
+                  onsubmit="
+                  var e = document.getElementById('currency');
+                var selectedCurrency = e.options[e.selectedIndex].value;
+                localStorage.setItem('selectedCurrency', selectedCurrency);
+                ">
             <fieldset>
                 <div class="form-group col-md-12" style="color: #ff0000">
                     <c:out value="${sessionScope.ParcelError}"/>
@@ -242,14 +247,9 @@
 <script>
     var numb = ${order.getParcels().size()};
 
-    <c:if test="${count != 0}">
-    alert(name) //TODO: Сделать, чтобы работало :/
-    </c:if>
-    alert(${count});
     if (numb != 0) {
-
-
-        $('#currency').val("EUR");
+        var getCurrency = localStorage.getItem('selectedCurrency')
+        $('#currency').val(getCurrency);
         document.getElementById('currency').disabled = true;
     }
     else {
