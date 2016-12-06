@@ -99,6 +99,7 @@
         <div class="col-md-4">
             <form action="${pageContext.request.contextPath}/AddParcel" method="post"
                   onsubmit="
+                  document.getElementById('currency').disabled = false;
                   var e = document.getElementById('currency');
                 var selectedCurrency = e.options[e.selectedIndex].value;
                 localStorage.setItem('selectedCurrency', selectedCurrency);
