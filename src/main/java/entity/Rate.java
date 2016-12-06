@@ -1,5 +1,7 @@
 package entity;
 
+import crud.CurrencyController;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -33,6 +35,8 @@ public class Rate extends AbstractEntity {
         if (parcel.getExpress()){
             cost *= 1.2;
         }
+        CurrencyController currencyController=new CurrencyController();
+        cost=currencyController.conversion(cost,parcel.getCurrency());
         return cost;
     }
 
