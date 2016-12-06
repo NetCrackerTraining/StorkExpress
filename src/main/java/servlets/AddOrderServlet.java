@@ -56,6 +56,8 @@ public class AddOrderServlet extends BaseHttpServlet {
             return;
         }
 
+        order.setCurrency(order.getParcels().get(0).getCurrency());
+
         order.setDate(java.util.Calendar.getInstance().getTime());
         OrderController orderController = new OrderController();
         orderController.addOrder(order);
