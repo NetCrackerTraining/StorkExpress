@@ -4,8 +4,12 @@ import entity.Currency;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 import utils.HibernateSessionFactory;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.List;
 
 /**
@@ -31,7 +35,18 @@ public class CurrencyController {
         return countries;
     }
 
-    public boolean updateCurrency(Currency currency) {
+    public Currency getCurrency(String Abbreviation){
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(Currency.class);
+        criteria.add(Restrictions.eq("Cur_Abbreviation", Abbreviation));
+        Currency currency = (Currency) criteria.uniqueResult();
+        session.getTransaction().commit();
+        session.close();
+        return currency;
+    }
+
+    public boolean updateCurrency(Currency currency){
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
         try {
@@ -44,6 +59,21 @@ public class CurrencyController {
         session.getTransaction().commit();
         session.close();
         return true;
+    }
+
+    public double conversion(double cost, String Abbreviation){
+        Currency currency=getCurrency(Abbreviation);
+        double conversionCost;
+        double USD_BYN_Currency = Double.parseDouble(getCurrency("USD").getCurrencyRate());
+        double BYN_Cur_Rate = Double.parseDouble(currency.getCurrencyRate());
+        int Scale=currency.getCur_Scale();
+
+        conversionCost=cost*USD_BYN_Currency/BYN_Cur_Rate*Scale;
+        conversionCost=conversionCost*100;
+        conversionCost= Math.round(conversionCost);
+        conversionCost = conversionCost / 100;
+
+        return conversionCost;
     }
 
 }
