@@ -34,6 +34,7 @@
 
     <script src="${pageContext.request.contextPath}/js/web/assets/jquery/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/dropdown/script.min.js"></script>
 
 </head>
 <body>

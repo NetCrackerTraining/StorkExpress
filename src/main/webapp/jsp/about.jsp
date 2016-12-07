@@ -32,6 +32,10 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/theme/css/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mobirise/css/mbr-additional.css"
           type="text/css">
+
+    <script src="${pageContext.request.contextPath}/js/web/assets/jquery/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/dropdown/script.min.js"></script>
 </head>
 
 <body>
