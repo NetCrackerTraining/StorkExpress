@@ -64,6 +64,16 @@ public class UserController {
         return list;
     }
 
+    public List<User> getAllUsers(){
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(User.class);
+        List<User> list = criteria.list();
+        session.getTransaction().commit();
+        session.close();
+        return list;
+    }
+
     public Integer getPageAmount(int pageSize){
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
         Criteria criteriaCount = session.createCriteria(User.class);
