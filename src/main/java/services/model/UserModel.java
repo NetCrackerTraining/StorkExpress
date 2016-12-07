@@ -1,25 +1,20 @@
 package services.model;
 
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+import java.io.Serializable;
 
 /**
  * Created by Влад on 07.12.2016.
  */
-@XmlRootElement(name="user")
-public class User {
+@XmlRootElement(name="usermodel")
+@XmlType(propOrder = {"username", "password", "email"})
+public class UserModel implements Serializable{
     private String username;
     private String password;
     private String email;
 
-    public User(){
-
-    }
-
-    public User(String username, String password, String email){
-        this.username = username;
-        this.password = password;
-        this.email = email;
-    }
 
     public String getUsername() {
         return username;
@@ -32,15 +27,15 @@ public class User {
     public String getEmail() {
         return email;
     }
-
+    @XmlElement(name = "username")
     public void setUsername(String username) {
         this.username = username;
     }
-
+    @XmlElement(name = "password")
     public void setPassword(String password) {
         this.password = password;
     }
-
+    @XmlElement(name = "email")
     public void setEmail(String email) {
         this.email = email;
     }

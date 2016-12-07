@@ -1,12 +1,13 @@
 package services;
 
 import crud.UserController;
-import services.model.User;
+import services.model.UserModel;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
+import javax.jws.soap.SOAPBinding;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,7 @@ import java.util.List;
  * Created by Влад on 06.12.2016.
  */
 @WebService
+@SOAPBinding(style = SOAPBinding.Style.DOCUMENT, use = SOAPBinding.Use.LITERAL)
 public class GetAllUsers {
     @WebMethod
     public String getTestString(){
@@ -28,8 +30,8 @@ public class GetAllUsers {
 
 
     @WebMethod
-    public @WebResult(name="user")User getTestUser(){
-        User user = new User();
+    public @WebResult(name="usermodel")UserModel getTestUser(){
+        UserModel user = new UserModel();
         user.setEmail("email@email.ru");
         user.setPassword("1111");
         user.setUsername("username");
@@ -38,15 +40,18 @@ public class GetAllUsers {
     }
 
     @WebMethod
-    public @WebResult(name="user")List<User> getUsers(){
+    public @WebResult(name="usermodel")UserModel[] getUsers(){
         UserController userController = new UserController();
         List<entity.User> usersFromDB = userController.getAllUsers();
-        List<User> users = new ArrayList<>();
+        UserModel users[] = new UserModel[usersFromDB.size()];
+        int t = 0;
         for(entity.User entityUser: usersFromDB){
-            User user = new User(entityUser.getUsername(),
-                    entityUser.getPassword(),
-                    entityUser.getEmail());
-            users.add(user);
+            UserModel user = new UserModel();
+            user.setUsername(entityUser.getUsername());
+            user.setPassword(entityUser.getPassword());
+            user.setEmail(entityUser.getEmail());
+            users[t] = user;
+            t++;
         }
         return users;
     }

@@ -99,9 +99,9 @@ public class UserController {
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
         long userid = order.getUserId();
-        Criteria criteria = session.createCriteria(User.class);
+        Criteria criteria = session.createCriteria(UserModel.class);
         criteria.add(Restrictions.eq("ID", userid));
-        List<User> users = criteria.list();
+        List<UserModel> users = criteria.list();
         session.getTransaction().commit();
         session.close();
         return users.get(0).getUsername();
