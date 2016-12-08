@@ -21,7 +21,7 @@ public class Rate extends AbstractEntity {
     @Column(name = "price", nullable = false)
     private int price;
 
-    public Rate(){};
+    public Rate(){}
 
     public Rate(Date beginDate, Date endDate, int price) {
         this.beginDate = beginDate;
@@ -36,7 +36,8 @@ public class Rate extends AbstractEntity {
             cost *= 1.2;
         }
         CurrencyController currencyController=new CurrencyController();
-        cost=currencyController.conversion(cost,parcel.getCurrency());
+        if (parcel.getCurrency().equals("BYN")) cost=currencyController.conversionInBYN(cost);
+        else cost=currencyController.conversion(cost,parcel.getCurrency());
         return cost;
     }
 

@@ -76,4 +76,14 @@ public class CurrencyController {
         return conversionCost;
     }
 
+    public double conversionInBYN(double cost){
+        double USD_BYN_Currency = Double.parseDouble(getCurrency("USD").getCurrencyRate());
+        double BYN;
+        BYN=cost*USD_BYN_Currency;
+        BYN=BYN*100;
+        BYN= Math.round(BYN);
+        BYN = BYN / 100;
+        return BYN;
+    }
+
 }
