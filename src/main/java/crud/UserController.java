@@ -4,6 +4,7 @@ import entity.Order;
 import entity.User;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import utils.HibernateSessionFactory;
@@ -82,6 +83,14 @@ public class UserController {
         Integer pageAmount =  (count - 1) / pageSize + 1;
         session.close();
         return pageAmount;
+    }
+
+    public Integer getAllUserCount(){
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
+        Criteria criteria = session.createCriteria(User.class);
+        criteria.setProjection(Projections.rowCount());
+        Integer count = (int) (long) (Long) criteria.uniqueResult();
+        return count;
     }
 
     public User editUser(User user){
