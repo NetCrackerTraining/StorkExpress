@@ -98,4 +98,33 @@ public class Reports {
         }
         return result;
     }
+
+    public String[][] yearReport() {
+        String[][] result = new String[3][12];
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(
+                    url, username, password);
+            Statement statement = connection.createStatement();
+            String sql = "select monthname(o.date) as MONTH,count(o.id) as ORDERS,sum(o.totalCost/c.currencyScale*c.currencyRate) as 'MONEY(BYN)' from nc_1.orders o "+
+                    "inner join nc_1.currency c on c.currencyAbbreviation=o.currency "+
+                    "group by month(o.date);";
+            ResultSet resultSet = statement.executeQuery(sql);
+            int i = 0;
+            while (resultSet.next()) {
+                result[0][i] = resultSet.getString(1);
+                result[1][i] = resultSet.getString(2);
+                result[2][i] = resultSet.getString(3);
+                i++;
+            }
+            statement.close();
+            connection.close();
+
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
 }
