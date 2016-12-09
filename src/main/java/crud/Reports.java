@@ -67,5 +67,35 @@ public class Reports {
         return result;
     }
 
+    public String[][] bestUsers() {
+        String[][] result = new String[2][20];
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(
+                    url, username, password);
+            Statement statement = connection.createStatement();
+            String sql = "select u.username as USERID,sum(t.finCost) as COST from( " +
+                    "(select o.userId,o.currency,(o.totalCost/c.currencyScale*c.currencyRate) as finCost,'BYN' as BYN from nc_1.orders o " +
+                    "inner join nc_1.currency c on c.currencyAbbreviation=o.currency) t) " +
+                    "inner join nc_1.users u on t.userId=u.id " +
+                    "group by t.userID " +
+                    "order by COST desc " +
+                    "limit 20;";
+            ResultSet resultSet = statement.executeQuery(sql);
+            int i = 0;
+            while (resultSet.next()) {
+                result[0][i] = resultSet.getString(1);
+                result[1][i] = resultSet.getString(2);
+                i++;
+            }
+            statement.close();
+            connection.close();
 
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
 }
