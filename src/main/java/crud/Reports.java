@@ -36,7 +36,7 @@ public class Reports {
     }
 
     public String[][] ordersOnDate(int year, int month, int day, int count) {
-        String[][] result = new String[4][count];
+        String[][] result = new String[4][count+1];
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection(
@@ -47,7 +47,13 @@ public class Reports {
                     "where YEAR(o.date)= "+year+" and MONTH(o.date)= "+month+" and DAY(o.date)= "+day+";";
             ResultSet resultSet = statement.executeQuery(sql);
 
-            int i=0;
+            ResultSetMetaData rsmd = resultSet.getMetaData();
+            result[0][0]=rsmd.getColumnName(1);
+            result[1][0]=rsmd.getColumnName(2);
+            result[2][0]=rsmd.getColumnName(3);
+            result[3][0]=rsmd.getColumnName(4);
+
+            int i = 1;
             while(resultSet.next()) {
                 result[0][i] = resultSet.getString(1);
                 result[1][i] = resultSet.getString(2);
@@ -68,7 +74,7 @@ public class Reports {
     }
 
     public String[][] bestUsers() {
-        String[][] result = new String[2][20];
+        String[][] result = new String[2][21];
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection(
@@ -82,7 +88,10 @@ public class Reports {
                     "order by COST desc " +
                     "limit 20;";
             ResultSet resultSet = statement.executeQuery(sql);
-            int i = 0;
+            ResultSetMetaData rsmd = resultSet.getMetaData();
+            result[0][0]=rsmd.getColumnName(1);
+            result[1][0]=rsmd.getColumnName(2);
+            int i = 1;
             while (resultSet.next()) {
                 result[0][i] = resultSet.getString(1);
                 result[1][i] = resultSet.getString(2);
@@ -100,7 +109,7 @@ public class Reports {
     }
 
     public String[][] yearReport() {
-        String[][] result = new String[3][12];
+        String[][] result = new String[3][13];
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection(
@@ -110,7 +119,11 @@ public class Reports {
                     "inner join nc_1.currency c on c.currencyAbbreviation=o.currency "+
                     "group by month(o.date);";
             ResultSet resultSet = statement.executeQuery(sql);
-            int i = 0;
+            ResultSetMetaData rsmd = resultSet.getMetaData();
+            result[0][0]=rsmd.getColumnName(1);
+            result[1][0]=rsmd.getColumnName(2);
+            result[2][0]=rsmd.getColumnName(3);
+            int i = 1;
             while (resultSet.next()) {
                 result[0][i] = resultSet.getString(1);
                 result[1][i] = resultSet.getString(2);
