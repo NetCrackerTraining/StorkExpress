@@ -17,9 +17,9 @@ public class CreateFileReport {
         HSSFWorkbook workbook = new HSSFWorkbook();
         HSSFSheet sheet = workbook.createSheet("Sample sheet");
 
-//        System.out.println(writeBestUsersReport(reports.bestUsers(),sheet));
+        System.out.println(writeBestUsersReport(reports.bestUsers(),sheet));
 //        System.out.println(writeYearReport(reports.yearReport(),sheet));
-        System.out.println(writeOrdersOnDateReport(reports.ordersOnDate(2016, 12, 8, 10),sheet));
+//        System.out.println(writeOrdersOnDateReport(reports.ordersOnDate(2016, 12, 8, 10),sheet));
 
         try {
             FileOutputStream out =
@@ -37,9 +37,9 @@ public class CreateFileReport {
     }
 
     public static boolean writeBestUsersReport(String[][] result, HSSFSheet sheet){
-        for (int i = 0; i < 21; i++) {
+        for (int i = 0; i < result[0].length; i++) {
             Row row = sheet.createRow(i);
-            for (int j=0; j < 2; j++) {
+            for (int j=0; j < result.length; j++) {
                 Cell cell = row.createCell(j);
                 cell.setCellValue(result[j][i]);
             }
@@ -48,9 +48,9 @@ public class CreateFileReport {
     }
 
     public static boolean writeYearReport(String[][] result, HSSFSheet sheet) {
-        for (int i = 0; i < 13; i++) {
+        for (int i = 0; i < result[0].length; i++) {
             Row row = sheet.createRow(i);
-            for (int j=0; j < 3; j++) {
+            for (int j=0; j < result.length; j++) {
                 Cell cell = row.createCell(j);
                 cell.setCellValue(result[j][i]);
             }
@@ -59,9 +59,9 @@ public class CreateFileReport {
     }
 
     public static boolean writeOrdersOnDateReport(String[][] result, HSSFSheet sheet) {
-        for (int i = 0; i < 11; i++) {
+        for (int i = 0; i < result[0].length; i++) {
             Row row = sheet.createRow(i);
-            for (int j=0; j < 4; j++) {
+            for (int j=0; j < result.length; j++) {
                 Cell cell = row.createCell(j);
                 cell.setCellValue(result[j][i]);
             }
