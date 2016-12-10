@@ -93,6 +93,15 @@ public class UserController {
         return count;
     }
 
+    public Integer getSimpleUserCount(){
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
+        Criteria criteria = session.createCriteria(User.class);
+        criteria.add(Restrictions.eq("role", 1));
+        criteria.setProjection(Projections.rowCount());
+        Integer count = (int) (long) (Long) criteria.uniqueResult();
+        return count;
+    }
+
     public User editUser(User user){
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
