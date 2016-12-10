@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <title>User statistic</title>
@@ -97,6 +98,31 @@
         </div>
     </nav>
 </section>
+
+<jsp:useBean id="usersStatistics" class="java.util.HashMap" scope="session"/>
+
+<div class="container-fluid" style="position: relative; top: 8rem;">
+    <div class="row">
+        <div class="col-md-12">
+            <legend>Statistics:</legend>
+            <table class="table table-bordered">
+
+                <tbody>
+
+                <c:forEach items="${usersStatistics}" var="stat">
+                    <tr>
+                        <td><c:out value="${stat.getKey()}"/></td>
+                        <td>${stat.getValue()}</td>
+                    </tr>
+                </c:forEach>
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+
 
 </body>
 </html>
