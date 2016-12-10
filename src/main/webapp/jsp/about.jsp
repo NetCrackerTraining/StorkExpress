@@ -65,6 +65,15 @@
 
                     <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm"
                         id="exCollapsingNavbar">
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-toggle nav-link link" style="background: transparent;"
+                               data-toggle="dropdown" href="#">STATISTICS
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu" style="min-width: 100%;background: #282828;padding: 10px 10px 10px 20px;border-radius: 5px;">
+                                <li class="nav-link link" style="margin: 0.5rem;"><a href="${pageContext.request.contextPath}/UsersStat">USERS</a></li>
+                                <li class="nav-link link" style="margin: 0.5rem;"><a href="${pageContext.request.contextPath}/jsp/orderStatistic.jsp">ORDERS</a></li>
+                            </ul>
+                        </li>
                         <c:choose>
                             <c:when test="${user.getUsername() == null}">
                                 <li class="nav-item"><a class="nav-link link" href="${pageContext.request.contextPath}/jsp/about.jsp">ABOUT US</a></li>
@@ -78,15 +87,6 @@
                                 <li class="nav-item"><a class="nav-link link" href="${pageContext.request.contextPath}/ShowUsers">USERS</a></li>
                                 <li class="nav-item"><a class="nav-link link" href="${pageContext.request.contextPath}/jsp/about.jsp">ABOUT US</a></li>
                                 <li class="nav-item"><a class="nav-link link" href="${pageContext.request.contextPath}/jsp/report.jsp">REPORTS</a></li>
-                                <li class="nav-item dropdown">
-                                    <a class="dropdown-toggle nav-link link" style="background: transparent;"
-                                       data-toggle="dropdown" href="#">STATISTICS
-                                        <span class="caret"></span></a>
-                                    <ul class="dropdown-menu" style="min-width: 100%;background: #282828;padding: 10px 10px 10px 20px;border-radius: 5px;">
-                                        <li class="nav-link link" style="margin: 0.5rem;"><a href="${pageContext.request.contextPath}/jsp/userStatistic.jsp">USERS</a></li>
-                                        <li class="nav-link link" style="margin: 0.5rem;"><a href="${pageContext.request.contextPath}/jsp/orderStatistic.jsp">ORDERS</a></li>
-                                    </ul>
-                                </li>
                                 <li class="nav-item nav-btn"><a class="nav-link btn btn-info" href="${pageContext.request.contextPath}/SignOut">Sign
                                     Out</a></li>
                             </c:when>

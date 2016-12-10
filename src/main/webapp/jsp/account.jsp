@@ -84,7 +84,7 @@
                                 <ul class="dropdown-menu"
                                     style="min-width: 100%;background: #282828;padding: 10px 10px 10px 20px;border-radius: 5px;">
                                     <li class="nav-link link" style="margin: 0.5rem;"><a
-                                            href="${pageContext.request.contextPath}/jsp/userStatistic.jsp">USERS</a>
+                                            href="${pageContext.request.contextPath}/UsersStat">USERS</a>
                                     </li>
                                     <li class="nav-link link" style="margin: 0.5rem;"><a
                                             href="${pageContext.request.contextPath}/jsp/orderStatistic.jsp">ORDERS</a>
