@@ -117,7 +117,7 @@
 
 <jsp:useBean id="users" class="java.util.ArrayList" scope="request"/>
 
-<div class="container-fluid" style="position: relative; top: 15%;">
+<div class="container-fluid" style="position: relative; top: 8rem;">
     <div class="row">
         <div class="col-md-12">
             <legend>List of users:</legend>
