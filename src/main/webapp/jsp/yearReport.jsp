@@ -70,8 +70,8 @@
                                data-toggle="dropdown" href="#">REPORTS
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu" style="min-width: 100%;background: #282828;padding: 10px 10px 10px 20px;border-radius: 5px;">
-                                <li class="nav-link link" style="margin: 0.5rem;"><a href="${pageContext.request.contextPath}/jsp/topUsers.jsp">TOP 20 USERS</a></li>
-                                <li class="nav-link link" style="margin: 0.5rem;"><a href="${pageContext.request.contextPath}/jsp/ordersOnDate.jsp">ORDERS ON DATE</a></li>
+                                <li class="nav-link link" style="margin: 0.5rem;"><a href="${pageContext.request.contextPath}/jsp/topUsersReport.jsp">TOP 20 USERS</a></li>
+                                <li class="nav-link link" style="margin: 0.5rem;"><a href="${pageContext.request.contextPath}/jsp/ordersOnDateReport.jsp">ORDERS ON DATE</a></li>
                                 <li class="nav-link link" style="margin: 0.5rem;"><a href="${pageContext.request.contextPath}/jsp/yearReport.jsp">YEAR REPORT</a></li>
                             </ul>
                         </li>
@@ -96,6 +96,35 @@
         </div>
     </nav>
 </section>
+
+<jsp:useBean id="yearReport" class="java.util.ArrayList" scope="session"/>
+
+<div class="container-fluid" style="position: relative; top: 8rem;">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <legend>Year report</legend>
+            <table class="table table-bordered">
+                <tbody>
+                <tr>
+                    <td>#</td>
+                    <td>Month:</td>
+                    <td>Orders:</td>
+                    <td>Profit:</td>
+                </tr>
+                <c:forEach items="${yearReport}" var="list" varStatus="loop">
+                    <tr>
+                        <td>${loop.index+1}</td>
+                        <td>${list.getMonth()}</td>
+                        <td>${list.getOrders()}</td>
+                        <td>${list.getProfit()} BYN</td>
+                    </tr>
+                </c:forEach>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
