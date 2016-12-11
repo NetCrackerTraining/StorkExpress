@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Alexandr
@@ -35,6 +36,7 @@
     <script src="${pageContext.request.contextPath}/js/web/assets/jquery/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap/js/bootstrap.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/dropdown/script.min.js"></script>
+
 </head>
 <body>
 <section id="ext_menu-9">
@@ -97,24 +99,16 @@
         </div>
     </nav>
 </section>
-
 <section class="mbr-section mbr-section__container mbr-after-navbar"
          style="background-color: rgb(255, 255, 255); padding-top: 20px; padding-bottom: 20px;
          position: relative; top: 5.5rem;">
 
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="text-xs-center">
-                    <a class="btn btn-black btn-black-outline" href="#">TOP 20 USERS</a>
-                    <a class="btn btn-black btn-black-outline" href="#">ORDERS ON DATE</a>
-                    <a class="btn btn-black btn-black-outline" href="#">YEAR REPORT</a>
-                    <a class="btn btn-black btn-black-outline" href="#">DOWNLOAD THIS REPORT</a>
-                </div>
-            </div>
-        </div>
-    </div>
 
+
+                    <a class="btn btn-black btn-black-outline" data-toggle="pill" href="#menu1">TOP 20 USERS</a>
+                    <a class="btn btn-black btn-black-outline" data-toggle="pill" href="#menu2">ORDERS ON DATE</a>
+                    <a class="btn btn-black btn-black-outline" data-toggle="pill" href="#menu3">YEAR REPORT</a>
+                    <a class="btn btn-black btn-black-outline" href="#">DOWNLOAD THIS REPORT</a>
 </section>
 
 
