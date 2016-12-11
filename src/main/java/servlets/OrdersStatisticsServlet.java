@@ -27,6 +27,7 @@ public class OrdersStatisticsServlet extends BaseHttpServlet {
         ParcelController parcelController = new ParcelController();
         Integer parcelsCount = parcelController.getParcelsCount();
 
+
         Map<String, Integer> map = new HashMap<String, Integer>();
         map.put("Orders", ordersCount);
         map.put("Parcels", parcelsCount);
