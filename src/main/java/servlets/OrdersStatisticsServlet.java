@@ -1,6 +1,7 @@
 package servlets;
 
 import crud.OrderController;
+import crud.ParcelController;
 import crud.UserController;
 
 import javax.servlet.ServletException;
@@ -23,8 +24,12 @@ public class OrdersStatisticsServlet extends BaseHttpServlet {
         OrderController orderController = new OrderController();
         Integer ordersCount = orderController.getOrdersCount();
 
+        ParcelController parcelController = new ParcelController();
+        Integer parcelsCount = parcelController.getParcelsCount();
+
         Map<String, Integer> map = new HashMap<String, Integer>();
         map.put("Orders", ordersCount);
+        map.put("Parcels", parcelsCount);
 
         request.getSession().setAttribute("ordersStatistics", map);
         response.sendRedirect(request.getContextPath()+"/jsp/orderStatistic.jsp");
