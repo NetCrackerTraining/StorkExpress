@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Alexandr
@@ -7,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <title>Order statistic</title>
@@ -107,7 +107,7 @@
             <table class="table table-bordered">
                 <tbody>
 
-                <c:forEach items="${usersStatistics}" var="stat">
+                <c:forEach items="${ordersStatistics}" var="stat">
                     <tr>
                         <td><c:out value="${stat.getKey()}"/></td>
                         <td><c:out value="${stat.getValue()}"/></td>

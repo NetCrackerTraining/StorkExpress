@@ -1,16 +1,26 @@
 package servlets;
 
+import crud.UserController;
+
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Влад on 11.12.2016.
  */
+@WebServlet("/OrdersStat")
 public class OrdersStatisticsServlet extends BaseHttpServlet {
     @Override
     protected void process(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-
+        response.setStatus(200);
+        Map<String, Integer> map = new HashMap<String, Integer>();
+        map.put("Hello", 42);
+        request.getSession().setAttribute("ordersStatistics", map);
+        response.sendRedirect(request.getContextPath()+"/jsp/orderStatistic.jsp");
     }
 }
