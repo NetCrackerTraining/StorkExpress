@@ -1,9 +1,7 @@
 package clientForCityconService.merge;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
 
 /**
  * Created by Vlad on 11.12.2016.
@@ -13,15 +11,15 @@ public class clientDAO {
     private static String username = "ncuser";
     private static String password = "12345nc";
 
-    public void addInSource(String log,String pass,String email){
+    public void addInUsers(String log,String pass,String email){
         try {
 
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection(
                     url, username, password);
             Statement statement = connection.createStatement();
-            String sql = "INSERT INTO sourceTable " +
-                    "VALUES ('" + log + "', '" + pass + "', '" + email + "')";
+            String sql = "INSERT INTO users (username,password,email,role) " +
+                    "VALUES ('" + log + "', '" + pass + "', '" + email + "',1)";
             statement.executeUpdate(sql);
             statement.close();
             connection.close();
@@ -33,16 +31,19 @@ public class clientDAO {
         }
     }
 
-    public void mergeWithTable() {
+    public ArrayList<String> getOldUsers(String colName){
+        ArrayList<String> newLog = new ArrayList<>();
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection(
                     url, username, password);
             Statement statement = connection.createStatement();
-            String sql = "INSERT INTO users(username,password,email,role) " +
-                    "select log,pass,email,1 from sourceTable "+
-                    "where ((log not in (select u.username from nc_1.users u)) and (email not in (select u.email from nc_1.users u)));";
-            statement.executeUpdate(sql);
+            String sql = "SELECT "+colName+" from nc_1.users;";
+            ResultSet rs = statement.executeQuery(sql);
+            while (rs.next()) {
+                newLog.add(rs.getString(1).toLowerCase());
+            }
+            rs.close();
             statement.close();
             connection.close();
 
@@ -53,26 +54,7 @@ public class clientDAO {
         catch (NumberFormatException e){
             e.printStackTrace();
         }
-    }
-
-    public void deleteSource(){
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection connection = DriverManager.getConnection(
-                    url, username, password);
-            Statement statement = connection.createStatement();
-            String sql = "delete from nc_1.sourceTable where sourceTable.log!='-1';";
-            statement.executeUpdate(sql);
-            statement.close();
-            connection.close();
-
-        }
-        catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        catch (NumberFormatException e){
-            e.printStackTrace();
-        }
+        return newLog;
     }
 
 }
