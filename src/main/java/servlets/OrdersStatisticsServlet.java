@@ -1,5 +1,6 @@
 package servlets;
 
+import crud.OrderController;
 import crud.UserController;
 
 import javax.servlet.ServletException;
@@ -18,8 +19,13 @@ public class OrdersStatisticsServlet extends BaseHttpServlet {
     @Override
     protected void process(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.setStatus(200);
+
+        OrderController orderController = new OrderController();
+        Integer ordersCount = orderController.getOrdersCount();
+
         Map<String, Integer> map = new HashMap<String, Integer>();
-        map.put("Hello", 42);
+        map.put("Orders", ordersCount);
+
         request.getSession().setAttribute("ordersStatistics", map);
         response.sendRedirect(request.getContextPath()+"/jsp/orderStatistic.jsp");
     }
