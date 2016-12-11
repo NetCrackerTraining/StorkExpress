@@ -101,19 +101,12 @@
 <div class="container" style="margin-top: 6.5rem">
     <div class="row">
         <div class="col-md-8 col-md-offset-2" >
-            <div class="form-group col-md-12" style="color: #ff0000">
+            <div class="form-group col-md-12" style="color: #ff0000; font-size: x-large">
                 <c:out value="${sessionScope.DateError}"/>
                 <c:remove var="DateError" scope="session"/>
             </div>
-            <legend>Orders for date:</legend>
+            <legend>Orders for date: </legend>
             <form role="form" method="POST" action="${pageContext.request.contextPath}/OrdersOnDate">
-
-                <div class="form-group col-md-12" style="color: #ff0000">
-                    <c:out value="${sessionScope.PasswordMessage}"/>
-                    <c:remove var="PasswordMessage" scope="session"/>
-                    <c:out value="${sessionScope.Message}"/>
-                    <c:remove var="Message" scope="session"/>
-                </div>
 
                 <label for="day">Day:</label>
                 <input maxlength="2" type="number" class="form-control" name="day" id="day" min="1" max="31" step="1"
