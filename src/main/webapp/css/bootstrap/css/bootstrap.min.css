@@ -5514,3 +5514,8 @@ a.bg-danger:focus, a.bg-danger:hover {
         display: none !important
     }
 }
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+}
