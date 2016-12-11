@@ -2,9 +2,11 @@ package crud;
 
 import entity.Order;
 import entity.Parcel;
+import entity.User;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import utils.HibernateSessionFactory;
 
@@ -80,6 +82,15 @@ public class OrderController {
         session.close();
         return true;
     }
+
+    public Integer getOrdersCount(){
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
+        Criteria criteria = session.createCriteria(Order.class);
+        criteria.setProjection(Projections.rowCount());
+        Integer count = (int) (long) (Long) criteria.uniqueResult();
+        return count;
+    }
+
     public boolean updateOrder(Order order){
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
