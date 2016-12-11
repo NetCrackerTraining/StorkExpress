@@ -113,7 +113,7 @@
                 <c:forEach items="${topUsers}" var="list" varStatus="loop">
                     <tr>
                         <td>${loop.index+1}</td>
-                        <td><c:out value="${list.getKey()}"/></td>
+                        <td>${list.getKey()}</td>
                         <td>${list.getValue()}</td>
                     </tr>
                 </c:forEach>
