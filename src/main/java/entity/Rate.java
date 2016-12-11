@@ -35,9 +35,6 @@ public class Rate extends AbstractEntity {
         if (parcel.getExpress()){
             cost *= 1.2;
         }
-        CurrencyController currencyController=new CurrencyController();
-        if (parcel.getCurrency().equals("BYN")) cost=currencyController.conversionInBYN(cost);
-        else cost=currencyController.conversion(cost,parcel.getCurrency());
         return cost;
     }
 

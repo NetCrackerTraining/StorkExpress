@@ -1,5 +1,6 @@
 package servlets;
 
+import crud.CurrencyController;
 import crud.ParcelController;
 import entity.*;
 
@@ -98,17 +99,16 @@ public class AddParcelServlet extends BaseHttpServlet {
             express = true;
         }
 
+        CurrencyController currencyController= new CurrencyController();
+
         Parcel parcel = new Parcel(recipientInfo,weight,toCountryId,fromCountryId,express,currency);
         parcel.setDescription(description);
         parcel.setDelivered(false);
-        //parcel.setOrderId(order.getId());
         parcel.setRateId(rate.getId());
         parcel.setCost(rate.calculateParcelCost(parcel));
+        parcel.setConversionCost(currencyController.conversion(parcel.getCost(),parcel.getCurrency()));
         parcel.setToCountry(toCountry);
         parcel.setFromCountry(fromCountry);
-
-//        ParcelController parcelController = new ParcelController();
-//        parcelController.AddParcel(parcel);
 
         order.addParcel(parcel);
 
