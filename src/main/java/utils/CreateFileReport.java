@@ -12,7 +12,7 @@ import java.io.*;
  */
 public class CreateFileReport {
 
-    public HSSFWorkbook WriteFileReport(String[][] result){
+    public void WriteFileReport(String[][] result){
         HSSFWorkbook workbook = new HSSFWorkbook();
         HSSFSheet sheet = workbook.createSheet("Sheet");
 
@@ -33,6 +33,5 @@ public class CreateFileReport {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return workbook;
     }
 }
