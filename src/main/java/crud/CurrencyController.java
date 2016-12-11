@@ -64,26 +64,14 @@ public class CurrencyController {
     public double conversion(double cost, String Abbreviation){
         Currency currency=getCurrency(Abbreviation);
         double conversionCost;
-        double USD_BYN_Currency = Double.parseDouble(getCurrency("USD").getCurrencyRate());
         double BYN_Cur_Rate = Double.parseDouble(currency.getCurrencyRate());
         int Scale=currency.getCur_Scale();
 
-        conversionCost=cost*USD_BYN_Currency/BYN_Cur_Rate*Scale;
+        conversionCost=cost/BYN_Cur_Rate*Scale;
         conversionCost=conversionCost*100;
         conversionCost= Math.round(conversionCost);
         conversionCost = conversionCost / 100;
-
         return conversionCost;
-    }
-
-    public double conversionInBYN(double cost){
-        double USD_BYN_Currency = Double.parseDouble(getCurrency("USD").getCurrencyRate());
-        double BYN;
-        BYN=cost*USD_BYN_Currency;
-        BYN=BYN*100;
-        BYN= Math.round(BYN);
-        BYN = BYN / 100;
-        return BYN;
     }
 
 }

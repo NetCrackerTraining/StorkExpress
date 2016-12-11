@@ -21,6 +21,8 @@ public class Order extends AbstractEntity {
     private double totalCost;
     @Column(name = "currency")
     private String currency;
+    @Column(name = "conversionTotalCost")
+    private double conversionTotalCost;
     @Transient
     private ArrayList<Parcel> parcels = null;
 
@@ -86,6 +88,7 @@ public class Order extends AbstractEntity {
         totalCost=totalCost*100;
         totalCost= Math.round(totalCost);
         totalCost = totalCost / 100;
+        conversionTotalCost+=parcel.getConversionCost();
     }
 
     public void deleteParcel(long parcelId){
@@ -98,5 +101,13 @@ public class Order extends AbstractEntity {
 //        }
         this.totalCost -= parcels.get((int) parcelId).getCost();
         parcels.remove((int)parcelId);
+    }
+
+    public double getConversionTotalCost() {
+        return conversionTotalCost;
+    }
+
+    public void setConversionTotalCost(double conversionTotalCost) {
+        this.conversionTotalCost = conversionTotalCost;
     }
 }

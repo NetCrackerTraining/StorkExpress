@@ -36,7 +36,8 @@ public class Parcel extends AbstractEntity{
     private double cost;
     @Column(name = "currency")
     private String currency;
-
+    @Column(name = "conversionCost")
+    private double conversionCost;
 
 
 
@@ -166,5 +167,13 @@ public class Parcel extends AbstractEntity{
 
     public double getCost() {
         return cost;
+    }
+
+    public double getConversionCost() {
+        return conversionCost;
+    }
+
+    public void setConversionCost(double conversionCost) {
+        this.conversionCost = conversionCost;
     }
 }
