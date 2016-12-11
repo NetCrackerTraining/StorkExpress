@@ -110,7 +110,7 @@
                 <c:forEach items="${usersStatistics}" var="stat">
                     <tr>
                         <td><c:out value="${stat.getKey()}"/></td>
-                        <td>${stat.getValue()}</td>
+                        <td><c:out value="${stat.getValue()}"/></td>
                     </tr>
                 </c:forEach>
 
