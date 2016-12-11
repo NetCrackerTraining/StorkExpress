@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,11 +28,15 @@ public class OrdersStatisticsServlet extends BaseHttpServlet {
         ParcelController parcelController = new ParcelController();
         Integer parcelsCount = parcelController.getParcelsCount();
 
+        DecimalFormat df = new DecimalFormat("#.####");
+        double average = 0.0;
+        average = ((double) parcelsCount)/((double)ordersCount);
 
-        Map<String, Integer> map = new HashMap<String, Integer>();
-        map.put("Orders", ordersCount);
-        map.put("Parcels", parcelsCount);
-        map.put("Average number of parcels in order", parcelsCount/ordersCount);
+
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("Orders", String.valueOf(ordersCount));
+        map.put("Parcels", String.valueOf(parcelsCount));
+        map.put("Average number of parcels in order", df.format(average));
 
         request.getSession().setAttribute("ordersStatistics", map);
         response.sendRedirect(request.getContextPath()+"/jsp/orderStatistic.jsp");
