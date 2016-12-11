@@ -98,5 +98,27 @@
     </nav>
 </section>
 
+<jsp:useBean id="ordersStatistics" class="java.util.HashMap" scope="session"/>
+
+<div class="container-fluid" style="position: relative; top: 8rem;">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <legend>Statistics:</legend>
+            <table class="table table-bordered">
+                <tbody>
+
+                <c:forEach items="${usersStatistics}" var="stat">
+                    <tr>
+                        <td><c:out value="${stat.getKey()}"/></td>
+                        <td>${stat.getValue()}</td>
+                    </tr>
+                </c:forEach>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
