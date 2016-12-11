@@ -30,6 +30,7 @@ public class OrdersStatisticsServlet extends BaseHttpServlet {
         Map<String, Integer> map = new HashMap<String, Integer>();
         map.put("Orders", ordersCount);
         map.put("Parcels", parcelsCount);
+        map.put("Average number of parcels in order", parcelsCount/ordersCount);
 
         request.getSession().setAttribute("ordersStatistics", map);
         response.sendRedirect(request.getContextPath()+"/jsp/orderStatistic.jsp");
