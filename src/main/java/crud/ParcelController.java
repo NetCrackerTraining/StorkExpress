@@ -1,9 +1,11 @@
 package crud;
 
+import entity.Order;
 import entity.Parcel;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import utils.HibernateSessionFactory;
 
@@ -40,6 +42,14 @@ public class ParcelController {
         if (parcels.size() == 0)
             return null;
         return parcels;
+    }
+
+    public Integer getParcelsCount(){
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
+        Criteria criteria = session.createCriteria(Parcel.class);
+        criteria.setProjection(Projections.rowCount());
+        Integer count = (int) (long) (Long) criteria.uniqueResult();
+        return count;
     }
 
 //    public boolean deleteParcel2(long parcelId) {
