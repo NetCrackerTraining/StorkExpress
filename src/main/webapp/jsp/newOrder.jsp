@@ -7,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="crud.CurrencyController.*" %>
 <html>
 <head>
     <title>New Order</title>
@@ -38,6 +39,12 @@
     <script src="${pageContext.request.contextPath}/js/custom/custom.js"></script>
     <script src="${pageContext.request.contextPath}/js/dropdown/script.min.js"></script>
 
+    <style>
+        .modal-dialog {
+            width: 900px;
+            margin: 6% auto; }
+    </style>
+
 </head>
 <body>
 
@@ -45,6 +52,7 @@
 <c:if test="${user.getUsername() == null || !user.isSimpleUser()}">
     <c:redirect url="/"></c:redirect>
 </c:if>
+
 
 <section id="ext_menu-9">
 
@@ -155,13 +163,18 @@
                         <label style="margin-top: 15px; padding-left: 30px;">
                             <input type="checkbox" name="express" id="express" style="transform: scale(2.0)"/> Express
                         </label>
-                        <div class="col-md-4" style="padding-left: 0px">
+                        <div class="col-md-4 mbr-section-btn" style="padding-left: 0px">
                         <select name="currency" id="currency" required class="form-control">
                             <c:forEach items="${currencies}" var="currency">
                                 <option value="${currency.getCurrencyAbbreviation()}">${currency.getCurrencyAbbreviation()}</option>
                             </c:forEach>
                         </select>
                         </div>
+                        <a class="btn btn-black btn-black-outline" style="float: left;margin-left: -0.9rem;padding: 15px;
+                        background-color: #f5f5f5;border: 1px solid #e8e8e8;font-family: 'Raleway', sans-serif;margin-right: 1rem;
+                        border-left-color: #ccc;"
+                           data-toggle="modal" data-target="#myModal"
+                        >INFO</a>
                         <button type="submit" class="btn btn-primary" style="float: right;">
                             Add
                         </button>
@@ -170,6 +183,7 @@
             </fieldset>
             </form>
         </div>
+
 
         <jsp:useBean id="order" class="entity.Order" scope="session"/>
         <jsp:useBean id="parcel" class="entity.Parcel" scope="session"/>
@@ -258,6 +272,58 @@
         document.getElementById('currency').disabled = false;
     }
 </script>
+
+<div id="myModal" class="modal fade" role="dialog" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Currency information:</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid bd-example-row">
+
+                    <div class="row">
+                        <div class="form-group col-md-12" style=" margin-bottom: 0px;">
+                                    <table class="table table-bordered">
+                                        <tbody>
+                                        <tr>
+                                            <td>#</td>
+                                            <td>Currency name:</td>
+                                            <td>Abbreviation:</td>
+                                            <td>Official exchange rate:</td>
+                                            <td>Currency scale:</td>
+                                            <td>Last update:</td>
+                                        </tr>
+                                        <c:forEach items="${currencies}" var="list" varStatus="loop">
+                                            <tr>
+                                                <td>${loop.index+1}</td>
+                                                <td>${list.getCurrencyName()}</td>
+                                                <td>${list.getCurrencyAbbreviation()}</td>
+                                                <td>${list.getCurrencyRate()}</td>
+                                                <td>${list.getCur_Scale()}</td>
+                                                <td>${list.getDate()}</td>
+                                            </tr>
+                                        </c:forEach>
+
+                                        </tbody>
+                                    </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="form-group col-md-6" style="color: #ff0000">
+                    <c:out value="${sessionScope.SignInError}"/>
+                    <c:remove var="SignInError" scope="session"/>
+                </div>
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="margin-right: 15px">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 
 </html>

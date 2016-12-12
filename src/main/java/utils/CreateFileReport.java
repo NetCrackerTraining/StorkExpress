@@ -12,61 +12,26 @@ import java.io.*;
  */
 public class CreateFileReport {
 
-    public static void main(String[] args) throws IOException {
-        Reports reports = new Reports();
+    public void WriteFileReport(String[][] result){
         HSSFWorkbook workbook = new HSSFWorkbook();
-        HSSFSheet sheet = workbook.createSheet("Sample sheet");
+        HSSFSheet sheet = workbook.createSheet("Sheet");
 
-        System.out.println(writeBestUsersReport(reports.bestUsers(),sheet));
-//        System.out.println(writeYearReport(reports.yearReport(),sheet));
-//        System.out.println(writeOrdersOnDateReport(reports.ordersOnDate(2016, 12, 8, 10),sheet));
+        for (int i = 0; i < result[0].length; i++) {
+            Row row = sheet.createRow(i);
+            for (int j = 0; j < result.length; j++) {
+                Cell cell = row.createCell(j);
+                cell.setCellValue(result[j][i]);
+            }
+        }
 
         try {
-            FileOutputStream out =
-                    new FileOutputStream(new File("new.xls"));
+            FileOutputStream out = new FileOutputStream(new File("Report.xls"));
             workbook.write(out);
             out.close();
-            System.out.println("Excel written successfully..");
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
-
-    public static boolean writeBestUsersReport(String[][] result, HSSFSheet sheet){
-        for (int i = 0; i < result[0].length; i++) {
-            Row row = sheet.createRow(i);
-            for (int j=0; j < result.length; j++) {
-                Cell cell = row.createCell(j);
-                cell.setCellValue(result[j][i]);
-            }
-        }
-        return true;
-    }
-
-    public static boolean writeYearReport(String[][] result, HSSFSheet sheet) {
-        for (int i = 0; i < result[0].length; i++) {
-            Row row = sheet.createRow(i);
-            for (int j=0; j < result.length; j++) {
-                Cell cell = row.createCell(j);
-                cell.setCellValue(result[j][i]);
-            }
-        }
-        return true;
-    }
-
-    public static boolean writeOrdersOnDateReport(String[][] result, HSSFSheet sheet) {
-        for (int i = 0; i < result[0].length; i++) {
-            Row row = sheet.createRow(i);
-            for (int j=0; j < result.length; j++) {
-                Cell cell = row.createCell(j);
-                cell.setCellValue(result[j][i]);
-            }
-        }
-        return true;
-    }
-
 }

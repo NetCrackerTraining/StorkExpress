@@ -101,7 +101,8 @@
             <th>#</th>
             <th>Parcels count</th>
             <%--TODO <th>Total weight</th>--%>
-            <th>Total cost</th>
+            <th>Total cost, BYN</th>
+            <th>Total cost, ${order.getCurrency()}</th>
             <th>Date</th>
         </tr>
         </thead>
@@ -113,7 +114,8 @@
                     <td>${loop.index + 1}</td>
                     <td>${order.getParcels().size()}</td>
                     <%--<td>TODO TotalWeight kg</td>--%>
-                    <td>${order.getTotalCost()} ${order.getCurrency()}</td>
+                    <td>${order.getTotalCost()} BYN</td>
+                    <td>${order.getConversionTotalCost()} ${order.getCurrency()}</td>
                     <td>${order.getDate()}</td>
                 </tr>
                 <%-- forEach по ордерс заканчивается--%>
@@ -131,7 +133,8 @@
                                     <td>To</td>
                                     <td>Express</td>
                                     <td>Status</td>
-                                    <td>Price</td>
+                                    <td>Price, BYN</td>
+                                    <td>Price, ${order.getCurrency()}</td>
                                 </tr>
                                 <%--Конец второй, вложенной таблицы.--%>
                                 <%--Прикрутить forEach по Parcels по конкретному Order.. --%>
@@ -146,7 +149,8 @@
                                             <td>${parcel.getToCountry()}</td>
                                             <td>${parcel.isExpress()}</td>
                                             <td>${parcel.isDelivered()}</td>
-                                            <td>${parcel.getCost()} ${parcel.getCurrency()}</td>
+                                            <td>${parcel.getCost()} BYN</td>
+                                            <td>${parcel.getConversionCost()} ${parcel.getCurrency()}</td>
                                         </tr>
                                     </c:forEach>
                             </table>

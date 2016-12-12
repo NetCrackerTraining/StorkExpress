@@ -1,6 +1,7 @@
 package servlets;
 
 import crud.Reports;
+import utils.CreateFileReport;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,11 +20,16 @@ public class TopUsersServlet extends BaseHttpServlet {
     protected void process(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.setStatus(200);
         Reports reports = new Reports();
+        CreateFileReport fileReport = new CreateFileReport();
         String[][] list = reports.bestUsers();
+
         Map<String, String> map = new LinkedHashMap<>();
         for (int i = 1; i < 21; i++) {
             map.put(list[0][i],list[1][i]);
         }
+
+        fileReport.WriteFileReport(list);
+
         request.getSession().setAttribute("topUsers", map);
         response.sendRedirect(request.getContextPath()+"/jsp/topUsersReport.jsp");
 
