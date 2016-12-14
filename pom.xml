@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>li.project.nc1</groupId>
+    <groupId>minuon.mooo.com</groupId>
     <artifactId>StorkExpress</artifactId>
     <version>1.9.0</version>
     <packaging>war</packaging>
