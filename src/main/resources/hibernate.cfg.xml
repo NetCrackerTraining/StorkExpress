@@ -5,7 +5,7 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="connection.url">jdbc:mysql://nc1.project.li:3306/nc_1</property>
+        <property name="connection.url">jdbc:mysql://minuon.mooo.com:3306/nc_1</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 
         <!-- NOTE that after automapping with IDEA property username and password will delete -->
