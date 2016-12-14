@@ -6,7 +6,7 @@ import java.sql.*;
  * Created by Vlad on 09.12.2016.
  */
 public class Reports {
-    private final String url = "jdbc:mysql://nc1.project.li:3306/nc_1";
+    private final String url = "jdbc:mysql://minuon.mooo.com:3306/nc_1";
     private final String username = "ncuser";
     private final String password = "12345nc";
 
