@@ -81,7 +81,7 @@
                                         href="${pageContext.request.contextPath}/UsersStat">USERS</a>
                                 </li>
                                 <li class="nav-link link" style="margin: 0.5rem;"><a
-                                        href="${pageContext.request.contextPath}/jsp/orderStatistic.jsp">ORDERS</a>
+                                        href="${pageContext.request.contextPath}/OrdersStat">ORDERS</a>
                                 </li>
                             </ul>
                         </li>
