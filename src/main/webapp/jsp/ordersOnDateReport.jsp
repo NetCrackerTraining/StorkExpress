@@ -135,6 +135,16 @@
                         <button type="submit" style="margin-top: 0.7rem" class="btn btn-primary">
                             Get orders
                         </button>
+                        <a style="margin-top: 0.7rem" class="btn btn-black btn-black-outline"
+                           href=""
+                        onclick="if (document.getElementById('day').value.length > 0 && document.getElementById('month').value.length > 0
+                         && document.getElementById('year').value.length > 0){
+                         this.href='${pageContext.request.contextPath}/Download?report=orders_on_date&day='+document.getElementById('day').value+
+                                '&month='+document.getElementById('month').value+'&year='+document.getElementById('year').value
+                         }else alert('Please, fill up all fields.');
+                                ">
+                            DOWNLOAD THIS TABLE
+                        </a>
                     </div>
                 </div>
             </form>
