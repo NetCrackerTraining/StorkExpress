@@ -102,7 +102,11 @@
 <div class="container-fluid" style="position: relative; top: 8rem;">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            <legend>Year report</legend>
+            <div class="col-md-12" style="padding-right: 0px">
+                <legend>Year report:
+                    <a class="btn btn-black btn-black-outline" style="float: right" href="${pageContext.request.contextPath}/Download?report=year_report">DOWNLOAD THIS TABLE</a>
+                </legend>
+            </div>
             <table class="table table-bordered">
                 <tbody>
                 <tr>
