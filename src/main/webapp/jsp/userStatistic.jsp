@@ -71,9 +71,9 @@
                                data-toggle="dropdown" href="#">REPORTS
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu" style="min-width: 100%;background: #282828;padding: 10px 10px 10px 20px;border-radius: 5px;">
-                                <li class="nav-link link" style="margin: 0.5rem;"><a href="${pageContext.request.contextPath}/jsp/topUsersReport.jsp">TOP 20 USERS</a></li>
+                                <li class="nav-link link" style="margin: 0.5rem;"><a href="${pageContext.request.contextPath}/TopUsers">TOP 20 USERS</a></li>
                                 <li class="nav-link link" style="margin: 0.5rem;"><a href="${pageContext.request.contextPath}/jsp/ordersOnDateReport.jsp">ORDERS ON DATE</a></li>
-                                <li class="nav-link link" style="margin: 0.5rem;"><a href="${pageContext.request.contextPath}/jsp/yearReport.jsp">YEAR REPORT</a></li>
+                                <li class="nav-link link" style="margin: 0.5rem;"><a href="${pageContext.request.contextPath}/YearReport">YEAR REPORT</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
