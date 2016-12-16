@@ -97,7 +97,7 @@
     </nav>
 </section>
 
-<jsp:useBean id="topUsers" class="java.util.HashMap" scope="session"/>
+<jsp:useBean id="topUsers" class="java.util.ArrayList" scope="session"/>
 
 <div class="container-fluid" style="position: relative; top: 8rem;">
     <div class="row">
@@ -117,8 +117,8 @@
                 <c:forEach items="${topUsers}" var="list" varStatus="loop">
                     <tr>
                         <td>${loop.index+1}</td>
-                        <td>${list.getKey()}</td>
-                        <td>${list.getValue()}</td>
+                        <td>${list.getUsername()}</td>
+                        <td>${list.getProfit()}</td>
                     </tr>
                 </c:forEach>
 
