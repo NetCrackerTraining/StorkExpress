@@ -105,11 +105,7 @@
         </tr>
         </thead>
         <tbody>
-        <%-- Прикрутить forEach по Orders--%>
-        <%-- в  data-target="#collapse..N.." N задавать номером оредера  --%>
-
             <c:forEach items="${allOrders}" var="order">
-
                 <tr>
                     <td>${order.getId()}</td>
                     <%--TODO${crud.UserController.getUsernameByOrder(order)}--%>
@@ -120,52 +116,6 @@
                     <td>${order.getDate()}</td>
                 </tr>
             </c:forEach>
-        <%-- forEach по ордерс заканчивается--%>
-        <%--TODO
-        <tr>
-            <td colspan="6" style="padding: 0px">
-
-                <div id="collapse1" class="panel-collapse collapse">
-                    <table width="100%">
-
-                        <tr style="background: rgba(228, 226, 224, 0.29);">
-                            <td>#</td>
-                            <td>Parcel name</td>
-                            <td>Weight</td>
-                            <td>From</td>
-                            <td>To</td>
-                            <td>Express</td>
-                            <td>Status</td>
-                            <td>Price</td>
-                        </tr>
-
-
-                        <tr>
-                            <td>1</td>
-                            <td>Book</td>
-                            <td>2.0 kg</td>
-                            <td>Belarus</td>
-                            <td>USA</td>
-                            <td>Yes</td>
-                            <td>Delivered</td>
-                            <td>12.0 $</td>
-                        </tr>
-
-                        <tr>
-                            <td>2</td>
-                            <td>Apple</td>
-                            <td>1.5 kg</td>
-                            <td>Poland</td>
-                            <td>Belarus</td>
-                            <td>No</td>
-                            <td>Not delivered</td>
-                            <td>10.5 $</td>
-                        </tr>
-                    </table>
-                </div>
-            </td>
-        </tr>
-        --%>
         </tbody>
     </table>
 </div>
