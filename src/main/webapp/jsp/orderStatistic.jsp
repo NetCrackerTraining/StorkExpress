@@ -98,7 +98,7 @@
     </nav>
 </section>
 
-<jsp:useBean id="ordersStatistics" class="java.util.HashMap" scope="session"/>
+<jsp:useBean id="ordersStatistics" class="java.util.ArrayList" scope="session"/>
 
 <div class="container-fluid" style="position: relative; top: 8rem;">
     <div class="row">
@@ -107,10 +107,10 @@
             <table class="table table-bordered">
                 <tbody>
 
-                <c:forEach items="${ordersStatistics}" var="stat">
+                <c:forEach items="${ordersStatistics}" var="list">
                     <tr>
-                        <td><c:out value="${stat.getKey()}"/></td>
-                        <td><c:out value="${stat.getValue()}"/></td>
+                        <td>${list.getDescription()}</td>
+                        <td>${list.getInfo()}</td>
                     </tr>
                 </c:forEach>
 

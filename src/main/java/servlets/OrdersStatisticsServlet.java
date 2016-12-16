@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -33,12 +35,30 @@ public class OrdersStatisticsServlet extends BaseHttpServlet {
         average = ((double) parcelsCount)/((double)ordersCount);
 
 
-        Map<String, String> map = new HashMap<String, String>();
-        map.put("Orders", String.valueOf(ordersCount));
-        map.put("Parcels", String.valueOf(parcelsCount));
-        map.put("Average number of parcels in order", df.format(average));
+        List<OrderStatistic> list = new ArrayList<>();
+        list.add(new OrderStatistic("Orders count:", String.valueOf(ordersCount)));
+        list.add(new OrderStatistic("Parcels count:", String.valueOf(parcelsCount)));
+        list.add(new OrderStatistic("Average number of parcels in order:",df.format(average)));
 
-        request.getSession().setAttribute("ordersStatistics", map);
+        request.getSession().setAttribute("ordersStatistics", list);
         response.sendRedirect(request.getContextPath()+"/jsp/orderStatistic.jsp");
+    }
+
+    public class OrderStatistic{
+        private String description;
+        private String info;
+
+        public String getDescription() {
+            return description;
+        }
+
+        public String getInfo() {
+            return info;
+        }
+
+        public OrderStatistic(String description, String info) {
+            this.description = description;
+            this.info = info;
+        }
     }
 }
