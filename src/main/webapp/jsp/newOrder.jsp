@@ -236,13 +236,13 @@
                         <td>${parcel.getToCountry()}</td>
                         <td><c:out value="${parcel.getRecipientInfo()}"/></td>
                         <td>${parcel.isExpress()}</td>
-                        <td>${parcel.getCost()}</td>
+                        <td>${parcel.getConversionCost()}</td>
                         <td><a href="${pageContext.request.contextPath}/DeleteParcel?id=${loop.index}">delete</a></td>
                     </tr>
                 </c:forEach>
                 <tr>
                     <td colspan="9" style="text-align: right;">
-                        Total number: ${order.getParcels().size()}; price - ${order.getTotalCost()}
+                        Total number: ${order.getParcels().size()}; price - ${order.getConversionTotalCost()}
                         <c:set var="count" value="${order.getParcels().size()}" scope="session"/>
                         <c:if test="${count != 0}">
                             <c:set var="name" value="${order.getParcels().get(0).getCurrency()}" scope="session"/>
